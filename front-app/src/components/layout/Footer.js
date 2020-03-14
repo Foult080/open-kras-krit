@@ -10,9 +10,9 @@ const Footer = () => {
         </p>
         <p>Kras-KRIT &copy; Открытая площадка для студентов ККРИТ.</p>
         <p>
-          Created by @Foult080
+          Created by @foult080
           <a
-            href="https://github.com/Foult080/kras-krit-jobs"
+            href="https://github.com/Foult080"
             target="_blank"
             rel="noopener noreferrer"
           >
