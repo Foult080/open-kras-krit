@@ -1,0 +1,47 @@
+{
+  "name": "kras-krit",
+  "version": "0.0.1",
+  "description": "This is a open platform for KKRIT.There are many platform united in one big project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front-app && npm run build --prefix front-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Foult080/kras-krit.git"
+  },
+  "keywords": [
+    "web",
+    "app",
+    "mern",
+    "kkrit"
+  ],
+  "author": "foult080",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Foult080/kras-krit.git/issues"
+  },
+  "homepage": "https://github.com/Foult080/kras-krit.git#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "express-validator": "^6.3.1",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.4",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.2",
+    "nodemon": "^2.0.2"
+  },
+  "engines": {
+    "node": "13.x"
+  }
+}

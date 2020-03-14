@@ -1,0 +1,120 @@
+.icon {
+  font-size: 30px;
+  padding-left: 35px;
+  padding-right: 10px;
+}
+
+.icon-small {
+  padding-left: 5px;
+  font-size: 25px;
+}
+.menu {
+  color: #f8f9fa;
+  margin-right: 15px;
+}
+
+.menu :hover {
+  color: #007bff;
+}
+.NavBar {
+  opacity: 0.8;
+}
+.car-item {
+  margin-top: 5px;
+}
+.card-title {
+  text-align: center;
+}
+.news-card {
+  margin-bottom: 15px;
+}
+
+.menu-button {
+  margin-right: 5px;
+}
+
+.auth {
+  width: 40%;
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.form-control {
+  margin-bottom: 5px;
+}
+.btn-block {
+  margin-top: 10px;
+  text-align: center;
+  width: 50%;
+}
+/*
+.img-profile {
+  height: 100%;
+  width: 100%;
+}
+*/
+.alert {
+  text-align: center;
+}
+
+/*
+border-color: #0051A6;
+*/
+.rounded-circle {
+  border-radius: 100% !important;
+  border: solid;
+  border-color: #fff;
+
+}
+ .header {
+   background-color: #409EFF;
+   text-align: center;
+   padding: 2%;
+ }
+
+ .header-text {
+   margin-top: 15px;
+   color: white;
+ }
+
+ .header-info {
+   text-align: center;
+   margin-top: 20px;
+ }
+ .dash-btn {
+   text-align: center;
+ }
+
+ .dash-toggle {
+   background-color: #007bff;
+ }
+
+ .container {
+   margin-bottom: 40px;
+ }
+
+ .error-template {
+   margin-top: 10%;
+   margin-bottom: 10%;
+   text-align: center;
+ }
+
+ .ex-btn {
+   margin-right: 5px;
+ }
+
+ .ex404 {
+  font-size: 120px;
+  font-weight: bold;
+ }
+
+ .acc-info {
+   font-weight: bold;
+   font-size: larger;
+ }
+
+ .acc-list {
+   margin-left: 10%;
+   width: 80%;
+   border-radius: 10 !important;
+ }

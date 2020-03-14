@@ -1,0 +1,6 @@
+//students
+someName1@gmail.com qwertyui
+someName2@gmail.com qwertyui
+someName3@gmail.com qwertyui
+//admin
+some@gmail.com qwertyui
