@@ -13,7 +13,7 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
   }
 
   return loading && user === null ? (
-    <Spinner />
+    <Spinner className="spinner" />
   ) : (
     <Fragment>
       <div className="header">
@@ -31,9 +31,9 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
         <hr />
         <Accordion>
           <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="success" eventKey="0">
-                Абитуриент ККРИТ
+            <Card.Header className="dash-header">
+              <Accordion.Toggle as={Button} variant="success" eventKey="0" className="dash-btn">
+              <i className="fas fa-user-graduate"></i>Абитуриент ККРИТ
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
@@ -44,9 +44,9 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
             </Accordion.Collapse>
           </Card>
           <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="primary" eventKey="1">
-                Работа ККРИТ
+            <Card.Header className="dash-header">
+              <Accordion.Toggle as={Button} variant="primary" eventKey="1" className="dash-btn">
+              <i className="fas fa-briefcase"></i>Работа ККРИТ
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="1">
@@ -54,9 +54,9 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
             </Accordion.Collapse>
           </Card>
           <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="dark" eventKey="2">
-                ККРИТ WSR
+            <Card.Header className="dash-header">
+              <Accordion.Toggle as={Button} variant="dark" eventKey="2" className="dash-btn">
+              <i className="fas fa-globe-americas"></i> ККРИТ WSR
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="2">

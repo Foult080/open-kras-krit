@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getRating } from "../../actions/applicant";
 import Spinner from "../layout/spinner";
@@ -15,7 +15,14 @@ const Applicant = ({ getRating, applicant: { applicant, loading } }) => {
   return loading ? (
     <Spinner />
   ) : applicant === null ? (
-    <Fragment>Вы еще не подали документы!</Fragment>
+    <Fragment>
+      <p>Вы еще не подали документы!</p>
+      <Link to="/dashboard/send-app">
+        <button className="btn btn-success">
+          <i className="far fa-file-alt"></i>Подать документы
+        </button>
+      </Link>
+    </Fragment>
   ) : (
     <Fragment>
       <table class="table acc-list">
@@ -27,12 +34,11 @@ const Applicant = ({ getRating, applicant: { applicant, loading } }) => {
           </tr>
         </thead>
         <tbody>
-        {applicant.map(item => (
-          <AppItem item={item} />
-        ))}
+          {applicant.map(item => (
+            <AppItem item={item} />
+          ))}
         </tbody>
       </table>
-      
     </Fragment>
   );
 };

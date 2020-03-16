@@ -4,6 +4,11 @@
   padding-right: 10px;
 }
 
+.far,
+.fas {
+  margin-right: 5px;
+}
+
 .icon-small {
   padding-left: 5px;
   font-size: 25px;
@@ -64,57 +69,62 @@ border-color: #0051A6;
   border-radius: 100% !important;
   border: solid;
   border-color: #fff;
-
 }
- .header {
-   background-color: #409EFF;
-   text-align: center;
-   padding: 2%;
- }
+.header {
+  background-color: #409eff;
+  text-align: center;
+  padding: 2%;
+}
 
- .header-text {
-   margin-top: 15px;
-   color: white;
- }
+.header-text {
+  margin-top: 15px;
+  color: white;
+}
 
- .header-info {
-   text-align: center;
-   margin-top: 20px;
- }
- .dash-btn {
-   text-align: center;
- }
+.header-info {
+  text-align: center;
+  margin-top: 20px;
+}
+.dash-btn {
+  text-align: center;
 
- .dash-toggle {
-   background-color: #007bff;
- }
+  width: 35%;
+}
 
- .container {
-   margin-bottom: 40px;
- }
+.dash-header {
+  text-align: center;
+}
+.container {
+  margin-bottom: 40px;
+}
 
- .error-template {
-   margin-top: 10%;
-   margin-bottom: 10%;
-   text-align: center;
- }
+.error-template {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  text-align: center;
+}
 
- .ex-btn {
-   margin-right: 5px;
- }
+.ex-btn {
+  margin-right: 5px;
+}
 
- .ex404 {
+.ex404 {
   font-size: 120px;
   font-weight: bold;
- }
+}
 
- .acc-info {
-   font-weight: bold;
-   font-size: larger;
- }
+.acc-info {
+  font-weight: bold;
+  font-size: larger;
+}
 
- .acc-list {
-   margin-left: 10%;
-   width: 80%;
-   border-radius: 10 !important;
- }
+.acc-list {
+  margin-left: 10%;
+  width: 80%;
+  border-radius: 10 !important;
+}
+
+.spinner {
+  margin-top: 40%;
+  margin-bottom: 40%;
+}

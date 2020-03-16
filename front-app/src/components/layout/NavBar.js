@@ -46,7 +46,7 @@ const NavBar = ({ auth: { isAuth, loading }, logout }) => {
           <i className="icon fas fa-laptop-code" id="icon"></i>
           ККРИТ
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls=" basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           {!loading && <Fragment>{isAuth ? authLinks : guestLinks}</Fragment>}
         </Navbar.Collapse>
