@@ -128,3 +128,12 @@ border-color: #0051A6;
   margin-top: 40%;
   margin-bottom: 40%;
 }
+
+.blue-header {
+  color: #007bff;
+}
+
+.form-send {
+ padding-left: 20%;
+ padding-right: 20%;
+}

@@ -80,7 +80,9 @@ router.get("/me", auth, async (req, res) => {
     //get applicant by id
     let applicant = await Applicant.findOne({ user: req.user.id });
     if (!applicant) {
-      return res.status(404).json({ errors: [{ msg: "Профиль абитуриента отсутсвует" }] });
+      return res
+        .status(404)
+        .json({ errors: [{ msg: "Профиль абитуриента отсутсвует" }] });
     }
     //make promise
     const ratingsPromise = applicant.proff.map(async item => {
