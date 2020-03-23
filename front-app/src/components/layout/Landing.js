@@ -55,8 +55,7 @@ const Landing = () => {
               </h4>
               <div className="card-body">
                 <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Sapiente esse necessitatibus neque.
+                  Получить профессию - доступно, легко, интересно.
                 </p>
                 <Link to="#" className="btn btn-success">
                   Подробнее
@@ -71,10 +70,7 @@ const Landing = () => {
                 Работа ККРИТ
               </h4>
               <div className="card-body">
-                <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Sapiente esse necessitatibus neque.
-                </p>
+                <p className="card-text">Построй карьеру вместе с нами! Более N работодателей уже здесь.</p>
                 <Link to="#" className="btn btn-primary">
                   Подробнее
                 </Link>
@@ -87,8 +83,7 @@ const Landing = () => {
               <h4 className="card-header bg-dark text-white">KRIT WSR</h4>
               <div className="card-body">
                 <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Sapiente esse necessitatibus neque.
+                  Хочешь Стать профессионалом? - легко!
                 </p>
                 <Link to="#" className="btn btn-dark">
                   Подробнее
