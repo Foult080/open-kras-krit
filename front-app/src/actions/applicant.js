@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APPLICANT_ERROR, GET_APPLICANT } from "./types";
+import { APPLICANT_ERROR, GET_APPLICANT, TEST_ERR, GET_TEST } from "./types";
 //import { setAlert } from "./alert";
 
 export const getRating = () => async dispatch => {
@@ -13,6 +13,22 @@ export const getRating = () => async dispatch => {
         dispatch({
             type: APPLICANT_ERROR,
             payload: { msg: err.response.status.text, status: err.response.status }
+        });
+    }
+}
+
+export const getTest = () => async dispatch => {
+    try {
+        const res = await axios.get('/api/applicant/tests');
+        dispatch({
+            type: GET_TEST,
+            payload: res.data
+        });
+    } catch (err) {
+        console.log(err);
+        dispatch({
+            type: TEST_ERR,
+            payload: { msg: err.response.status.text }
         });
     }
 }

@@ -17,7 +17,8 @@ import Login from "./components/auth/Login";
 import Alert from "./components/layout/alert";
 import Dashboard from "./components/layout/Dashboard";
 import Ex404 from "./components/layout/Ex404";
-import SendApp from "./components/applicant/SendApp";
+import Test from "./components/applicant/Test"
+//import SendApp from "./components/applicant/SendApp";
 //import PrivateRoute from "./components/privateRoute"
 
 /*
@@ -43,7 +44,7 @@ const App = () => {
               <Route exact path="/signin" component={Login} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/dashboard/send-app" component={SendApp} />
+              <Route exact path="/applicant/test" component={Test} /> 
               <Route component={Ex404} />
             </Switch>
           </section>

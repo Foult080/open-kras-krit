@@ -15,6 +15,10 @@ export const GET_APPLICANT = "GET_APPLICANT";
 export const UPDATE_APPLICANT = "UPDATE_APPLICANT";
 export const APPLICANT_ERROR = "APPLICANT_ERROR";
 export const CLEAR_APPLICANT = "CLEAR_APPLICANT"; 
+//tests
+export const GET_TEST = "GET_TEST";
+export const TEST_ERR = "TEST_ERR";
+
 /*
 //events
 export const GET_EVENTS = 'GET_EVENTS';
