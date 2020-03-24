@@ -4,6 +4,7 @@ const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
 const Applicant = require("../../models/Applicant/Applicant");
 const Spec = require("../../models/Applicant/Spec");
+const Test = require("../../models/Applicant/Test");
 
 // @route POST api/applicant
 // @desc add new applicant
@@ -150,6 +151,58 @@ router.get("/test", auth, async (req, res) => {
 
   const ratings = await Promise.all(ratingsPromise);
   res.json(ratings);
+});
+
+//tests actions
+router.post(
+  "/tests",
+  auth,
+  [
+    check("question", "Задайте вопрос")
+      .not()
+      .isEmpty(),
+    check("answers", "Введите ответы")
+      .not()
+      .isEmpty()
+  ],
+  async (req, res) => {
+    //validation req
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+      const { question, answers } = req.body;
+      let quest = new Test({ question, answers });
+      await quest.save();
+      res.json(quest);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Ошибка сервера");
+    }
+  }
+);
+
+router.get("/test-all", async (req, res) => {
+  try {
+    const test = await Test.find();
+    res.json(test);
+  } catch (error) {
+    console.error(err.message);
+    res.status(500).send("Ошибка сервера");
+  }
+});
+
+router.get("/tests", async (req, res) => {
+  try {
+    let test = await Test.aggregate([
+      { $sample: { size: 4 } }
+    ]);
+    res.json(test);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Ошибка сервера");
+  }
 });
 
 module.exports = router;
