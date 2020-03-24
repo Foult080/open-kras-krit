@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getTest } from "../../actions/applicant";
 import { setAlert } from "../../actions/alert";
+//import TestItem from "./TestItem";
 
 const Test = ({ setAlert, getTest, test: { loading, test } }) => {
   useEffect(() => {
@@ -17,12 +18,8 @@ const Test = ({ setAlert, getTest, test: { loading, test } }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log(data);
     setAlert("Hello Motherfucker", "info");
-    console.log(data.exampleRadios);
-    if (data.exampleRadios === "option1" && data.exampleRadios2 === "option4")
-      setAlert("Fine", "success");
-    else setAlert("BAD", "danger");
+    console.log(data);
   };
 
   return loading ? (
@@ -34,53 +31,27 @@ const Test = ({ setAlert, getTest, test: { loading, test } }) => {
         <hr />
         <div className="ml-auto mx-auto">
           <form className="form-signin" onSubmit={e => onSubmit(e)}>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-                onChange={e => onChange(e)}
-              />
-              <label className="form-check-label">Default radio</label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios2"
-                value="option2"
-                onChange={e => onChange(e)}
-              />
-              <label className="form-check-label">Default radio 2</label>
-            </div>
-
-            <hr />
-
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios2"
-                id="exampleRadios"
-                value="option4"
-                onChange={e => onChange(e)}
-              />
-              <label className="form-check-label">Default radio 2</label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios2"
-                id="exampleRadios"
-                value="option6"
-                onChange={e => onChange(e)}
-              />
-              <label className="form-check-label">Default radio 2</label>
-            </div>
+            {test.map(item => (
+                <div className="shit" key={item._id}>
+                <h5>{item.question}</h5>
+                {item.answers.map(el => (
+                  
+                    <div className="form-check" key={el._id}>
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name={item._id}
+                        value={el._id}
+                        data={el.vars}
+                        onChange={e => onChange(e)}
+                      />
+                      <label className="form-check-label">{el.vars}</label>
+                    </div>
+                  
+                ))}
+                <hr />
+                </div>
+            ))}
 
             <button
               className="ml-auto mx-auto btn btn-primary btn-block"
