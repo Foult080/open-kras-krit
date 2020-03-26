@@ -13,14 +13,19 @@ const Test = ({ setAlert, getTest, test: { loading, test } }) => {
   }, [getTest]);
 
   const [data, setData] = useState();
-
+  
   const onChange = e => setData({ ...data, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
-    setAlert("Hello Motherfucker", "info");
-    console.log(data);
-  };
+    var balls = 0;
+    Object.entries(data).forEach( ([key, value]) => {
+      let quest = test.find(item => item._id === key);
+      let answer = quest.answers.find(el => el.answer === true);
+      if (answer._id === value) balls++;
+    })
+    console.log(balls);
+}
 
   return loading ? (
     <Spinner className="spinner" />
