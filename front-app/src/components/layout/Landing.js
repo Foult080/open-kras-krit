@@ -70,7 +70,10 @@ const Landing = () => {
                 Работа ККРИТ
               </h4>
               <div className="card-body">
-                <p className="card-text">Построй карьеру вместе с нами! Более N работодателей уже здесь.</p>
+                <p className="card-text">
+                  Построй карьеру вместе с нами! Более N работодателей уже
+                  здесь.
+                </p>
                 <Link to="#" className="btn btn-primary">
                   Подробнее
                 </Link>
@@ -95,6 +98,7 @@ const Landing = () => {
 
         <hr />
 
+        {/**
         <h2 className="card-title">Новости</h2>
         <div className="news">
           <div className="card news-card text-center">
@@ -108,6 +112,8 @@ const Landing = () => {
             </div>
           </div>
         </div>
+         */}
+         
       </div>
     </Fragment>
   );

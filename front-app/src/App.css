@@ -137,3 +137,43 @@ border-color: #0051A6;
  padding-left: 20%;
  padding-right: 20%;
 }
+
+.results {
+  align-content: center;
+  text-align: center;
+  color: gold;
+}
+.medal {
+  color: gold;
+  font-size: 10rem;
+}
+.res-title {
+  color: #28a745;
+}
+.res-icon {
+  color: gold;
+  margin: 2px;
+}
+.grad-icon {
+  margin-left: 3px;
+  color: #007bff;
+  font-size: 3rem;
+}
+.res-good {
+  color: black
+}
+.results2 {
+  margin-top: 5%;
+  margin-bottom: 15%;
+  align-content: center;
+  text-align: center;
+}
+.sad {
+  color: red;
+  font-size: 12rem;
+  margin: 5%;
+}
+.res-bad {
+  color: black;
+  font-size: 2rem;
+}

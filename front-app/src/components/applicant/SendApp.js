@@ -24,6 +24,7 @@ const SendApp = ({ auth: { user, loading, isAuth } }) => {
 
   const onChange = e =>
     setFormdata({ ...formData, [e.target.name]: e.target.value });
+    
   const onSubmit = e => {
     e.preventDegault();
     console.log(formData);
