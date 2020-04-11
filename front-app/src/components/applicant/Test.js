@@ -32,7 +32,6 @@ const Test = ({ setAlert, getTest, test: { loading, test } }) => {
         if (answer._id === value) balls++;
       });
       setSubmit({ submit, isSubmit: true, ball: balls });
-      console.log(balls);
     } else setAlert("Решите тест!", "danger");
   };
 
@@ -51,7 +50,7 @@ const Test = ({ setAlert, getTest, test: { loading, test } }) => {
         ) : (
           <Fragment>
             <div className="ml-auto mx-auto">
-              <form className="form-signin" onSubmit={(e) => onSubmit(e)}>
+              <form className="form-res" onSubmit={(e) => onSubmit(e)}>
                 {test.map((item) => (
                   <div className="shit" key={item._id}>
                     <h5>{item.question}</h5>

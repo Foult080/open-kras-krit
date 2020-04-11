@@ -26,7 +26,6 @@ router.post('/', [
         //check user
         let user = await User.findOne({ email });
         if (!user) {
-            console.log(user);
              res.status(401).json({ errors: [{ msg: 'Неверные данные' }] });
         }
 

@@ -6,7 +6,6 @@ const NavBar = () => {
 
   let ShowMenu = e => {
     e.preventDefault();
-    //console.log(e);
   } 
 
   return (

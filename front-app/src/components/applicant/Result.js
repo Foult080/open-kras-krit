@@ -2,31 +2,33 @@ import React, { Fragment, useState } from "react";
 import { setAlert } from "../../actions/alert";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import balloon from "./balloon.png";
+//import balloon from "./balloon.png";
 
 const Result = ({ ball, setAlert }) => {
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
+    skills: "",
     isToggle: false,
+    toggle2: null,
   });
 
-  const { email } = formData;
+  const { email, skills } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(email);
     setAlert(`Hello ${email}`, "success");
   };
 
-  const toggler = () => setFormData({ formData, isToggle: true });
+  //const toggler = () => setFormData({ ...formData, isToggle: true });
 
-  return ball && ball >= 3 ? (
+  return ball && ball >= 0 ? (
     <Fragment>
-      <div className="results">
+      <div className="results container">
         <span>
           <i className="fas fa-award medal"></i>
         </span>
@@ -39,13 +41,19 @@ const Result = ({ ball, setAlert }) => {
           Мы рекомендуем вам подать документы в наш колледж
           <i className="fas fa-user-graduate grad-icon"></i>
         </h3>
+        {/**
         <img className="results" alt="congratz" src={balloon} />
+         */}
       </div>
 
       <div className="dpo">
         {formData.isToggle ? (
           <Fragment>
-            <div className="auth ml-auto mx-auto auth">
+            <div className="auth ml-auto mx-auto">
+              <h4 className="my-4 card-title">
+                Оставьте немного информации о вас
+              </h4>
+              <hr />
               <form className="form-signin" onSubmit={(e) => onSubmit(e)}>
                 <input
                   type="email"
@@ -58,12 +66,71 @@ const Result = ({ ball, setAlert }) => {
                   value={email}
                   onChange={(e) => onChange(e)}
                 />
-                <button
-                  className="ml-auto mx-auto btn btn-primary btn-block"
-                  type="submit"
+                <h6 className="my-4 card-title">
+                  Хотели бы принять участие в программе дополнительго
+                  профессионального образования?
+                </h6>
+                <div
+                  className="btn-group res-but"
+                  role="group"
+                  aria-label="Basic example"
                 >
-                  Завершить
-                </button>
+                  <button
+                    type="button"
+                    className="ml-auto mx-auto btn btn-primary"
+                    name="toggle2"
+                    value="true"
+                    onClick={(e) => onChange(e)}
+                  >
+                    Да
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-auto mx-auto btn btn-primary"
+                    name="toggle2"
+                    value="false"
+                    onClick={(e) => onChange(e)}
+                  >
+                    Нет
+                  </button>
+                </div>
+
+                {formData.toggle2 === "true" ? (
+                  <Fragment>
+                    <h6 className="my-4 card-title">
+                      Какие направления или технологии вы бы хотели изучать?
+                    </h6>
+                    <textarea
+                      className="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                      name="skills"
+                      value={skills}
+                      onChange={(e) => onChange(e)}
+                    />
+                    <button
+                      className="ml-auto mx-auto btn btn-primary btn-block"
+                      type="submit"
+                    >
+                      Завершить
+                    </button>
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    {formData.toggle2 ? (
+                      <Fragment>
+                        <button
+                          className="ml-auto mx-auto btn btn-primary btn-block"
+                          type="submit"
+                        >
+                          Завершить
+                        </button>
+                      </Fragment>
+                    ) : (
+                      ""
+                    )}
+                  </Fragment>
+                )}
               </form>
             </div>
           </Fragment>
@@ -71,7 +138,9 @@ const Result = ({ ball, setAlert }) => {
           <Fragment>
             <button
               className="ml-auto mx-auto btn btn-primary btn-block"
-              onClick={toggler}
+              name="isToggle"
+              value="true"
+              onClick={(e) => onChange(e)}
             >
               Завершить
             </button>

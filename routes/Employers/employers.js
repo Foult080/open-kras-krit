@@ -161,7 +161,6 @@ router.delete('/vacancy/:vac_id', auth, async (req,res) => {
 
 // TEST
 router.post('/test', auth, async (req, res) => {
-    console.log(req.user);
     if (req.user.role === 'admin') console.log('True');
     res.send(req.user);
 });
