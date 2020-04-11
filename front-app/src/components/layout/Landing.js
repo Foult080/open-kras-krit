@@ -48,14 +48,16 @@ const Landing = () => {
         <hr />
         <h2 className="my-4 card-title">Информационные ресурсы:</h2>
         <div className="row">
-          <div className="col-lg-4 mb-4">
+          <div className="col-lg-4 col-md-4 mb-4">
             <div className="card ">
               <h4 className="card-header bg-success text-white">
                 Абитуриент ККРИТ
               </h4>
               <div className="card-body">
                 <p className="card-text">
-                  Получить профессию - доступно, легко, интересно.
+                  Получить профессию - доступно, легко, интересно. В данном
+                  разделе вы найдете информацию для абитуриентов, полезные
+                  ссылки и тест на профпригодность.
                 </p>
                 <Link to="#" className="btn btn-success">
                   Подробнее
@@ -64,7 +66,7 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 mb-4">
+          <div className="col-lg-4 col-md-4 mb-4">
             <div className="card ">
               <h4 className="card-header bg-primary text-white">
                 Работа ККРИТ
@@ -72,7 +74,8 @@ const Landing = () => {
               <div className="card-body">
                 <p className="card-text">
                   Построй карьеру вместе с нами! Более N работодателей уже
-                  здесь.
+                  здесь. Подай резюме, изучай требования работодателей, и
+                  учавствуй в мастер классах.
                 </p>
                 <Link to="#" className="btn btn-primary">
                   Подробнее
@@ -81,12 +84,14 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 mb-4">
+          <div className="col-lg-4 col-md-4 mb-4">
             <div className="card ">
               <h4 className="card-header bg-dark text-white">KRIT WSR</h4>
               <div className="card-body">
                 <p className="card-text">
-                  Хочешь Стать профессионалом? - легко!
+                  Хочешь Стать профессионалом? - легко! Большой круг экспертов,
+                  множество направлений. Выбирай компетенцию, решай задачи,
+                  готовься к чемпионату и побеждай вместе с нами.
                 </p>
                 <Link to="#" className="btn btn-dark">
                   Подробнее
@@ -113,7 +118,6 @@ const Landing = () => {
           </div>
         </div>
          */}
-         
       </div>
     </Fragment>
   );

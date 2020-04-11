@@ -19,7 +19,7 @@ export const getRating = () => async dispatch => {
 
 export const getTest = () => async dispatch => {
     try {
-        const res = await axios.get('/api/applicant/tests');
+        const res = await axios.get('/api/applicant/test');
         dispatch({
             type: GET_TEST,
             payload: res.data
