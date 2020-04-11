@@ -58,7 +58,6 @@ router.get("/test-all", async (req, res) => {
 
 router.get("/test", async (req, res) => {
   try {
-    console.log(req);
     let test = await Test.aggregate([{ $sample: { size: 4 } }]);
     res.json(test);
   } catch (err) {
