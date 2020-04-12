@@ -56,6 +56,7 @@ const Test = ({ setAlert, getTest, test: { loading, test } }) => {
                     <h5>{item.question}</h5>
                     {item.answers.map((el) => (
                       <div className="form-check" key={el._id}>
+                        <label className="form-check-label">
                         <input
                           className="form-check-input"
                           type="radio"
@@ -64,7 +65,7 @@ const Test = ({ setAlert, getTest, test: { loading, test } }) => {
                           data={el.vars}
                           onChange={(e) => onChange(e)}
                         />
-                        <label className="form-check-label">{el.vars}</label>
+                        {el.vars}</label>
                       </div>
                     ))}
                     <hr />

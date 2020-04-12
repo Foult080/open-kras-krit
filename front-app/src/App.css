@@ -188,3 +188,7 @@ border-color: #0051A6;
   margin-bottom: 5%;
   width:60%;
 }
+
+.form-check-label {
+  cursor: pointer;
+}
