@@ -5,6 +5,34 @@ const auth = require("../../middleware/auth");
 const Applicant = require("../../models/Applicant/Applicant");
 const Test = require("../../models/Applicant/Test");
 
+
+// @route POST api/applicant
+// @desc add new applicant PUBLIC
+router.post(
+  "/",
+  [
+    check("email", "Укажите email адрес!").isEmail(),
+    check("agreed", "Согласны ли вы учавствовать в программе ДПО?").not().isEmpty(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+      const { email, agreed, skills } = req.body;
+      let applicant = new Applicant({email, agreed, skills});
+      applicant.save();
+      res.json(applicant);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Ошибка сервера");
+    }
+  }
+);
+
+// @route GET api/applicant/all
+// @desc get all applicants AUTH
 router.get("/all", auth, async (req, res) => {
   if (req.user.role !== "admin") {
     return res.status(401).send("Нет доступа");
@@ -20,7 +48,8 @@ router.get("/all", auth, async (req, res) => {
   }
 });
 
-//tests actions
+// @route POST api/test
+// @desc add new question AUTH
 router.post(
   "/test",
   auth,
@@ -46,6 +75,8 @@ router.post(
   }
 );
 
+// @route GET api/test-all
+// @desc get all questions
 router.get("/test-all", async (req, res) => {
   try {
     const test = await Test.find();
@@ -56,6 +87,9 @@ router.get("/test-all", async (req, res) => {
   }
 });
 
+
+// @route GET api/test
+// @desc get test for applicant PUBLIC
 router.get("/test", async (req, res) => {
   try {
     let test = await Test.aggregate([{ $sample: { size: 4 } }]);

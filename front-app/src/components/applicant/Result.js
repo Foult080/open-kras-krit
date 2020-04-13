@@ -1,18 +1,21 @@
 import React, { Fragment, useState } from "react";
-import { setAlert } from "../../actions/alert";
+//import { setAlert } from "../../actions/alert";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { sendApplicant } from "../../actions/applicant";
+import { useHistory } from "react-router-dom";
 //import balloon from "./balloon.png";
 
-const Result = ({ ball, setAlert }) => {
+const Result = ({ ball, sendApplicant }) => {
   const [formData, setFormData] = useState({
     email: "",
     skills: "",
+    agreed: null,
     isToggle: false,
-    toggle2: null,
   });
+  let history = useHistory();
 
-  const { email, skills } = formData;
+  const { email, agreed, skills } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,11 +23,10 @@ const Result = ({ ball, setAlert }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
-    setAlert(`Hello ${email}`, "success");
+    if (agreed) sendApplicant({ email, agreed, skills });
+    else sendApplicant({ email, agreed });
+    history.push("/");
   };
-
-  //const toggler = () => setFormData({ ...formData, isToggle: true });
 
   return ball && ball >= 0 ? (
     <Fragment>
@@ -78,7 +80,7 @@ const Result = ({ ball, setAlert }) => {
                   <button
                     type="button"
                     className="ml-auto mx-auto btn btn-primary"
-                    name="toggle2"
+                    name="agreed"
                     value="true"
                     onClick={(e) => onChange(e)}
                   >
@@ -87,7 +89,7 @@ const Result = ({ ball, setAlert }) => {
                   <button
                     type="button"
                     className="ml-auto mx-auto btn btn-primary"
-                    name="toggle2"
+                    name="agreed"
                     value="false"
                     onClick={(e) => onChange(e)}
                   >
@@ -95,7 +97,7 @@ const Result = ({ ball, setAlert }) => {
                   </button>
                 </div>
 
-                {formData.toggle2 === "true" ? (
+                {formData.agreed === "true" ? (
                   <Fragment>
                     <h6 className="my-4 card-title">
                       Какие направления или технологии вы бы хотели изучать?
@@ -117,7 +119,7 @@ const Result = ({ ball, setAlert }) => {
                   </Fragment>
                 ) : (
                   <Fragment>
-                    {formData.toggle2 ? (
+                    {formData.agreed ? (
                       <Fragment>
                         <button
                           className="ml-auto mx-auto btn btn-primary btn-block"
@@ -164,7 +166,7 @@ const Result = ({ ball, setAlert }) => {
 };
 
 Result.propTypes = {
-  setAlert: PropTypes.func.isRequired,
+  sendApplicant: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(Result);
+export default connect(null, { sendApplicant })(Result);

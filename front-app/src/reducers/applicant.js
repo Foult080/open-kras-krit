@@ -1,8 +1,9 @@
 import {
-  GET_APPLICANT,
-  APPLICANT_ERROR,
+  GET_APPLICANTS,
   CLEAR_APPLICANT,
-  UPDATE_APPLICANT
+  APPLICANTS_ERROR,
+  SEND_APPLICANT,
+  SEND_ERROR,
 } from "../actions/types";
 
 const initialState = {
@@ -14,14 +15,20 @@ const initialState = {
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case GET_APPLICANT:
-    case UPDATE_APPLICANT:
+    case SEND_APPLICANT:
+      return {
+        ...state,
+        applicant: payload,
+        loading: false
+      }
+    case GET_APPLICANTS:
       return {
         ...state,
         applicant: payload,
         loading: false
       };
-    case APPLICANT_ERROR:
+    case APPLICANTS_ERROR:
+    case SEND_ERROR:
       return {
         ...state,
         error: payload,

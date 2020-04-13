@@ -1,5 +1,24 @@
 const mongoose = require('mongoose');
 const ApplicantSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true
+    },
+    agreed: {
+        type: Boolean,
+        required: true
+    },
+    skills: {
+        type:String
+    }
+});
+
+module.exports = Applicant = mongoose.model('applicant', ApplicantSchema);
+
+
+/**
+
+const ApplicantSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'user'
@@ -17,4 +36,4 @@ const ApplicantSchema = new mongoose.Schema({
     }
 });
 
-module.exports = Applicant = mongoose.model('applicant', ApplicantSchema);
+ */
