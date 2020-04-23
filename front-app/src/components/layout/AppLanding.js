@@ -29,7 +29,7 @@ const AppLanding = () => {
             </ul>
             <Link to="/applicant/test">
               <button className="btn btn-primary">
-                <i className="fas fa-file-alt"></i>Тест на профригодность
+                <i className="fas fa-file-alt"></i>Тест на профпригодность
               </button>
             </Link>
           </div>
