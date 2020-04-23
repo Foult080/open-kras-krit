@@ -41,7 +41,7 @@ const App = () => {
         <Router>
           <NavBar />
           <Alert />
-          <section>
+          <section className="wrapper">
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/signin" component={Login} />

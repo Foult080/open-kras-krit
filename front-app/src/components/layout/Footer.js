@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="py-5 bg-light">
-      <div className="container text-primary">
+    <footer className="footer bg-light">
+      <div className="text-primary">
         <p className="float-right">
           <Link to="/">Вернуться назад</Link>
         </p>
@@ -18,10 +18,6 @@ const Footer = () => {
           >
             <i className="icon-small fab fa-github-square"></i>
           </a>
-        </p>
-
-        <p className="m-0 text-center text-white">
-          Copyright &copy; Kras-KRIT 2020
         </p>
       </div>
     </footer>

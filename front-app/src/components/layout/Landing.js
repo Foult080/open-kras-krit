@@ -102,9 +102,10 @@ const Landing = () => {
           </div>
         </div>
 
-        <hr />
+        
 
         {/**
+        <hr />
         <h2 className="card-title">Новости</h2>
         <div className="news">
           <div className="card news-card text-center">
