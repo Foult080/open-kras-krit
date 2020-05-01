@@ -1,3 +1,37 @@
+import { Link } from "react-router-dom";
+import React, { Fragment } from "react";
+
+const Register = () => {
+  return (
+    <Fragment>
+      <div className="row">
+        <div className="col-md-12">
+          <div className="error-template">
+            <h4>Открытая площадка для студентов ККРИТ</h4>
+            <p className="ex404">Регистрация в данный момент закрыта</p>
+            <div className="error-actions">
+              <Link to="/">
+                <button className="btn btn-primary ex-btn">
+                  <i className="fas fa-home"></i> На главную
+                </button>
+              </Link>
+              <Link to="/dashboard">
+                <button className="btn btn-success">
+                  <i className="fas fa-user-circle"></i>Личный кабинет
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Fragment>
+  );
+};
+
+export default Register;
+
+/*
+
 import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
@@ -5,7 +39,7 @@ import PropTypes from "prop-types";
 import { register } from "../../actions/auth";
 import { Link, Redirect } from "react-router-dom";
 
-const Register = ({ setAlert, register, isAuth }) => {
+const Register = ({ setAlert, register, isAuth }) => {   
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -111,3 +145,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { setAlert, register })(Register);
+*/
