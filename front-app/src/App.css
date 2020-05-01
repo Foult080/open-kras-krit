@@ -13,9 +13,6 @@ html {
 body {
   margin-bottom: 150px;
 }
-.wrapper {
-
-}
 
 .footer {
   position: absolute;
@@ -214,4 +211,13 @@ border-color: #0051A6;
 
 .form-check-label {
   cursor: pointer;
+}
+
+.applicant {
+  margin: 1rem;
+}
+.applicants-icon {
+  color: #28a745;
+  font-size: 2rem;
+  margin: 5px;
 }

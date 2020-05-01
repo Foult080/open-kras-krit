@@ -1,57 +1,39 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getRating } from "../../actions/applicant";
+import { getData } from "../../actions/applicant";
 import Spinner from "../layout/spinner";
-import AppItem from "./AppItem";
 
-const Applicant = ({ getRating, applicant: { applicant, loading } }) => {
+const Applicant = ({ getData, applicant: { applicant, loading } }) => {
   useEffect(() => {
-    getRating();
-  }, [getRating]);
-  console.log(applicant);
+    getData();
+  }, [getData]);
 
   return loading ? (
     <Spinner />
   ) : applicant === null ? (
     <Fragment>
-      <p>Вы еще не подали документы!</p>
-      <Link to="/dashboard/send-app">
-        <button className="btn btn-success">
-          <i className="far fa-file-alt"></i>Подать документы
-        </button>
-      </Link>
+      <p>Еще никто успешно не завершил тест</p>
     </Fragment>
   ) : (
     <Fragment>
-      <table class="table acc-list">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Номер</th>
-            <th scope="col">Специальность</th>
-            <th scope="col">рейтинг</th>
-          </tr>
-        </thead>
-        <tbody>
-          {applicant.map(item => (
-            <AppItem item={item} />
-          ))}
-        </tbody>
-      </table>
+      <div className="applicant">
+        <h4>Прошло тестирование <i className="fas fa-users applicants-icon"></i>: {applicant.counts}.</h4>
+        <h4>Согласилось учавствовать в программе ДПО<i className="fas fa-user-plus applicants-icon"></i>: {applicant.agreed}</h4>
+      </div>
     </Fragment>
   );
 };
 
 Applicant.propTypes = {
-  getRating: PropTypes.func.isRequired,
+  getData: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  applicant: PropTypes.object.isRequired
+  applicant: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  applicant: state.applicant
+  applicant: state.applicant,
 });
 
-export default connect(mapStateToProps, { getRating })(Applicant);
+export default connect(mapStateToProps, { getData })(Applicant);

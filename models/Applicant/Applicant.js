@@ -10,6 +10,10 @@ const ApplicantSchema = new mongoose.Schema({
     },
     skills: {
         type:String
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
 

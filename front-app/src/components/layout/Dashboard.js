@@ -4,13 +4,47 @@ import { connect } from "react-redux";
 import Spinner from "./spinner";
 import { Redirect } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
+import Applicant from "../applicant/Applicant";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
   if (!isAuth && !loading) {
     return <Redirect to="/signin" />;
   }
 
-  console.log(user);
+  const other = (
+    <Tabs defaultActiveKey="Employers" id="uncontrolled-tab-example">
+      <Tab eventKey="Employers" title="Работа ККРИТ">
+        <Fragment>
+          <h1>Hello from Employers</h1>
+        </Fragment>
+      </Tab>
+      <Tab eventKey="WSR" title="ККРИТ WSR">
+        <Fragment>
+          <h1>Hello from WSR</h1>
+        </Fragment>
+      </Tab>
+    </Tabs>
+  );
+
+  const admin = (
+    <Tabs defaultActiveKey="Applicants" id="uncontrolled-tab-example">
+      <Tab eventKey="Applicants" title="Абитуриенты">
+        <Fragment>
+          <Applicant />
+        </Fragment>
+      </Tab>
+      <Tab eventKey="Employers" title="Работа ККРИТ">
+        <Fragment>
+          <h1>Hello from Employers</h1>
+        </Fragment>
+      </Tab>
+      <Tab eventKey="WSR" title="ККРИТ WSR">
+        <Fragment>
+          <h1>Hello from WSR</h1>
+        </Fragment>
+      </Tab>
+    </Tabs>
+  );
 
   return loading && user === null ? (
     <Spinner className="spinner" />
@@ -29,38 +63,7 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
       <div className="container">
         <h4 className="container header-info">Информационные ресурсы:</h4>
         <hr />
-
-        <Tabs defaultActiveKey="News" id="uncontrolled-tab-example">
-          <Tab eventKey="News" title="Новости">
-            <Fragment>
-              <h1>Hello from Contract</h1>
-            </Fragment>
-          </Tab>
-          <Tab eventKey="Employers" title="Работа ККРИТ">
-            <Fragment>
-              <h1>Hello from Profile</h1>
-            </Fragment>
-          </Tab>
-          <Tab eventKey="WSR" title="ККРИТ WSR">
-            <Fragment>
-              <h1>Hello from Contract</h1>
-            </Fragment>
-          </Tab>
-          {user && user.role === "admin" ? (
-            <Tab
-              eventKey="Applicant"
-              title="Абитуриент"
-              display={user && user.role === "admin" ? "hidden" : "none"}
-            >
-              <Fragment>
-                <h1>hello from 1</h1>
-              </Fragment>
-            </Tab>
-          ) : (
-            ""
-          )}
-        </Tabs>
-
+        {user && user.role === "admin" ? admin : other}
         {/* News block 
         <h4 className="container header-info">Новости:</h4>
         <hr />

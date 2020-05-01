@@ -9,9 +9,9 @@ import {
 } from "./types";
 import { setAlert } from "./alert";
 
-export const getRating = () => async (dispatch) => {
+export const getData = () => async (dispatch) => {
   try {
-    const res = await axios.get("/api/applicant/me");
+    const res = await axios.get("/api/applicant/data");
     dispatch({
       type: GET_APPLICANTS,
       payload: res.data,

@@ -5,6 +5,21 @@ const auth = require("../../middleware/auth");
 const Applicant = require("../../models/Applicant/Applicant");
 const Test = require("../../models/Applicant/Test");
 
+router.get("/data", auth, async (req, res) => {
+  if (req.user.role !== "admin") {
+    return res.status(401).send("Нет доступа");
+  }
+  try {
+    const counts = await Applicant.find().count();
+    const agreed = await Applicant.find({ agreed: true }).count();
+    let applicants = { counts, agreed };
+    console.log(applicants);
+    res.json(applicants);
+  } catch (err) {
+    console.error(errors.message);
+    res.status(500).send("Ошибка сервера");
+  }
+});
 
 // @route POST api/applicant
 // @desc add new applicant PUBLIC
@@ -12,7 +27,9 @@ router.post(
   "/",
   [
     check("email", "Укажите email адрес!").isEmail(),
-    check("agreed", "Согласны ли вы учавствовать в программе ДПО?").not().isEmpty(),
+    check("agreed", "Согласны ли вы учавствовать в программе ДПО?")
+      .not()
+      .isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -21,7 +38,7 @@ router.post(
     }
     try {
       const { email, agreed, skills } = req.body;
-      let applicant = new Applicant({email, agreed, skills});
+      let applicant = new Applicant({ email, agreed, skills });
       applicant.save();
       res.json(applicant);
     } catch (err) {
@@ -86,7 +103,6 @@ router.get("/test-all", async (req, res) => {
     res.status(500).send("Ошибка сервера");
   }
 });
-
 
 // @route GET api/test
 // @desc get test for applicant PUBLIC
