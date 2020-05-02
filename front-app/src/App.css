@@ -11,7 +11,7 @@ html {
   box-sizing: border-box;
 }
 body {
-  margin-bottom: 150px;
+  margin-bottom: 10rem;
 }
 
 .footer {
@@ -158,6 +158,10 @@ border-color: #0051A6;
  padding-right: 20%;
 }
 
+.form-text {
+  font-style: italic;
+}
+
 .results {
   align-content: center;
   text-align: center;
@@ -220,4 +224,9 @@ border-color: #0051A6;
   color: #28a745;
   font-size: 2rem;
   margin: 5px;
+}
+
+.accordion {
+  margin: 20px;
+  margin-bottom: 100px;
 }

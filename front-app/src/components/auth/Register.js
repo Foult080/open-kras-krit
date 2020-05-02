@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import React, { Fragment } from "react";
+import { Redirect } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ isAuth }) => {
+  if (isAuth) {
+    return <Redirect to="/dashboard" />;
+  }
+
   return (
     <Fragment>
       <div className="row">
