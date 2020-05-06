@@ -1,37 +1,47 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { Accordion, Card, Button } from "react-bootstrap";
+import { Accordion, Card, Button, Carousel } from "react-bootstrap";
+import img3 from "../../img/img3.jpg";
+import img5 from "../../img/img5.jpg";
+import img6 from "../../img/img6.jpg";
 
 const AppLanding = () => {
   return (
     <Fragment>
       <div className="container">
-        <h1 className="mt-4 mb-3">Абитуриент ККРИТ</h1>
+        <h1 className="mt-4 mb-3 card-title">Абитуриент ККРИТ</h1>
 
         <div className="row">
           <div className="col-md-8">
-            <img
-              className="img-fluid"
-              src="http://placehold.it/750x500"
-              alt=""
-            />
+            <Carousel>
+              <Carousel.Item>
+                <img className="img-fluid" src={img3} alt="img3" />
+                <Carousel.Caption>
+                  <p>Красноярский рабочий 156.</p>
+                </Carousel.Caption>
+              </Carousel.Item>{" "}
+              <Carousel.Item>
+                <img className="img-fluid" src={img5} alt="img5" />
+                <Carousel.Caption>
+                  <p>Красноярский рабочий 156.</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img className="img-fluid" src={img6} alt="img6" />
+                <Carousel.Caption>
+                  <p>Проспект Свободный 67.</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
           </div>
-
           <div className="col-md-4">
-            <h3 className="my-3">Project Description</h3>
+            <h3 className="my-3">КГБПОУ "ККРИТ"</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              viverra euismod odio, gravida pellentesque urna varius vitae. Sed
-              dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris
-              ultricies, justo eu convallis placerat, felis enim.
+              В современном мире сложно представить профессию, не связанную с
+              применением информационных технологий. Умение обращаться с ПК
+              требуется повсеместно.
             </p>
-            <h3 className="my-3">Наши специальности</h3>
-            <ul>
-              <li>Lorem Ipsum</li>
-              <li>Dolor Sit Amet</li>
-              <li>Consectetur</li>
-              <li>Adipiscing Elit</li>
-            </ul>
+            <br />
             <Link to="/applicant/test">
               <button className="btn btn-primary">
                 <i className="fas fa-file-alt"></i>Тест на профпригодность
@@ -45,14 +55,8 @@ const AppLanding = () => {
         </div>
 
         <div className="content">
-          <h3 className="my-4 card-title">О нас</h3>
+          <h3 className="my-4 card-title">В нашем колледже вы сможете:</h3>
           <hr />
-          <p>
-            В современном мире сложно представить профессию, не связанную с
-            применением информационных технологий. Умение обращаться с ПК
-            требуется повсеместно.
-          </p>
-          <h4 className="my-3">В нашем колледже вы сможете:</h4>
           <ul>
             <li>
               научиться свободно владеть современным и востребованным прикладным
@@ -303,7 +307,7 @@ const AppLanding = () => {
                       до 15 августа.
                     </p>
                     <a href="http://www.kraskrit.ru/index.php/advanced-stuff/2018-04-03-02-15-40">
-                        <button className="btn btn-primary">Подробнее</button>
+                      <button className="btn btn-primary">Подробнее</button>
                     </a>
                   </div>
                 </Card.Body>

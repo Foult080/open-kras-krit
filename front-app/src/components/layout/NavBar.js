@@ -7,9 +7,11 @@ import { connect } from "react-redux";
 const NavBar = ({ auth: { isAuth, loading }, logout }) => {
   const authLinks = (
     <Nav className="ml-auto">
+      {/*
       <Nav.Link className="menu" href="/about">
         О проекте
       </Nav.Link>
+ */}
       <Nav.Link className="menu" href="/contacts">
         Контакты
       </Nav.Link>
@@ -25,12 +27,11 @@ const NavBar = ({ auth: { isAuth, loading }, logout }) => {
 
   const guestLinks = (
     <Nav className="ml-auto">
-      <Nav.Link className="menu" href="#contacts">
-        Контакты
-      </Nav.Link>
+      {/*
       <Nav.Link className="menu" href="/about">
         О проекте
       </Nav.Link>
+ */}
       <Button href="/register" className="menu-button" variant="success">
         <i className="fas fa-user-circle"></i>Зарегистрироваться
       </Button>
@@ -57,11 +58,11 @@ const NavBar = ({ auth: { isAuth, loading }, logout }) => {
 
 NavBar.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { logout })(NavBar);

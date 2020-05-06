@@ -1,47 +1,49 @@
 import React, { Fragment } from "react";
 import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import img1 from "../../img/img1.jpg";
+import img2 from "../../img/img2.jpg";
 
 const Landing = () => {
   return (
     <Fragment>
       <Carousel>
-        <Carousel.Item>
+      <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://picsum.photos/1900/700?text=Third slide&bg=373940"
+            width="1900"
+            height="800"
+            src={img2}
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>КГБПОУ «Красноярский колледж радиоэлектроники и информационных технологий»</h3>
+            <p>Проспект Свободный 67.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://picsum.photos/1900/700?text=Third slide&bg=282c34"
-            alt="Third slide"
+            width="1900"
+            height="800"
+            src={img1}
+            alt="Second slide"
           />
-
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>КГБПОУ «Красноярский колледж радиоэлектроники и информационных технологий»</h3>
+            <p>Красноярский рабочий 156.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://picsum.photos/1900/700?text=Third slide&bg=20232a"
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
+          <iframe
+            title="video1"
+            width="1900"
+            height="800"
+            src="https://www.youtube.com/embed/2kHxxUBGr8Y"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </Carousel.Item>
       </Carousel>
       <div className="container">
@@ -101,8 +103,6 @@ const Landing = () => {
             </div>
           </div>
         </div>
-
-        
 
         {/**
         <hr />

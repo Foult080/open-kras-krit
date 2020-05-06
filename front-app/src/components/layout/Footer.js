@@ -8,7 +8,7 @@ const Footer = () => {
         <p className="float-right">
           <Link to="/">Вернуться назад</Link>
         </p>
-        <p>Kras-KRIT &copy; Открытая площадка для студентов ККРИТ.</p>
+        <p>Open-Kras-KRIT &copy; Открытая площадка для студентов ККРИТ.</p>
         <p>
           Created by @foult080
           <a
