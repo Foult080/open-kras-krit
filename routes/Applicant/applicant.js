@@ -108,7 +108,7 @@ router.get("/test-all", async (req, res) => {
 // @desc get test for applicant PUBLIC
 router.get("/test", async (req, res) => {
   try {
-    let test = await Test.aggregate([{ $sample: { size: 4 } }]);
+    let test = await Test.aggregate([{ $sample: { size: 15 } }]);
     res.json(test);
   } catch (err) {
     console.error(err.message);

@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from "react";
-//import { setAlert } from "../../actions/alert";
+import { setAlert } from "../../actions/alert";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { sendApplicant } from "../../actions/applicant";
 import { useHistory } from "react-router-dom";
 //import balloon from "./balloon.png";
 
-const Result = ({ ball, sendApplicant }) => {
+const Result = ({ setAlert,ball, sendApplicant }) => {
   const [formData, setFormData] = useState({
     email: "",
     skills: "",
@@ -25,10 +25,11 @@ const Result = ({ ball, sendApplicant }) => {
     e.preventDefault();
     if (agreed) sendApplicant({ email, agreed, skills });
     else sendApplicant({ email, agreed });
+    setAlert("Спасибо за участие!", "success");
     history.push("/");
   };
 
-  return ball && ball >= 0 ? (
+  return ball && ball >= 12 ? (
     <Fragment>
       <div className="results container">
         <span>
@@ -36,7 +37,7 @@ const Result = ({ ball, sendApplicant }) => {
         </span>
         <h1 className="res-title">
           <i className="fas fa-star res-icon"></i>Поздравляем! Вы набрали:{ball}{" "}
-          бал(-ов).
+          бал(-ов) из 15.
           <i className="fas fa-star res-icon"></i>
         </h1>
         <h3 className="res-good">
@@ -156,7 +157,7 @@ const Result = ({ ball, sendApplicant }) => {
         <span>
           <i className="far fa-frown sad"></i>
         </span>
-        <h1 className="res-bad">Сожалеем. Вы набрали:{ball} бал(-ов).</h1>
+        <h1 className="res-bad">Сожалеем. Вы набрали:{ball} бал(-ов) из 15.</h1>
         <h3 className="res-bad">
           Мы рекомендуем вам выбрать другую специальность для поступления
         </h3>
@@ -167,6 +168,7 @@ const Result = ({ ball, sendApplicant }) => {
 
 Result.propTypes = {
   sendApplicant: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired
 };
 
-export default connect(null, { sendApplicant })(Result);
+export default connect(null, { sendApplicant, setAlert })(Result);
