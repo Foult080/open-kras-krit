@@ -6,7 +6,7 @@ import { sendApplicant } from "../../actions/applicant";
 import { useHistory } from "react-router-dom";
 //import balloon from "./balloon.png";
 
-const Result = ({ setAlert,ball, sendApplicant }) => {
+const Result = ({ setAlert, ball, sendApplicant }) => {
   const [formData, setFormData] = useState({
     email: "",
     skills: "",
@@ -117,6 +117,11 @@ const Result = ({ setAlert,ball, sendApplicant }) => {
                     >
                       Завершить
                     </button>
+                    <br />
+                    <small>
+                      *Нажимая кнопку Завершить, вы даете согласие на обработку
+                      ваших данных.
+                    </small>
                   </Fragment>
                 ) : (
                   <Fragment>
@@ -128,12 +133,18 @@ const Result = ({ setAlert,ball, sendApplicant }) => {
                         >
                           Завершить
                         </button>
+                        <br />
+                        <small>
+                          *Нажимая кнопку Завершить, вы даете согласие на
+                          обработку ваших данных.
+                        </small>
                       </Fragment>
                     ) : (
                       ""
                     )}
                   </Fragment>
                 )}
+                <br />
               </form>
             </div>
           </Fragment>
@@ -168,7 +179,7 @@ const Result = ({ setAlert,ball, sendApplicant }) => {
 
 Result.propTypes = {
   sendApplicant: PropTypes.func.isRequired,
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
 };
 
 export default connect(null, { sendApplicant, setAlert })(Result);
