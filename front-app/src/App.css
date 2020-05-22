@@ -19,9 +19,14 @@ body {
   bottom: 0;
   width: 100%;
   height: 150px;
-  padding-top: 2.5rem;
-  padding-left: 20%;
-  padding-right: 20%;
+}
+
+.my-container {
+  width: 100%;
+  text-align: center;
+  padding-top: 1.5rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .far,
@@ -67,11 +72,7 @@ body {
 .form-control {
   margin-bottom: 5px;
 }
-.btn-block {
-  margin-top: 10px;
-  text-align: center;
-  width: 50%;
-}
+
 /*
 .img-profile {
   height: 100%;
@@ -107,8 +108,6 @@ border-color: #0051A6;
 }
 .dash-btn {
   text-align: center;
-
-  width: 35%;
 }
 
 .dash-header {

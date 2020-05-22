@@ -8,7 +8,7 @@ const Landing = () => {
   return (
     <Fragment>
       <Carousel>
-      <Carousel.Item>
+      <Carousel.Item className="img-fluid">
           <img
             className="d-block w-100"
             width="1900"
@@ -50,7 +50,7 @@ const Landing = () => {
         <hr />
         <h2 className="my-4 card-title">Информационные ресурсы:</h2>
         <div className="row">
-          <div className="col-lg-4 col-md-4 mb-4">
+          <div className="col-lg-4 col-md-4 col-sm-4">
             <div className="card cards">
               <h4 className="card-header bg-success text-white">
                 Абитуриент ККРИТ
@@ -68,7 +68,7 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-4 mb-4">
+          <div className="col-lg-4 col-md-4 col-sm-4">
             <div className="card cards">
               <h4 className="card-header bg-primary text-white">
                 Работа ККРИТ
@@ -87,7 +87,7 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-4 mb-4">
+          <div className="col-lg-4 col-md-4 col-sm-4">
             <div className="card cards">
               <h4 className="card-header bg-dark text-white">KRIT WSR</h4>
               <div className="card-body">

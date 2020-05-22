@@ -12,7 +12,7 @@ const AppLanding = () => {
         <h1 className="mt-4 mb-3 card-title">Абитуриент ККРИТ</h1>
 
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-8 col-lg-12 col-sm-6">
             <Carousel>
               <Carousel.Item>
                 <img className="img-fluid" src={img3} alt="img3" />

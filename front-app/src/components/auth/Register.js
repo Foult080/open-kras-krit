@@ -10,7 +10,7 @@ const Register = ({ isAuth }) => {
   return (
     <Fragment>
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-md-8 col-sm-6 col-lg-12">
           <div className="error-template">
             <h4>Открытая площадка для студентов ККРИТ</h4>
             <p className="ex404">Регистрация в данный момент закрыта</p>
@@ -123,7 +123,7 @@ const Register = ({ setAlert, register, isAuth }) => {
               Этот сайт использует Gravatar для изображений профиля.
             </small>
             <button
-              className="ml-auto mx-auto btn btn-lg btn-primary btn-block"
+              className="ml-auto mx-auto ms-auto btn btn-lg btn-primary"
               type="submit"
             >
               Продолжить
