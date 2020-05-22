@@ -12,7 +12,7 @@ const AppLanding = () => {
         <h1 className="mt-4 mb-3 card-title">Абитуриент ККРИТ</h1>
 
         <div className="row">
-          <div className="col-md-8 col-lg-12 col-sm-6">
+          <div className="col-md-4 col-lg-8 col-sm-2">
             <Carousel>
               <Carousel.Item>
                 <img className="img-fluid" src={img3} alt="img3" />
@@ -84,7 +84,7 @@ const AppLanding = () => {
         <div className="accordion">
           <h3 className="my-4 card-title">Дополнительно</h3>
           <hr />
-          <Accordion>
+          <Accordion className="">
             <Card>
               <Card.Header className="dash-header">
                 <Accordion.Toggle
@@ -97,7 +97,7 @@ const AppLanding = () => {
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="1">
-                <Card.Body>
+                <Card.Body className="my-card">
                   <table className="table table-striped">
                     <thead className="thead-dark">
                       <tr>

@@ -61,6 +61,9 @@ body {
 .news-card {
   margin-bottom: 15px;
 }
+.my-card {
+  padding: 0 !important;
+}
 
 .menu-button {
   margin-right: 5px;
@@ -229,6 +232,5 @@ border-color: #0051A6;
 }
 
 .accordion {
-  margin: 20px;
   margin-bottom: 100px;
 }
