@@ -13,7 +13,6 @@ router.get("/data", auth, async (req, res) => {
     const counts = await Applicant.find().count();
     const agreed = await Applicant.find({ agreed: true }).count();
     let applicants = { counts, agreed };
-    console.log(applicants);
     res.json(applicants);
   } catch (err) {
     console.error(errors.message);

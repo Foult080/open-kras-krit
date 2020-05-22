@@ -7,7 +7,7 @@ import img2 from "../../img/img2.jpg";
 const Landing = () => {
   return (
     <Fragment>
-      <Carousel>
+      <Carousel className="col-lg-12 col-xs-12 col-md-8 col-sm-6 my-carousel">
       <Carousel.Item className="img-fluid">
           <img
             className="d-block w-100"
@@ -41,7 +41,7 @@ const Landing = () => {
             height="800"
             src="https://www.youtube.com/embed/2kHxxUBGr8Y"
             frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope;"
             allowfullscreen
           ></iframe>
         </Carousel.Item>
