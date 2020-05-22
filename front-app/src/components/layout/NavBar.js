@@ -32,12 +32,14 @@ const NavBar = ({ auth: { isAuth, loading }, logout }) => {
         О проекте
       </Nav.Link>
  */}
-      <Button href="/register" className="menu-button" variant="success">
-        <i className="fas fa-user-circle"></i>Зарегистрироваться
-      </Button>
-      <Button href="/signin" variant="primary">
-        <i className="fas fa-sign-in-alt"></i> Войти
-      </Button>
+      <div>
+        <Button href="/register" className="menu-button" variant="success">
+          <i className="fas fa-user-circle"></i>Зарегистрироваться
+        </Button>
+        <Button href="/signin" variant="primary">
+          <i className="fas fa-sign-in-alt"></i> Войти
+        </Button>
+      </div>
     </Nav>
   );
   return (
