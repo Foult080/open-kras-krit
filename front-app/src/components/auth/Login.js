@@ -27,7 +27,7 @@ const Login = ({ login, isAuth }) => {
 
   return (
     <Fragment>
-      <div className="container col-lg-4 col-md-4 col-sm-2">
+      <div className="container col-lg-4 col-md-4 col-sm-4">
         <div className="auth ml-auto mx-auto auth">
           <form className="form-signin" onSubmit={e => onSubmit(e)}>
             <h1 className="h3 mb-3 font-weight-normal">Войти</h1>

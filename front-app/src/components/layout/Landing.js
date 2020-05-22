@@ -7,7 +7,7 @@ import img2 from "../../img/img2.jpg";
 const Landing = () => {
   return (
     <Fragment>
-      <Carousel className="col-lg-12 col-xs-12 col-md-8 col-sm-6 my-carousel">
+      <Carousel className="col-lg-12 col-xs-12 col-md-12 col-sm-12 my-carousel">
       <Carousel.Item className="img-fluid">
           <img
             className="d-block w-100"
@@ -50,8 +50,8 @@ const Landing = () => {
         <hr />
         <h2 className="my-4 card-title">Информационные ресурсы:</h2>
         <div className="row">
-          <div className="col-lg-4 col-md-4 col-sm-4">
-            <div className="card cards">
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            <div className="card cards len-card">
               <h4 className="card-header bg-success text-white">
                 Абитуриент ККРИТ
               </h4>
@@ -68,8 +68,8 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-4 col-sm-4">
-            <div className="card cards">
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            <div className="card cards len-card">
               <h4 className="card-header bg-primary text-white">
                 Работа ККРИТ
               </h4>
@@ -87,8 +87,8 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-4 col-sm-4">
-            <div className="card cards">
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            <div className="card cards len-card">
               <h4 className="card-header bg-dark text-white">KRIT WSR</h4>
               <div className="card-body">
                 <p className="card-text">

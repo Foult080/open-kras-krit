@@ -64,6 +64,9 @@ body {
 .my-card {
   padding: 0 !important;
 }
+.len-card {
+  margin-bottom: 0.5rem;
+}
 
 .menu-button {
   margin-right: 5px;
