@@ -10,8 +10,8 @@ router.get("/data", auth, async (req, res) => {
     return res.status(401).send("Нет доступа");
   }
   try {
-    const counts = await Applicant.find().count();
-    const agreed = await Applicant.find({ agreed: true }).count();
+    const counts = await Applicant.countDocuments();
+    const agreed = await Applicant.find({ agreed: true }).countDocuments();
     let applicants = { counts, agreed };
     res.json(applicants);
   } catch (err) {
