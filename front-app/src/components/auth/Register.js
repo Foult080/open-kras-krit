@@ -9,24 +9,21 @@ const Register = ({ isAuth }) => {
 
   return (
     <Fragment>
-      <div className="row">
-        <div className="col-md-8 col-sm-6 col-lg-12">
-          <div className="error-template">
-            <h4>Открытая площадка для студентов ККРИТ</h4>
-            <p className="ex404">Регистрация в данный момент закрыта</p>
-            <div className="error-actions">
-              <Link to="/">
-                <button className="btn btn-primary ex-btn">
-                  <i className="fas fa-home"></i> На главную
-                </button>
-              </Link>
-              <Link to="/dashboard">
-                <button className="btn btn-success">
-                  <i className="fas fa-user-circle"></i>Личный кабинет
-                </button>
-              </Link>
-            </div>
-          </div>
+      <div className="col-md-8 col-sm-6 col-lg-12">
+        <div className="error-template">
+          <h4>Открытая площадка для студентов ККРИТ</h4>
+          <p className="ex404">Регистрация в данный момент закрыта</p>
+
+          <Link to="/">
+            <button className="btn btn-primary ex-btn">
+              <i className="fas fa-home"></i> На главную
+            </button>
+          </Link>
+          <Link to="/dashboard">
+            <button className="btn btn-success">
+              <i className="fas fa-user-circle"></i>Личный кабинет
+            </button>
+          </Link>
         </div>
       </div>
     </Fragment>

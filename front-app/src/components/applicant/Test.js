@@ -6,8 +6,6 @@ import { connect } from "react-redux";
 import { getTest } from "../../actions/applicant";
 import { setAlert } from "../../actions/alert";
 import Result from "./Result";
-//import Result from './Result';
-//import TestItem from "./TestItem";
 
 const Test = ({ setAlert, getTest, test: { loading, test } }) => {
   useEffect(() => {

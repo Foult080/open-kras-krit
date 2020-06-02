@@ -28,7 +28,7 @@ const Login = ({ login, isAuth }) => {
   return (
     <Fragment>
       <div className="container col-lg-4 col-md-4 col-sm-4">
-        <div className="auth ml-auto mx-auto auth">
+        <div className="auth ml-auto mx-auto">
           <form className="form-signin" onSubmit={e => onSubmit(e)}>
             <h1 className="h3 mb-3 font-weight-normal">Войти</h1>
             <input
@@ -54,7 +54,7 @@ const Login = ({ login, isAuth }) => {
               onChange={e => onChange(e)}
             />
             <button
-              className="ml-auto mx-auto ms-auto btn btn-lg btn-primary"
+              className="ml-auto mx-auto ms-auto btn btn-lg btn-primary my-2"
               type="submit"
             >
               Войти

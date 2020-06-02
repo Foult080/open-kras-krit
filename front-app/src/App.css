@@ -76,7 +76,7 @@ body {
   padding-left: 10%;
   padding-right: 10%;
   text-align: center;
-  margin-top: 10%;
+  margin-top: 20%;
   margin-bottom: 10%;
 }
 .form-control {
@@ -138,8 +138,10 @@ border-color: #0051A6;
 }
 
 .ex404 {
-  font-size: 120px;
+  font-size: 2.5rem;
   font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .acc-info {
