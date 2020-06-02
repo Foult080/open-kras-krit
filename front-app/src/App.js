@@ -21,6 +21,7 @@ import Test from "./components/applicant/Test"
 import AppLanding from "./components/layout/AppLanding";
 import EmpLanding from "./components/layout/EmpLanding";
 import WsrLanding from "./components/layout/WsrLanding";
+import ContactForm from "./components/layout/ContactForm";
 //import SendApp from "./components/applicant/SendApp";
 //import PrivateRoute from "./components/privateRoute"
 
@@ -51,6 +52,7 @@ const App = () => {
               <Route exact path="/wsr" component={WsrLanding} />
               <Route exact path="/applicant" component={AppLanding} />
               <Route exact path="/applicant/test" component={Test} /> 
+              <Route exact path="/contact-form" component={ContactForm} />
               <Route component={Ex404} />
             </Switch>
           </section>

@@ -14,6 +14,7 @@ app.use('/api/users/', require('./routes/users'));
 app.use('/api/auth/', require('./routes/auth'));
 app.use('/api/news', require('./routes/news'));
 app.use('/api/applicant', require('./routes/Applicant/applicant'));
+app.use('/api/contact', require('./routes/contactForm'));
 /*
 app.use('/api/profile/', require('./routes/profiles'));
 app.use('/api/employers/', require('./routes/employers'));

@@ -40,9 +40,9 @@ const Landing = () => {
             width="1900"
             height="800"
             src="https://www.youtube.com/embed/2kHxxUBGr8Y"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope;"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </Carousel.Item>
       </Carousel>

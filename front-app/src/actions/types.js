@@ -19,6 +19,11 @@ export const SEND_ERROR = "SEND_ERROR";
 //tests
 export const GET_TEST = "GET_TEST";
 export const TEST_ERR = "TEST_ERR";
+//contact from
+export const GET_CONTACT = "GET_CONTACT";
+export const SEND_CONTACT = "SEND_CONTACT";
+export const ERROR_CONTACT = "SEND_ERROR";
+export const CLEAR_CONTACT = "CLEAR_CONTACT";
 
 /*
 //events

@@ -52,6 +52,9 @@ body {
 .NavBar {
   opacity: 0.8;
 }
+.nav-el {
+  margin-right: 5px;
+}
 .car-item {
   margin-top: 5px;
 }
@@ -239,4 +242,16 @@ border-color: #0051A6;
 
 .accordion {
   margin-bottom: 100px;
+}
+
+.contact-form {
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.contact-butt {
+  margin-top: 10px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
