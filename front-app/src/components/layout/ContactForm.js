@@ -68,6 +68,7 @@ const ContactForm = ({ sendContact }) => {
             Отправить
           </button>
         </form>
+        <div className="someDiv" />
       </div>
     </Fragment>
   );
