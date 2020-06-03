@@ -12,7 +12,7 @@ const News = ({ getNews, news: { posts, loading } }) => {
 
   console.log(posts);
 
-  return loading && posts === null ? (
+  return loading || posts === null ? (
     <Spinner />
   ) : (
     <Fragment>
