@@ -8,7 +8,7 @@ const Landing = () => {
   return (
     <Fragment>
       <Carousel className="col-lg-12 col-xs-12 col-md-12 col-sm-12 my-carousel">
-      <Carousel.Item className="img-fluid">
+        <Carousel.Item className="img-fluid">
           <img
             className="d-block w-100"
             width="1900"
@@ -17,7 +17,10 @@ const Landing = () => {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>КГБПОУ «Красноярский колледж радиоэлектроники и информационных технологий»</h3>
+            <h3>
+              КГБПОУ «Красноярский колледж радиоэлектроники и информационных
+              технологий»
+            </h3>
             <p>Проспект Свободный 67.</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -30,7 +33,10 @@ const Landing = () => {
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h3>КГБПОУ «Красноярский колледж радиоэлектроники и информационных технологий»</h3>
+            <h3>
+              КГБПОУ «Красноярский колледж радиоэлектроники и информационных
+              технологий»
+            </h3>
             <p>Красноярский рабочий 156.</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -46,7 +52,7 @@ const Landing = () => {
           ></iframe>
         </Carousel.Item>
       </Carousel>
-      <div className="container">
+      <div className="col-lg-10 mx-auto ml-auto">
         <hr />
         <h2 className="my-4 card-title">Информационные ресурсы:</h2>
         <div className="row">
@@ -61,6 +67,7 @@ const Landing = () => {
                   разделе вы найдете информацию для абитуриентов, полезные
                   ссылки и тест на профпригодность.
                 </p>
+                <br />
                 <Link to="/applicant" className="btn btn-success">
                   Подробнее
                 </Link>
@@ -120,6 +127,13 @@ const Landing = () => {
           </div>
         </div>
          */}
+        <div className="big-butt">
+          <Link to="/news" className="btn btn-info my-butt">
+            Новости площадки
+          </Link>
+        </div>
+
+        <div className="someDiv" />
       </div>
     </Fragment>
   );

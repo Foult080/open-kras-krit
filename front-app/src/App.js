@@ -22,6 +22,8 @@ import AppLanding from "./components/layout/AppLanding";
 import EmpLanding from "./components/layout/EmpLanding";
 import WsrLanding from "./components/layout/WsrLanding";
 import ContactForm from "./components/layout/ContactForm";
+import News from "./components/layout/News/News";
+import NewsEl from "./components/layout/News/NewEl";
 //import SendApp from "./components/applicant/SendApp";
 //import PrivateRoute from "./components/privateRoute"
 
@@ -53,6 +55,8 @@ const App = () => {
               <Route exact path="/applicant" component={AppLanding} />
               <Route exact path="/applicant/test" component={Test} /> 
               <Route exact path="/contact-form" component={ContactForm} />
+              <Route exact path="/news" component={News} />
+              <Route exact path="/news/:id" component={NewsEl} />
               <Route component={Ex404} />
             </Switch>
           </section>

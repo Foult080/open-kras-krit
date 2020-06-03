@@ -11,15 +11,20 @@ html {
   box-sizing: border-box;
 }
 body {
-  margin-bottom: 10rem;
+  margin-bottom: 12rem;
 }
 
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 150px;
+  height: 12rem;
 }
+
+.someDiv {
+  margin-bottom: 14rem;
+}
+
 .my-carousel {
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -30,6 +35,12 @@ body {
   padding-top: 1.5rem;
   margin-right: auto;
   margin-left: auto;
+}
+
+.big-butt {
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 5%;
 }
 
 .far,
@@ -168,8 +179,8 @@ border-color: #0051A6;
 }
 
 .form-send {
- padding-left: 20%;
- padding-right: 20%;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .form-text {
@@ -224,7 +235,7 @@ border-color: #0051A6;
 
 .res-but {
   margin-bottom: 5%;
-  width:60%;
+  width: 60%;
 }
 
 .form-check-label {
@@ -254,4 +265,29 @@ border-color: #0051A6;
   margin-top: 10px;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.news-title {
+  text-align: center;
+}
+.news-card {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+.news-button {
+  justify-content: left;
+}
+
+.news-title {
+  margin-top: 3rem;
+  font-size: 2rem;
+}
+
+.news-date {
+  text-align: right;
+  margin-right: 10%;
+}
+.news-buttons {
+  text-align: center;
+  
 }

@@ -24,6 +24,10 @@ export const GET_CONTACT = "GET_CONTACT";
 export const SEND_CONTACT = "SEND_CONTACT";
 export const ERROR_CONTACT = "SEND_ERROR";
 export const CLEAR_CONTACT = "CLEAR_CONTACT";
+//news
+export const GET_NEWS = "GET_NEWS";
+export const NEWS_ERR = "NEWS_ERR";
+export const GET_NEWS_EL = "GET_NEWS_EL";
 
 /*
 //events
