@@ -8,14 +8,11 @@ const ProfileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
+    spec: {
         type: String,
         required: true
     },
     status: {
-        type: String,
-    },
-    spec: {
         type: String,
     },
     skills: {
@@ -36,42 +33,11 @@ const ProfileSchema = new mongoose.Schema({
         },
         description: {
             type: String
-        },
-        from: {
-            type: Date
-        },
-        to: {
-            type: Date
-        },
-        current: {
-            type: Boolean,
-            default: false
         }
     }],
-    pubEvents: [{
-        title: {
-            type:String,
-            required: true
-        },
-        desc: {
-            type: String,
-        },
-        place: {
-            type: String
-        }
-    }],
-    profEvents: [{
-        title: {
-            type:String,
-            required: true
-        },
-        desc: {
-            type: String,
-        },
-        place: {
-            type: String
-        }
-    }]
+    desc: {
+        type:String
+    }
 });
 
 
