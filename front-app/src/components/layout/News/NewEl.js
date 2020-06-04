@@ -27,7 +27,7 @@ const NewsEl = ({ match, getNewsEl, news: { post, loading } }) => {
           <Link to="/" className="btn btn-primary mr-1">
             К главной странице
           </Link>
-          <Link to="/news" className="btn btn-success mt-1">
+          <Link to="/news" className="btn btn-success">
             Назад к новостям
           </Link>
         </div>
