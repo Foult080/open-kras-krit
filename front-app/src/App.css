@@ -43,6 +43,14 @@ body {
   margin-bottom: 5%;
 }
 
+.my-butt {
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
 .far,
 .fas {
   margin-right: 5px;
@@ -289,5 +297,4 @@ border-color: #0051A6;
 }
 .news-buttons {
   text-align: center;
-  
 }

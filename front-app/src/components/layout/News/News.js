@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getNews } from "../../../actions/news";
 import NewsItem from "./NewsItem";
 import Spinner from "../spinner";
+import { Link } from "react-router-dom";
 
 const News = ({ getNews, news: { posts, loading } }) => {
   useEffect(() => {
@@ -23,6 +24,12 @@ const News = ({ getNews, news: { posts, loading } }) => {
           {posts.map((post) => (
             <NewsItem key={post._id} post={post} />
           ))}
+        </div>
+
+        <div className="news-buttons">
+          <Link to="/" className="btn btn-success px-4">
+            К главной странице
+          </Link>
         </div>
 
         <div className="someDiv" />

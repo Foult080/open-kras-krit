@@ -5,6 +5,7 @@ import Spinner from "./spinner";
 import { Redirect } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
 import Applicant from "../applicant/Applicant";
+import NewsForm from "./News/NewsForm";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
   if (!isAuth && !loading) {
@@ -42,6 +43,9 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
         <Fragment>
           <h1>Hello from WSR</h1>
         </Fragment>
+      </Tab>
+      <Tab eventKey="News" title="Добавить новость">
+        <NewsForm />
       </Tab>
     </Tabs>
   );

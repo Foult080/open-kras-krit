@@ -1,4 +1,4 @@
-import { GET_NEWS, NEWS_ERR, GET_NEWS_EL } from "../actions/types";
+import { GET_NEWS, NEWS_ERR, GET_NEWS_EL, SEND_NEWS } from "../actions/types";
 
 const initialState = {
     posts: [],
@@ -18,6 +18,12 @@ export default function( state = initialState, actions) {
                 loading: false
             }
         case GET_NEWS_EL:
+            return {
+                ...state,
+                post: payload,
+                loading: false
+            }
+        case SEND_NEWS:
             return {
                 ...state,
                 post: payload,

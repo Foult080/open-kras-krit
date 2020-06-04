@@ -12,8 +12,8 @@ const NavBar = ({ auth: { isAuth, loading }, logout }) => {
         О проекте
       </Nav.Link>
  */}
-      <Nav.Link className="menu" href="/contacts">
-        Контакты
+      <Nav.Link href="/contact-form" className="nav-el">
+        Обратная связь
       </Nav.Link>
       <Button href="/dashboard" className="menu-button" variant="success">
         <i className="fas fa-user-circle"></i>Личный кабинет
@@ -27,7 +27,9 @@ const NavBar = ({ auth: { isAuth, loading }, logout }) => {
 
   const guestLinks = (
     <Nav className="ml-auto">
-      <Nav.Link href="/contact-form" className="nav-el">Обратная связь</Nav.Link>
+      <Nav.Link href="/contact-form" className="nav-el">
+        Обратная связь
+      </Nav.Link>
       <div>
         <Button href="/register" className="menu-button" variant="success">
           <i className="fas fa-user-circle"></i>Зарегистрироваться

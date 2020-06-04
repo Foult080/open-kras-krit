@@ -28,6 +28,7 @@ export const CLEAR_CONTACT = "CLEAR_CONTACT";
 export const GET_NEWS = "GET_NEWS";
 export const NEWS_ERR = "NEWS_ERR";
 export const GET_NEWS_EL = "GET_NEWS_EL";
+export const SEND_NEWS = "SEND_NEWS";
 
 /*
 //events
