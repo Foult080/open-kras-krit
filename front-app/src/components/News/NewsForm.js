@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
-import { sendNews } from "../../../actions/news";
+import { sendNews } from "../../actions/news";
 import { connect } from "react-redux";
 
 const NewsForm = ({ sendNews }) => {

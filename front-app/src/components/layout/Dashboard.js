@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Spinner from "./spinner";
+import Spinner from "../layout/spinner";
 import { Redirect } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
-import Applicant from "../applicant/Applicant";
-import NewsForm from "./News/NewsForm";
+import Applicant from "../Applicant/Applicant";
+import NewsForm from "../News/NewsForm";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
   if (!isAuth && !loading) {

@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getNews } from "../../../actions/news";
+import { getNews } from "../../actions/news";
 import NewsItem from "./NewsItem";
-import Spinner from "../spinner";
+import Spinner from "../layout/spinner";
 import { Link } from "react-router-dom";
 
 const News = ({ getNews, news: { posts, loading } }) => {

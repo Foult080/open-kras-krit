@@ -5,33 +5,39 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //redux
 import { Provider } from "react-redux";
 import store from "./store";
-//import setAuthToken from "./utils/setAuthToken";
+import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 
 //import components
+
+//layouts
 import NavBar from "./components/layout/NavBar";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
 import Alert from "./components/layout/alert";
 import Dashboard from "./components/layout/Dashboard";
 import Ex404 from "./components/layout/Ex404";
-import Test from "./components/applicant/Test"
-import AppLanding from "./components/layout/AppLanding";
-import EmpLanding from "./components/layout/EmpLanding";
-import WsrLanding from "./components/layout/WsrLanding";
 import ContactForm from "./components/layout/ContactForm";
-import News from "./components/layout/News/News";
-import NewsEl from "./components/layout/News/NewEl";
+//auth
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
+//applicants
+import Test from "./components/Applicant/Test"
+import AppLanding from "./components/Applicant/AppLanding";
+//emploers
+import EmpLanding from "./components/Employers/EmpLanding";
+//wsr
+import WsrLanding from "./components/layout/WsrLanding";
+//news
+import News from "./components/News/News";
+import NewsEl from "./components/News/NewEl";
 //import SendApp from "./components/applicant/SendApp";
 //import PrivateRoute from "./components/privateRoute"
 
-/*
+
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
-*/
 
 const App = () => {
   useEffect(() => {
