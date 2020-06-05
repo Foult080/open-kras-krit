@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getNews } from "../../actions/news";
 import NewsItem from "./NewsItem";
-import Spinner from "../layout/spinner";
+import Spinner from "../Layout/spinner";
 import { Link } from "react-router-dom";
 
 const News = ({ getNews, news: { posts, loading } }) => {

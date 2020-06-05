@@ -11,13 +11,13 @@ import { loadUser } from "./actions/auth";
 //import components
 
 //layouts
-import NavBar from "./components/layout/NavBar";
-import Footer from "./components/layout/Footer";
-import Landing from "./components/layout/Landing";
-import Alert from "./components/layout/alert";
-import Dashboard from "./components/layout/Dashboard";
-import Ex404 from "./components/layout/Ex404";
-import ContactForm from "./components/layout/ContactForm";
+import NavBar from "./components/Layout/NavBar";
+import Footer from "./components/Layout/Footer";
+import Landing from "./components/Layout/Landing";
+import Alert from "./components/Layout/alert";
+import Dashboard from "./components/Layout/Dashboard";
+import Ex404 from "./components/Layout/Ex404";
+import ContactForm from "./components/Layout/ContactForm";
 //auth
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
@@ -27,7 +27,7 @@ import AppLanding from "./components/Applicant/AppLanding";
 //emploers
 import EmpLanding from "./components/Employers/EmpLanding";
 //wsr
-import WsrLanding from "./components/layout/WsrLanding";
+import WsrLanding from "./components/Layout/WsrLanding";
 //news
 import News from "./components/News/News";
 import NewsEl from "./components/News/NewEl";

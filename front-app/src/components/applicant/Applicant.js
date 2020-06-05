@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getData } from "../../actions/applicant";
-import Spinner from "../layout/spinner";
+import Spinner from "../Layout/spinner";
 
 const Applicant = ({ getData, applicant: { applicant, loading } }) => {
   useEffect(() => {
