@@ -2,26 +2,18 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "./spinner";
-import { Redirect } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
 import Applicant from "../Applicant/Applicant";
 import NewsForm from "../News/NewsForm";
+import UserProfile from "../Employers/UserProfile";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
-  if (!isAuth && !loading) {
-    return <Redirect to="/signin" />;
-  }
-
-  const other = (
+  
+  const student = (
     <Tabs defaultActiveKey="Employers" id="uncontrolled-tab-example">
       <Tab eventKey="Employers" title="Работа ККРИТ">
         <Fragment>
-          <h1>Hello from Employers</h1>
-        </Fragment>
-      </Tab>
-      <Tab eventKey="WSR" title="ККРИТ WSR">
-        <Fragment>
-          <h1>Hello from WSR</h1>
+          <UserProfile />
         </Fragment>
       </Tab>
     </Tabs>
@@ -32,16 +24,6 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
       <Tab eventKey="Applicants" title="Абитуриенты">
         <Fragment>
           <Applicant />
-        </Fragment>
-      </Tab>
-      <Tab eventKey="Employers" title="Работа ККРИТ">
-        <Fragment>
-          <h1>Hello from Employers</h1>
-        </Fragment>
-      </Tab>
-      <Tab eventKey="WSR" title="ККРИТ WSR">
-        <Fragment>
-          <h1>Hello from WSR</h1>
         </Fragment>
       </Tab>
       <Tab eventKey="News" title="Добавить новость">
@@ -65,13 +47,8 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
 
       {/* Container with accordion */}
       <div className="container">
-        <h4 className="container header-info">Информационные ресурсы:</h4>
-        <hr />
-        {user && user.role === "admin" ? admin : other}
-        {/* News block 
-        <h4 className="container header-info">Новости:</h4>
-        <hr />
-        */}
+        <h4 className="header-info">Информационные ресурсы:</h4>
+        {user && user.role === "admin" ? admin : student}
       </div>
     </Fragment>
   );
@@ -105,4 +82,11 @@ export default connect(mapStateToProps)(Dashboard);
             </Accordion.Collapse>
           </Card>
         </Accordion>
+
+
+              <Tab eventKey="WSR" title="ККРИТ WSR">
+        <Fragment>
+          <h1>Hello from WSR</h1>
+        </Fragment>
+      </Tab>
 */

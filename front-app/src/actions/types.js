@@ -29,6 +29,12 @@ export const GET_NEWS = "GET_NEWS";
 export const NEWS_ERR = "NEWS_ERR";
 export const GET_NEWS_EL = "GET_NEWS_EL";
 export const SEND_NEWS = "SEND_NEWS";
+//profiles 
+export const GET_PROFILES = "GET_PROFILES";
+export const PROFILE_ERROR = "PROFILE_ERROR";
+export const CLEAR_PROFILE = "CLEAR_PROFILE";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export const GET_PROFILE = "GET_PROFILE";
 
 /*
 //events

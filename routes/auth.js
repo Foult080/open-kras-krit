@@ -12,7 +12,7 @@ const bcrypt = require('bcryptjs');
 // @desc authenticate user and get token
 router.post('/', [
     check('email', 'Укажите корректный адрес электронной почты').isEmail(),
-    check('password', 'Укажите верный пароль').exists()
+    check('password', 'Укажите верный пароль').not().isEmpty().exists()
 ], async (req, res) => {
     //check errors
     const errors = validationResult(req);

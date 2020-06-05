@@ -26,21 +26,28 @@ import Test from "./components/Applicant/Test"
 import AppLanding from "./components/Applicant/AppLanding";
 //emploers
 import EmpLanding from "./components/Employers/EmpLanding";
+import EditProfileForm from "./components/Employers/EditProfileForm";
 //wsr
 import WsrLanding from "./components/Layout/WsrLanding";
 //news
 import News from "./components/News/News";
 import NewsEl from "./components/News/NewEl";
+
+
+import PrivateRoute from "./components/privateRoute";
 //import SendApp from "./components/applicant/SendApp";
 //import PrivateRoute from "./components/privateRoute"
 
-
+/*
 if (localStorage.token) {
   setAuthToken(localStorage.token);
+  dispatch(loadUser());
 }
+*/
 
 const App = () => {
   useEffect(() => {
+    setAuthToken(localStorage.token);
     store.dispatch(loadUser());
   }, []);
 
@@ -55,8 +62,10 @@ const App = () => {
               <Route exact path="/" component={Landing} />
               <Route exact path="/signin" component={Login} />
               <Route exact path="/register" component={Register} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <Route exact path="/employee" component={EmpLanding} />
+              <PrivateRoute exact path="/profile/create-profile" component={EditProfileForm} />
+              <PrivateRoute exact path="/profile/edit-profile" component={EditProfileForm} />
               <Route exact path="/wsr" component={WsrLanding} />
               <Route exact path="/applicant" component={AppLanding} />
               <Route exact path="/applicant/test" component={Test} /> 

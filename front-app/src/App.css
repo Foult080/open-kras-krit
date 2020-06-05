@@ -277,6 +277,8 @@ border-color: #0051A6;
 
 .news-title {
   text-align: center;
+  margin-top: 3rem;
+  font-size: 2rem;
 }
 .news-card {
   margin-top: 1.5rem;
@@ -286,15 +288,22 @@ border-color: #0051A6;
   justify-content: left;
 }
 
-.news-title {
-  margin-top: 3rem;
-  font-size: 2rem;
-}
-
 .news-date {
   text-align: right;
   margin-right: 10%;
 }
 .news-buttons {
   text-align: center;
+}
+
+.profile-user {
+  text-align: center;
+  margin-top: 1rem;
+}
+.profile-icon {
+  margin-left: 5px;
+  font-size: 1.2rem;
+}
+.edit-form {
+  margin-left: 2rem;
 }

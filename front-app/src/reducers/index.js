@@ -5,6 +5,7 @@ import applicant from "./applicant";
 import test from "./test";
 import contactForm from "./contactForm";
 import news from "./news";
+import profiles from "./profiles";
 
 export default combineReducers({
   auth,
@@ -12,5 +13,6 @@ export default combineReducers({
   applicant,
   test,
   contactForm,
-  news
+  news,
+  profiles
 });
