@@ -83,6 +83,10 @@ body {
 .news-card {
   margin-bottom: 15px;
 }
+
+.align-text-just {
+  text-align: justify;
+}
 .my-card {
   padding: 0 !important;
 }

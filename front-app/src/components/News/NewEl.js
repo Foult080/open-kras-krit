@@ -19,7 +19,7 @@ const NewsEl = ({ match, getNewsEl, news: { post, loading } }) => {
       <div className="container col-lg-8 col-md-6 col-sm-6">
         <h5 className="news-title">{post.title}</h5>
         <hr />
-        <div className="news-content">{ReactHtmlParser(post.desc)}</div>
+        <div className="news-content text-justify">{ReactHtmlParser(post.desc)}</div>
         <div className="news-date">
           <p><Moment format="YYYY/MM/DD">{post.date}</Moment></p>
         </div>

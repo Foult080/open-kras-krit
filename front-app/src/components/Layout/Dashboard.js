@@ -6,6 +6,7 @@ import { Tabs, Tab } from "react-bootstrap";
 import Applicant from "../Applicant/Applicant";
 import NewsForm from "../News/NewsForm";
 import UserProfile from "../Employers/UserProfile";
+import FAQ from "./FAQ";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
   return loading && user === null ? (
@@ -37,6 +38,11 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
           </Tabs>
         ) :  user && user.role === "student" ? (
           <Tabs defaultActiveKey="Employers" id="uncontrolled-tab-example">
+            <Tab eventKey="FAQ" title="Часто задаваемые вопросы">
+              <Fragment>
+                <FAQ />
+              </Fragment>
+            </Tab>
             <Tab eventKey="Employers" title="Работа ККРИТ">
               <Fragment>
                 <UserProfile />

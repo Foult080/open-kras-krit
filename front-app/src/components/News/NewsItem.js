@@ -12,7 +12,7 @@ const NewsItem = ({ post: { _id, title, desc, date } }) => {
         </h5>
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
-          <div className="card-text">{ReactHtmlParser(desc.slice(0,200)+'...')}</div>
+          <div className="card-text text-justify">{ReactHtmlParser(desc.slice(0,200)+'...')}</div>
           <Link to={`/news/${_id}`} className="btn btn-primary">
             Подробнее
           </Link>
