@@ -32,7 +32,6 @@ export const getTest = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    console.log(err);
     dispatch({
       type: TEST_ERR,
       payload: { msg: err.response.status.text },

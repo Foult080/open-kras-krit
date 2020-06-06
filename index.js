@@ -16,8 +16,9 @@ app.use('/api/news', require('./routes/news'));
 app.use('/api/applicant', require('./routes/Applicant/applicant'));
 app.use('/api/contact', require('./routes/contactForm'));
 app.use('/api/profile/', require('./routes/Employers/profiles'));
+app.use('/api/employers/', require('./routes/Employers/employers'));
 /*
-app.use('/api/employers/', require('./routes/employers'));
+
 app.use('/api/events/', require('./routes/events'));
 app.use('/api/info', require('./routes/info'));
 */

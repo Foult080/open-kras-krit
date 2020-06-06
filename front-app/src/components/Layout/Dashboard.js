@@ -7,6 +7,7 @@ import Applicant from "../Applicant/Applicant";
 import NewsForm from "../News/NewsForm";
 import UserProfile from "../Employers/UserProfile";
 import FAQ from "./FAQ";
+import ListEmployers from "../Employers/ListEmployers";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
   return loading && user === null ? (
@@ -43,9 +44,14 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
                 <FAQ />
               </Fragment>
             </Tab>
-            <Tab eventKey="Employers" title="Работа ККРИТ">
+            <Tab eventKey="Profile" title="Анкета Студента ККРИТ">
               <Fragment>
                 <UserProfile />
+              </Fragment>
+            </Tab>
+            <Tab eventKey="Employers" title="Список работодателей">
+              <Fragment>
+                <ListEmployers />
               </Fragment>
             </Tab>
           </Tabs>

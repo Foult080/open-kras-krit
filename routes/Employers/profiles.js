@@ -43,6 +43,9 @@ router.get("/", auth, async (req, res) => {
 // @route Get api/profile/:user_id
 // @desc get profile by id
 router.get("/:user_id", auth, async (req, res) => {
+  if (req.user.role !== "employer") {
+    return res.status(404).send("Страница не найдена");
+  }
   try {
     const profile = await Profile.findOne({
       user: req.params.user_id,

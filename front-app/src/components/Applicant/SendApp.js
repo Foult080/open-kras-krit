@@ -27,7 +27,7 @@ const SendApp = ({ auth: { user, loading, isAuth } }) => {
     
   const onSubmit = e => {
     e.preventDegault();
-    console.log(formData);
+
   };
 
   return loading && user === null ? (

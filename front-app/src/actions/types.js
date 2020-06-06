@@ -35,17 +35,9 @@ export const PROFILE_ERROR = "PROFILE_ERROR";
 export const CLEAR_PROFILE = "CLEAR_PROFILE";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const GET_PROFILE = "GET_PROFILE";
-
-/*
-//events
-export const GET_EVENTS = 'GET_EVENTS';
-export const EVENTS_ERROR = 'EVENTS_ERROR';
 //employers
-export const GET_EMPLOYERS = 'GET_EMPLOYERS';
-export const EMPLOYERS_ERROR = 'EMPLOYERS_ERROR';
-//profile
-export const GET_PROFILE = 'GET_PROFILE'; 
-export const PROFILE_ERROR = 'PROFILE_ERROR';
-export const CLEAR_PROFILE = 'CLEAR_PROFILE'; 
-export const UPDATE_PROFILE = 'UPDATE_PROFILE';
-*/
+export const GET_EMPLOYERS = "GET_EMPLOYERS";
+export const GET_EMPLOYER = "GET_EPLOYER";
+export const CLEAR_EMPLOYER = "CLEAR_EMPLOYER";
+export const UPDATE_EMPLOYER = "UPDATE_EMPLOYER";
+export const EMPLOYER_ERROR = "EMPLOYER_ERROR"
