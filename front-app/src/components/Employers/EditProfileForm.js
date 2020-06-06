@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getProfile } from "../../actions/profiles";
 import { Link } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
+import { createProfile } from "../../actions/profiles";
 
 const intitilaState = {
   user: "",
@@ -17,8 +18,9 @@ const intitilaState = {
 
 const EditProfileForm = ({
   getProfile,
+  createProfile,
   profiles: { profile, loading },
-  history
+  history,
 }) => {
   const [formData, setFormData] = useState(intitilaState);
 
@@ -35,7 +37,6 @@ const EditProfileForm = ({
     }
   }, [getProfile, loading, profile, history]);
 
-
   const { tel, github, spec, status, skills, desc } = formData;
 
   const onChange = (e) => {
@@ -45,6 +46,7 @@ const EditProfileForm = ({
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    createProfile(formData, history, profile ? true : false);
   };
 
   return loading ? (
@@ -155,7 +157,7 @@ const EditProfileForm = ({
               <Link to="/dashboard" className="btn btn-danger mr-1">
                 Назад в профиль
               </Link>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary" onSubmit={onSubmit}>
                 Сохранить
               </button>
             </div>
@@ -171,6 +173,7 @@ const EditProfileForm = ({
 EditProfileForm.propTypes = {
   auth: PropTypes.object.isRequired,
   getProfile: PropTypes.func.isRequired,
+  createProfile: PropTypes.func.isRequired,
   profiles: PropTypes.object.isRequired,
 };
 
@@ -179,4 +182,6 @@ const mapStateToPtops = (state) => ({
   profiles: state.profiles,
 });
 
-export default connect(mapStateToPtops, { getProfile })(EditProfileForm);
+export default connect(mapStateToPtops, { getProfile, createProfile })(
+  EditProfileForm
+);

@@ -7,11 +7,10 @@ const Profile = require("../../models/Employers/Profile");
 // @route GET api/profile/me
 // @desc get current user profile
 router.get("/me", auth, async (req, res) => {
-
-      //check role
-      if (req.user.role !== "student") {
-        return res.status(404).send("Страница не найдена");
-      }
+  //check role
+  if (req.user.role !== "student") {
+    return res.status(404).send("Страница не найдена");
+  }
 
   try {
     const profile = await Profile.findOne({
@@ -31,11 +30,9 @@ router.get("/me", auth, async (req, res) => {
 // @desc get all students profiles
 router.get("/", auth, async (req, res) => {
   try {
-    const profiles = await Profile.find().populate("user", [
-      "name",
-      "avatar",
-      "email",
-    ]).select('user spec skills');
+    const profiles = await Profile.find()
+      .populate("user", ["name", "avatar", "email"])
+      .select("user spec skills");
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
@@ -69,7 +66,9 @@ router.post(
   "/",
   auth,
   [
-    check("tel", "Укажите номер телефона").isNumeric().isLength({ max: 12, min: 11 }),
+    check("tel", "Укажите номер телефона")
+      .isNumeric()
+      .isLength({ max: 12, min: 11 }),
     check("spec", "Укажите специальность").not().isEmpty(),
     check("skills", "Укажите навыки").not().isEmpty(),
   ],

@@ -2,11 +2,12 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../Layout/spinner";
-import { getProfile } from "../../actions/profiles";
+import { getProfile, deleteExp } from "../../actions/profiles";
 import { Link } from "react-router-dom";
 
 const UserProfile = ({
   getProfile,
+  deleteExp,
   profiles: { profile, loading },
   history,
 }) => {
@@ -87,7 +88,7 @@ const UserProfile = ({
                   <p className="lead">Роль: {item.title}</p>
                   <p className="card-text">Описание: {item.description}</p>
 
-                  <button className="btn btn-danger">
+                  <button className="btn btn-danger" onClick={() => deleteExp(item._id)}>
                     <i className="fas fa-trash-alt"></i>
                   </button>
                 </div>
@@ -109,6 +110,7 @@ const UserProfile = ({
 
 UserProfile.propTypes = {
   getProfile: PropTypes.func.isRequired,
+  deleteExp: PropTypes.func.isRequired,
   profiles: PropTypes.object.isRequired,
 };
 
@@ -116,4 +118,4 @@ const MapStateToProps = (state) => ({
   profiles: state.profiles,
 });
 
-export default connect(MapStateToProps, { getProfile })(UserProfile);
+export default connect(MapStateToProps, { getProfile, deleteExp })(UserProfile);
