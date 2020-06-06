@@ -10,7 +10,6 @@ export const getProfile = (history) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-      console.log(err.response.status);
     if (err.response.status === 404) history.push("/ex404");
     else
       dispatch({

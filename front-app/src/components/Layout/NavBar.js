@@ -16,10 +16,10 @@ const NavBar = ({ auth: { isAuth, loading }, logout }) => {
         Обратная связь
       </Nav.Link>
       <Button href="/dashboard" className="menu-button" variant="success">
-        <i className="fas fa-user-circle"></i>Личный кабинет
+        <i className="fas fa-user-circle mr-1"></i>Личный кабинет
       </Button>
       <Button onClick={logout} variant="danger">
-        <i className="fas fa-sign-out-alt" />
+        <i className="fas fa-sign-out-alt mr-1" />
         Выйти
       </Button>
     </Nav>
@@ -32,10 +32,10 @@ const NavBar = ({ auth: { isAuth, loading }, logout }) => {
       </Nav.Link>
       <div>
         <Button href="/register" className="menu-button" variant="success">
-          <i className="fas fa-user-circle"></i>Зарегистрироваться
+          <i className="fas fa-user-circle mr-1"></i>Зарегистрироваться
         </Button>
         <Button href="/signin" variant="primary">
-          <i className="fas fa-sign-in-alt"></i> Войти
+          <i className="fas fa-sign-in-alt mr-1"></i> Войти
         </Button>
       </div>
     </Nav>

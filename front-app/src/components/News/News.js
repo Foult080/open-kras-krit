@@ -11,8 +11,6 @@ const News = ({ getNews, news: { posts, loading } }) => {
     getNews();
   }, [getNews]);
 
-  console.log(posts);
-
   return loading || posts === null ? (
     <Spinner />
   ) : (

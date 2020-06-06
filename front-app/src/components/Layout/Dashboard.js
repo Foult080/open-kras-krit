@@ -8,30 +8,6 @@ import NewsForm from "../News/NewsForm";
 import UserProfile from "../Employers/UserProfile";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
-  
-  const student = (
-    <Tabs defaultActiveKey="Employers" id="uncontrolled-tab-example">
-      <Tab eventKey="Employers" title="Работа ККРИТ">
-        <Fragment>
-          <UserProfile />
-        </Fragment>
-      </Tab>
-    </Tabs>
-  );
-
-  const admin = (
-    <Tabs defaultActiveKey="Applicants" id="uncontrolled-tab-example">
-      <Tab eventKey="Applicants" title="Абитуриенты">
-        <Fragment>
-          <Applicant />
-        </Fragment>
-      </Tab>
-      <Tab eventKey="News" title="Добавить новость">
-        <NewsForm />
-      </Tab>
-    </Tabs>
-  );
-
   return loading && user === null ? (
     <Spinner className="spinner" />
   ) : (
@@ -48,7 +24,28 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
       {/* Container with accordion */}
       <div className="container">
         <h4 className="header-info">Информационные ресурсы:</h4>
-        {user && user.role === "admin" ? admin : student}
+        {user && user.role === "admin" ? (
+          <Tabs defaultActiveKey="Applicants" id="uncontrolled-tab-example">
+            <Tab eventKey="Applicants" title="Абитуриенты">
+              <Fragment>
+                <Applicant />
+              </Fragment>
+            </Tab>
+            <Tab eventKey="News" title="Добавить новость">
+              <NewsForm />
+            </Tab>
+          </Tabs>
+        ) :  user && user.role === "student" ? (
+          <Tabs defaultActiveKey="Employers" id="uncontrolled-tab-example">
+            <Tab eventKey="Employers" title="Работа ККРИТ">
+              <Fragment>
+                <UserProfile />
+              </Fragment>
+            </Tab>
+          </Tabs>
+        ) : (
+          <Fragment>Hello Employer</Fragment>
+        )}
       </div>
     </Fragment>
   );
