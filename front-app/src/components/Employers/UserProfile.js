@@ -15,6 +15,11 @@ const UserProfile = ({
     getProfile(history);
   }, [getProfile, history]);
 
+  const onClick = (e) => {
+    e.preventDefault();
+    deleteExp(e.target.name);
+  };
+
   return loading ? (
     <Spinner />
   ) : profile === null ? (
@@ -78,22 +83,26 @@ const UserProfile = ({
               </Link>
             </div>
 
-            <h4 className="profile-user">Опыт:</h4>
-            <hr />
-
-            {profile.experience.map((item) => (
-              <div className="card mb-2" key={item._id}>
-                <div className="card-body">
-                  <h5>{item.company}</h5>
-                  <p className="lead">Роль: {item.title}</p>
-                  <p className="card-text">Описание: {item.description}</p>
-
-                  <button className="btn btn-danger" onClick={() => deleteExp(item._id)}>
-                    <i className="fas fa-trash-alt"></i>
-                  </button>
+            <div>
+              <h4 className="profile-user">Опыт:</h4>
+              <hr />
+              {profile.experience.map((item) => (
+                <div className="card mb-2" key={item._id}>
+                  <div className="card-body">
+                    <h5>{item.company}</h5>
+                    <p className="lead">Роль: {item.title}</p>
+                    <p className="card-text">Описание: {item.description}</p>
+                    <button
+                      className="btn btn-danger"
+                      name={item._id}
+                      onClick={onClick}
+                    >
+                      <i className="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </form>
         </div>
         <div className="news-buttons mt-2">

@@ -8,6 +8,7 @@ import NewsForm from "../News/NewsForm";
 import UserProfile from "../Employers/UserProfile";
 import FAQ from "./FAQ";
 import ListEmployers from "../Employers/ListEmployers";
+import EmpProfile from "../Employers/EmpProfile";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
   return loading && user === null ? (
@@ -56,7 +57,23 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
             </Tab>
           </Tabs>
         ) : (
-          <Fragment>Hello Employer</Fragment>
+          <Tabs defaultActiveKey="Employers" id="uncontrolled-tab-example">
+            <Tab eventKey="FAQ" title="Часто задаваемые вопросы">
+              <Fragment>
+                <FAQ />
+              </Fragment>
+            </Tab>
+            <Tab eventKey="Profile" title="Анкета работодателя">
+              <Fragment>
+                <EmpProfile />
+              </Fragment>
+            </Tab>
+            <Tab eventKey="Employers" title="Профили студентов">
+              <Fragment>
+                <h4>Hello</h4>
+              </Fragment>
+            </Tab>
+          </Tabs>
         )}
       </div>
     </Fragment>

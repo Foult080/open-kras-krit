@@ -29,6 +29,7 @@ import EmpLanding from "./components/Employers/EmpLanding";
 import EditProfileForm from "./components/Employers/EditProfileForm";
 import AddExperience from "./components/Employers/AddExperience";
 import Employer from "./components/Employers/Employer";
+import EditEmpProfile from "./components/Employers/EditEmpProfile";
 //wsr
 import WsrLanding from "./components/Layout/WsrLanding";
 //news
@@ -70,6 +71,8 @@ const App = () => {
               <PrivateRoute exact path="/profile/edit-profile" component={EditProfileForm} />
               <PrivateRoute exact path="/profile/add-experience" component={AddExperience} />
               <PrivateRoute exact path="/employers/:id" component={Employer} />
+              <PrivateRoute exact path="/employer/create-profile" component={EditEmpProfile} />
+              <PrivateRoute exact path="/employer/edit-profile" component={EditEmpProfile} />
               <Route exact path="/wsr" component={WsrLanding} />
               <Route exact path="/applicant" component={AppLanding} />
               <Route exact path="/applicant/test" component={Test} /> 
