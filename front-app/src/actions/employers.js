@@ -3,7 +3,6 @@ import {
   GET_EMPLOYERS,
   EMPLOYER_ERROR,
   GET_EMPLOYER,
-  GET_PROFILE,
   UPDATE_EMPLOYER,
 } from "./types";
 import { setAlert } from "./alert";
@@ -23,7 +22,7 @@ export const getEmployers = () => async (dispatch) => {
   }
 };
 
-export const getMyProfile = () => async dispatch => {
+export const getMyProfile = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/employers/me");
     dispatch({
@@ -36,7 +35,7 @@ export const getMyProfile = () => async dispatch => {
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
-}
+};
 
 export const getEmployer = (id) => async (dispatch) => {
   try {
@@ -68,7 +67,7 @@ export const getRandomEmployers = () => async (dispatch) => {
   }
 };
 
-export const createUpdateEmp = ({ formData, history, edit = false }) => async (
+export const createUpdateEmp = (formData, history, edit = false) => async (
   dispatch
 ) => {
   const config = {
@@ -77,12 +76,15 @@ export const createUpdateEmp = ({ formData, history, edit = false }) => async (
     },
   };
 
+
+
   try {
     const body = JSON.stringify(formData);
-    const res = axios.post("/api/emploers", body, config);
+    const res = await axios.post("/api/employers", body, config);
+
 
     dispatch({
-      type: GET_PROFILE,
+      type: GET_EMPLOYER,
       payload: res.data,
     });
 
@@ -135,20 +137,19 @@ export const addVacancy = (formData, history) => async (dispatch) => {
   }
 };
 
-export const deleteVac = id => async dispatch => {
+export const deleteVac = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(`/api/employers/vacancy/${id}`);
     dispatch({
       type: UPDATE_EMPLOYER,
-      payload: res.data
-    })
+      payload: res.data,
+    });
 
-    dispatch(setAlert("Запись удалена", 'success'));
-
+    dispatch(setAlert("Запись удалена", "success"));
   } catch (err) {
     dispatch({
       type: EMPLOYER_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
-}
+};

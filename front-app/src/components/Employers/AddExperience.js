@@ -29,7 +29,7 @@ const AddExperinece = ({ addExperience, history }) => {
         <hr />
 
         <div className="edit-form col-lg-8 col-md-6 col-sm-6 mx-auto ml-auto">
-          <p>Заполните поля акеты</p>
+          <p>Заполните поля анкеты</p>
           <form className="form" onSubmit={onSubmit}>
             <div className="form-group">
               <input

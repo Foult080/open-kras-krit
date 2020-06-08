@@ -1,11 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getMyProfile } from "../../actions/employers";
+import { getMyProfile, createUpdateEmp } from "../../actions/employers";
 import { Link } from "react-router-dom";
 import Spinner from "../Layout/spinner";
-import { createUpdateEmp } from "../../actions/employers";
-import { getProfile } from "../../actions/profiles";
+
 
 const initialState = {
   name: "",
@@ -17,21 +16,22 @@ const initialState = {
 const EditEmpProfile = ({
   getMyProfile,
   createUpdateEmp,
-  profiles: { profile, loading },
+  employers: { employer, loading },
   history,
 }) => {
   const [formData, setFormData] = useState(initialState);
 
   useEffect(() => {
-    if (!profile) getProfile();
-    if (!loading && profile) {
+    if (!employer) getMyProfile();
+    if (!loading && employer) {
       const profileData = { ...initialState };
-      for (let key in profile) {
-        if (key in profileData) profileData[key] = profile[key];
+      for (let key in employer) {
+        if (key in profileData) profileData[key] = employer[key];
       }
       setFormData(profileData);
     }
-  }, [getMyProfile, loading, profile]);
+  }, [getMyProfile, loading, employer]);
+
 
   const { name, tel, email, description } = formData;
   const onChange = (e) => {
@@ -40,7 +40,7 @@ const EditEmpProfile = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    createUpdateEmp(formData, history, employer ? true : false);
   };
 
   return loading ? (
@@ -48,10 +48,10 @@ const EditEmpProfile = ({
   ) : (
     <Fragment>
       <div className="container">
-        {profile === null ? (
+        {employer === null ? (
           <h4 className="news-title">Заполнить анкету</h4>
         ) : (
-          <h4 news-title>Редактировать профиль</h4>
+          <h4 className="news-title">Редактировать профиль</h4>
         )}
       </div>
       <hr />
@@ -135,12 +135,12 @@ const EditEmpProfile = ({
 
 EditEmpProfile.propTypes = {
   getMyProfile: PropTypes.func.isRequired,
-  profiles: PropTypes.object.isRequired,
+  employers: PropTypes.object.isRequired,
   createUpdateEmp: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  profiles: state.profiles,
+  employers: state.employers,
 });
 
 export default connect(mapStateToProps, { getMyProfile, createUpdateEmp })(

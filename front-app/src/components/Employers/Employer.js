@@ -10,8 +10,6 @@ const Employer = ({ match, getEmployer, employers: { loading, employer } }) => {
     getEmployer(match.params.id);
   }, [getEmployer, match.params.id]);
 
-  //console.log(employer);
-
   return loading || employer === null ? (
     <Spinner />
   ) : (

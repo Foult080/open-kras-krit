@@ -9,18 +9,15 @@ const EmpProfile = ({
   getMyProfile,
   deleteVac,
   employers: { employer, loading },
-  history,
 }) => {
   useEffect(() => {
     getMyProfile();
-  }, [getMyProfile, history]);
+  }, [getMyProfile]);
 
   const onClick = (e) => {
     e.preventDefault();
     deleteVac(e.target.name);
   };
-
-  console.log(employer);
 
   return loading ? (
     <Spinner />
@@ -92,7 +89,7 @@ const EmpProfile = ({
               </div>
             ))}
             <div className="news-buttons mt-2">
-              <Link to="/" className="btn btn-success">
+              <Link to="/employer/add-vacancy" className="btn btn-success">
                 Добавить вакансию
                 <i className="fas fa-user-ninja profile-icon"></i>
               </Link>
