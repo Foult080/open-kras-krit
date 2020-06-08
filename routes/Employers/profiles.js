@@ -32,7 +32,7 @@ router.get("/", auth, async (req, res) => {
   try {
     const profiles = await Profile.find()
       .populate("user", ["name", "avatar", "email"])
-      .select("user spec skills");
+      .select("user spec status  skills");
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
@@ -48,7 +48,7 @@ router.get("/:user_id", auth, async (req, res) => {
   }
   try {
     const profile = await Profile.findOne({
-      user: req.params.user_id,
+      _id: req.params.user_id,
     }).populate("user", ["name", "avatar", "email"]);
     if (!profile) {
       return res.status(400).json({ msg: "Профиль не найден" });

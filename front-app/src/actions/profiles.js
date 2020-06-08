@@ -6,6 +6,7 @@ import {
   UPDATE_PROFILE,
 } from "./types";
 import { setAlert } from "./alert";
+
 //get my profile
 export const getProfile = (history) => async (dispatch) => {
   try {
@@ -27,7 +28,7 @@ export const getProfile = (history) => async (dispatch) => {
 // get all profiles
 export const getProfiles = () => async (dispatch) => {
   try {
-    const res = await axios.get("/api/profiles");
+    const res = await axios.get("/api/profile");
     dispatch({
       type: GET_PROFILES,
       payload: res.data,
@@ -43,7 +44,7 @@ export const getProfiles = () => async (dispatch) => {
 //get user profile by id
 export const getUserProfile = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/profiles/${id}`);
+    const res = await axios.get(`/api/profile/${id}`);
     dispatch({
       type: GET_PROFILE,
       payload: res.data,

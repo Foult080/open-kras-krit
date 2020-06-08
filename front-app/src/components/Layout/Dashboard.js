@@ -9,6 +9,7 @@ import UserProfile from "../Employers/UserProfile";
 import FAQ from "./FAQ";
 import ListEmployers from "../Employers/ListEmployers";
 import EmpProfile from "../Employers/EmpProfile";
+import ListStudents from "../Employers/ListStudents";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
   return loading && user === null ? (
@@ -57,7 +58,7 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
             </Tab>
           </Tabs>
         ) : (
-          <Tabs defaultActiveKey="Employers" id="uncontrolled-tab-example">
+          <Tabs defaultActiveKey="Students" id="uncontrolled-tab-example">
             <Tab eventKey="FAQ" title="Часто задаваемые вопросы">
               <Fragment>
                 <FAQ />
@@ -68,9 +69,9 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
                 <EmpProfile />
               </Fragment>
             </Tab>
-            <Tab eventKey="Employers" title="Профили студентов">
+            <Tab eventKey="Students" title="Профили студентов">
               <Fragment>
-                <h4>Hello</h4>
+                <ListStudents />
               </Fragment>
             </Tab>
           </Tabs>
