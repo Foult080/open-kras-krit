@@ -11,7 +11,7 @@ const ListStudents = ({ getProfiles, profiles: { profiles, loading } }) => {
   }, [getProfiles]);
 
   
-  return loading && profiles === null ? (
+  return loading || profiles === null ? (
     <Spinner />
   ) : (
     <Fragment>

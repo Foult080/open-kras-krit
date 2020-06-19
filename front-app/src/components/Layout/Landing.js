@@ -7,7 +7,7 @@ import img2 from "../../img/img2.jpg";
 const Landing = () => {
   return (
     <Fragment>
-      <Carousel className="col-lg-12 col-xs-12 col-md-12 col-sm-12 my-carousel">
+      <Carousel className="col-lg-12 col-xs-12 col-md-12 col-sm-12 my-carousel d-flex align-items-stretch">
         <Carousel.Item className="img-fluid">
           <img
             className="d-block w-100"
@@ -56,7 +56,7 @@ const Landing = () => {
         <hr />
         <h2 className="my-4 card-title">Информационные ресурсы:</h2>
         <div className="row">
-          <div className="col-lg-4 col-md-4 col-sm-12">
+          <div className="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
             <div className="card cards len-card">
               <h4 className="card-header bg-success text-white">
                 Абитуриент ККРИТ
@@ -67,7 +67,6 @@ const Landing = () => {
                   разделе вы найдете информацию для абитуриентов, полезные
                   ссылки и тест на профпригодность.
                 </p>
-                <br />
                 <Link to="/applicant" className="btn btn-success">
                   Подробнее
                 </Link>
@@ -75,16 +74,16 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-4 col-sm-12">
+          <div className="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
             <div className="card cards len-card">
               <h4 className="card-header bg-primary text-white">
                 Работа ККРИТ
               </h4>
               <div className="card-body">
                 <p className="card-text">
-                  Построй карьеру вместе с нами! Более N работодателей уже
-                  здесь. Подай резюме, изучай требования работодателей, и
-                  учавствуй в мастер классах.
+                  Построй карьеру вместе с нами! Множество работодателей уже
+                  здесь. Подай резюме, изучай вакансии и требования
+                  работодателей, учавствуй в мастер классах и встречах.
                 </p>
                 <br />
                 <Link to="/employee" className="btn btn-primary">
@@ -94,7 +93,7 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-4 col-sm-12">
+          <div className="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
             <div className="card cards len-card">
               <h4 className="card-header bg-dark text-white">KRIT WSR</h4>
               <div className="card-body">
