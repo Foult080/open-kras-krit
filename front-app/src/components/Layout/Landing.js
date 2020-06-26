@@ -8,9 +8,9 @@ const Landing = () => {
   return (
     <Fragment>
       <Carousel className="col-lg-12 col-xs-12 col-md-12 col-sm-12 my-carousel d-flex align-items-stretch">
-        <Carousel.Item className="img-fluid">
+        <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="d-block w-100 img-fluid"
             width="1900"
             height="800"
             src={img2}
@@ -26,7 +26,7 @@ const Landing = () => {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="d-block w-100 img-fluid"
             width="1900"
             height="800"
             src={img1}
@@ -41,15 +41,18 @@ const Landing = () => {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <iframe
-            title="video1"
-            width="1900"
-            height="800"
-            src="https://www.youtube.com/embed/2kHxxUBGr8Y"
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope;"
-            allowFullScreen
-          ></iframe>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe
+              className="embed-responsive-item"
+              title="video1"
+              width="1900"
+              height="800"
+              src="https://www.youtube.com/embed/2kHxxUBGr8Y"
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+              allowFullScreen
+            ></iframe>
+            </div>
         </Carousel.Item>
       </Carousel>
       <div className="col-lg-10 mx-auto ml-auto">
