@@ -36,10 +36,12 @@ const Profile = ({ match, getUserProfile, profiles: { loading, profile } }) => {
             <strong>Телефон: </strong>
             {profile.tel}
           </p>
-          <p>
-            <strong>GitHub: </strong>
-            {profile.github}
-          </p>
+          {profile.github !== null (
+              <p>
+                <strong>GitHub: </strong>
+                {profile.github}
+              </p>
+            )}
           <p>
             <p>
               <strong>Навыки: </strong>

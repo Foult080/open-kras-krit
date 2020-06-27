@@ -1,10 +1,19 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import img1 from "../../img/img1.jpg";
 import img2 from "../../img/img2.jpg";
+import Spinner from "../Layout/spinner";
+import NewsItem from "../News/NewsItem";
+import { getLastNews } from "../../actions/news";
 
-const Landing = () => {
+const Landing = ({ getLastNews, news: { posts, loading } }) => {
+  useEffect(() => {
+    getLastNews();
+  }, [getLastNews]);
+
   return (
     <Fragment>
       <Carousel className="col-lg-12 col-xs-12 col-md-12 col-sm-12 my-carousel d-flex align-items-stretch">
@@ -41,7 +50,7 @@ const Landing = () => {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-        <div class="embed-responsive embed-responsive-16by9">
+          <div class="embed-responsive embed-responsive-16by9">
             <iframe
               className="embed-responsive-item"
               title="video1"
@@ -52,7 +61,7 @@ const Landing = () => {
               allow="accelerometer; autoplay; encrypted-media; gyroscope;"
               allowFullScreen
             ></iframe>
-            </div>
+          </div>
         </Carousel.Item>
       </Carousel>
       <div className="col-lg-10 mx-auto ml-auto">
@@ -112,33 +121,39 @@ const Landing = () => {
             </div>
           </div>
         </div>
-
-        {/**
-        <hr />
-        <h2 className="card-title">Новости</h2>
-        <div className="news">
-          <div className="card news-card text-center">
-            <div className="card-header text-primary">2020-03-15</div>
-            <div className="card-body">
-              <h5 className="card-title">Special title treatment</h5>
-              <p className="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
+        {loading || posts === null ? (
+          <Spinner />
+        ) : (
+          <Fragment>
+            <div className="news my-4">
+              <h2 className="card-title">Новости</h2>
+              <hr />
+              <div className="posts">
+                {posts.map((post) => (
+                  <NewsItem key={post._id} post={post} />
+                ))}
+              </div>
+              <div className="big-butt my-4">
+                <Link to="/news" className="btn btn-info my-butt">
+                  Еще новости
+                </Link>
+              </div>
             </div>
-          </div>
-        </div>
-         */}
-        <div className="big-butt">
-          <Link to="/news" className="btn btn-info my-butt">
-            Новости площадки
-          </Link>
-        </div>
-
+          </Fragment>
+        )}
         <div className="someDiv" />
       </div>
     </Fragment>
   );
 };
 
-export default Landing;
+Landing.propTypes = {
+  getLastNews: PropTypes.func.isRequired,
+  news: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  news: state.news,
+});
+
+export default connect(mapStateToProps, { getLastNews })(Landing);

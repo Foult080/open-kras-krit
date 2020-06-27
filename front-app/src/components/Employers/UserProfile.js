@@ -12,8 +12,8 @@ const UserProfile = ({
   history,
 }) => {
   useEffect(() => {
-    getProfile(history);
-  }, [getProfile, history]);
+    getProfile();
+  }, [getProfile]);
 
   const onClick = (e) => {
     e.preventDefault();

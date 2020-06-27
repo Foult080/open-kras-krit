@@ -10,8 +10,12 @@ const ListEmployers = ({ getEmployers, employers: { employers, loading } }) => {
     getEmployers();
   }, [getEmployers]);
 
-  return loading && employers === null ? (
+  return loading || employers === null ? (
     <Spinner />
+  ) : employers.length === 0  ? (
+    <Fragment>
+      <h4 className="profile-user my-4">Работодателей пока нет</h4>
+    </Fragment>
   ) : (
     <Fragment>
       <div className="container">
@@ -26,7 +30,12 @@ const ListEmployers = ({ getEmployers, employers: { employers, loading } }) => {
                   Количество активных вакансий: {employer.vacancy.length}
                 </h5>
                 <p className="card-text text-justify">{employer.description}</p>
-                <Link className="btn btn-primary" to={`/employers/${employer._id}`}>Подробнее</Link>
+                <Link
+                  className="btn btn-primary"
+                  to={`/employers/${employer._id}`}
+                >
+                  Подробнее
+                </Link>
               </div>
             </div>
           ))}

@@ -1,39 +1,3 @@
-import { Link } from "react-router-dom";
-import React, { Fragment } from "react";
-import { Redirect } from "react-router-dom";
-
-const Register = ({ isAuth }) => {
-  if (isAuth) {
-    return <Redirect to="/dashboard" />;
-  }
-
-  return (
-    <Fragment>
-      <div className="col-md-8 col-sm-6 col-lg-12">
-        <div className="error-template">
-          <h4>Открытая площадка для студентов ККРИТ</h4>
-          <p className="ex404">Регистрация в данный момент закрыта</p>
-
-          <Link to="/">
-            <button className="btn btn-primary ex-btn">
-              <i className="fas fa-home"></i> На главную
-            </button>
-          </Link>
-          <Link to="/dashboard">
-            <button className="btn btn-success">
-              <i className="fas fa-user-circle"></i>Личный кабинет
-            </button>
-          </Link>
-        </div>
-      </div>
-    </Fragment>
-  );
-};
-
-export default Register;
-
-/*
-
 import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
@@ -41,24 +5,24 @@ import PropTypes from "prop-types";
 import { register } from "../../actions/auth";
 import { Link, Redirect } from "react-router-dom";
 
-const Register = ({ setAlert, register, isAuth }) => {   
+const Register = ({ setAlert, register, isAuth }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    password2: ""
+    password2: "",
+    role: "student",
   });
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, password, password2, role } = formData;
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (password !== password2) {
       setAlert("Пароли не совпадают", "danger");
     } else {
-      let role = "student"
       register({ name, email, password, role });
     }
   };
@@ -69,21 +33,19 @@ const Register = ({ setAlert, register, isAuth }) => {
 
   return (
     <Fragment>
-      <div className="container">
+      <div className="container col-lg-4 col-md-4 col-sm-4">
         <div className="auth ml-auto mx-auto">
-          <form className="form-signin" onSubmit={e => onSubmit(e)}>
+          <form className="form-signin" onSubmit={(e) => onSubmit(e)}>
             <h1 className="h3 mb-3 font-weight-normal">Регистрация</h1>
-
             <input
               type="text"
               className="form-control"
               placeholder="Ваше имя"
               name="name"
-              value={name}
-              onChange={e => onChange(e)}
               required
+              value={name}
+              onChange={(e) => onChange(e)}
             />
-
             <input
               type="email"
               id="inputEmail"
@@ -92,7 +54,7 @@ const Register = ({ setAlert, register, isAuth }) => {
               required
               name="email"
               value={email}
-              onChange={e => onChange(e)}
+              onChange={(e) => onChange(e)}
             />
             <input
               type="password"
@@ -103,7 +65,7 @@ const Register = ({ setAlert, register, isAuth }) => {
               minLength="8"
               name="password"
               value={password}
-              onChange={e => onChange(e)}
+              onChange={(e) => onChange(e)}
             />
             <input
               type="password"
@@ -114,13 +76,25 @@ const Register = ({ setAlert, register, isAuth }) => {
               name="password2"
               minLength="8"
               value={password2}
-              onChange={e => onChange(e)}
+              onChange={(e) => onChange(e)}
             />
+            <label htmlFor="exampleFormControlSelect1">Выберете роль:</label>
+            <select
+              className="form-control"
+              id="exampleFormControlSelect1"
+              name="role"
+              value={role}
+              onChange={(e) => onChange(e)}
+            >
+              <option value="student">Студент</option>
+              <option value="employer">Работодатель</option>
+            </select>
             <small className="form-text">
               Этот сайт использует Gravatar для изображений профиля.
             </small>
+
             <button
-              className="ml-auto mx-auto ms-auto btn btn-lg btn-primary"
+              className="ml-auto my-4 btn btn-lg btn-primary"
               type="submit"
             >
               Продолжить
@@ -139,12 +113,11 @@ const Register = ({ setAlert, register, isAuth }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  isAuth: PropTypes.bool
+  isAuth: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
-  isAuth: state.auth.isAuth
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
 });
 
 export default connect(mapStateToProps, { setAlert, register })(Register);
-*/

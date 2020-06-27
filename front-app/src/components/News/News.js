@@ -15,7 +15,7 @@ const News = ({ getNews, news: { posts, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className="container col-lg-8 col-md-6 col-sm-4">
+      <div className="container col-lg-8 col-md-10 col-sm-10">
         <h1 className="news-title">Новости площадки</h1>
         <hr />
         <div className="posts">

@@ -17,6 +17,21 @@ export const getNews = () => async dispatch => {
     }
 };
 
+export const getLastNews = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/news/last-news');
+    dispatch({
+        type: GET_NEWS,
+        payload: res.data
+    });
+} catch (err) {
+    dispatch({
+        type: NEWS_ERR,
+        payload: {msg: err.response.statusText, status: err.response.status}
+    });
+}
+}
+
 export const getNewsEl = id => async dispatch => {
     try {
         const res = await axios.get(`/api/news/${id}`);

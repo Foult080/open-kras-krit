@@ -8,7 +8,7 @@ import {
 import { setAlert } from "./alert";
 
 //get my profile
-export const getProfile = (history) => async (dispatch) => {
+export const getProfile = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/profile/me");
     dispatch({
@@ -16,13 +16,11 @@ export const getProfile = (history) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    if (err.response.status === 404) history.push("/ex404");
-    else
       dispatch({
         type: PROFILE_ERROR,
         payload: { msg: err.response.statusText, status: err.response.status },
       });
-  }
+    }
 };
 
 // get all profiles

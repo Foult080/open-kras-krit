@@ -10,9 +10,12 @@ const ListStudents = ({ getProfiles, profiles: { profiles, loading } }) => {
     getProfiles();
   }, [getProfiles]);
 
-  
   return loading || profiles === null ? (
     <Spinner />
+  ) : profiles.length === 0 ? (
+    <Fragment>
+      <h4 className="profile-user my-4">Студентов пока нет</h4>
+    </Fragment>
   ) : (
     <Fragment>
       <div className="container">
@@ -23,8 +26,12 @@ const ListStudents = ({ getProfiles, profiles: { profiles, loading } }) => {
             <div className="card mb-2" key={profile._id}>
               <h5 className="card-header">{profile.user.name}</h5>
               <div className="card-body">
-                <p><strong>Специальность:</strong> {profile.spec}</p>
-                <p><strong>Статус:</strong> {profile.status}</p>
+                <p>
+                  <strong>Специальность:</strong> {profile.spec}
+                </p>
+                <p>
+                  <strong>Статус:</strong> {profile.status}
+                </p>
                 <p>
                   <strong>Навыки: </strong>
                   {profile.skills.map((item) => (

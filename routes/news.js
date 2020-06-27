@@ -43,11 +43,10 @@ router.post(
   }
 );
 
-// @router GET api/news/all
+// @router GET api/news
 // @desc get all news
 router.get("/", async (req, res) => {
   try {
-    let date = Date.now();
     const events = await News.find().sort({ date: "asc" });
     res.send(events);
   } catch (err) {
@@ -55,6 +54,18 @@ router.get("/", async (req, res) => {
     res.status(500).send("Ошибка сервера");
   }
 });
+
+// @router GET api/last-news
+// @desc last 3 news
+router.get('/last-news', async (req,res) => {
+  try {
+      const news = await News.find().sort({ date: 'asc'}).limit(3);
+      res.send(news);
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Ошибка сервера');
+  }
+})
 
 //@router GET api/news/:id
 //@desc get post by id
@@ -71,16 +82,5 @@ router.get("/:id", async (req, res) => {
 module.exports = router;
 
 /*
-// @router GET api/news
-// @desc last 3 news
-router.get('/', async (req,res) => {
-    try {
-        let date = Date.now();
-        const events = await News.find({date: {$gt: date}}).sort({ date: 'asc'}).limit(3);
-        res.send(news);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Ошибка сервера');
-    }
-})
+
 */
