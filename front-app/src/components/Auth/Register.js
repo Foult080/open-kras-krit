@@ -37,6 +37,7 @@ const Register = ({ setAlert, register, isAuth }) => {
         <div className="auth ml-auto mx-auto">
           <form className="form-signin" onSubmit={(e) => onSubmit(e)}>
             <h1 className="h3 mb-3 font-weight-normal">Регистрация</h1>
+            <hr />
             <input
               type="text"
               className="form-control"
@@ -78,7 +79,6 @@ const Register = ({ setAlert, register, isAuth }) => {
               value={password2}
               onChange={(e) => onChange(e)}
             />
-            <label htmlFor="exampleFormControlSelect1">Выберете роль:</label>
             <select
               className="form-control"
               id="exampleFormControlSelect1"
@@ -94,12 +94,17 @@ const Register = ({ setAlert, register, isAuth }) => {
             </small>
 
             <button
-              className="ml-auto my-4 btn btn-lg btn-primary"
+              className="ml-auto mt-2 btn btn-lg btn-primary"
               type="submit"
             >
               Продолжить
             </button>
-            <p className="mb-3 text-muted">
+            <small className="form-text">
+              Нажимая на кнопку вы даёте согласие, на обработку персональных
+              данных и соглашаетесь с{" "}
+              <a href="/privacy">политикой конфиденциальности</a>
+            </small>
+            <p className="mb-3 mt-2 text-muted">
               Уже есть аккаунт? <Link to="/signin">Войдите</Link>
             </p>
             <p className="mb-3 text-muted">&copy; 2020</p>

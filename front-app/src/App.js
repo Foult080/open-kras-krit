@@ -18,6 +18,7 @@ import Alert from "./components/Layout/alert";
 import Dashboard from "./components/Layout/Dashboard";
 import Ex404 from "./components/Layout/Ex404";
 import ContactForm from "./components/Layout/ContactForm";
+import Privacy from "./components/Layout/Privacy";
 //auth
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
@@ -67,6 +68,7 @@ const App = () => {
               <Route exact path="/" component={Landing} />
               <Route exact path="/signin" component={Login} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/privacy" component={Privacy} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <Route exact path="/employers" component={EmpLanding} />
               <PrivateRoute exact path="/profile/create-profile" component={EditProfileForm} />

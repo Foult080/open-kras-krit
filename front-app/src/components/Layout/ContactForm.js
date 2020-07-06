@@ -24,7 +24,7 @@ const ContactForm = ({ sendContact }) => {
     sendContact({ email, title, form });
     history.push("/");
   };
-  
+
   return (
     <Fragment>
       <div className="container col-lg-4 col-md-4 col-sm-4">
@@ -67,6 +67,12 @@ const ContactForm = ({ sendContact }) => {
           <button className="btn btn-primary contact-butt" type="submit">
             Отправить
           </button>
+          <div>
+          <small className="my-2 form-text">
+            Нажимая на кнопку вы даёте согласие, на обработку персональных
+            данных и соглашаетесь с <a href="/privacy">политикой конфиденциальности</a>
+          </small>
+          </div>
         </form>
         <div className="someDiv" />
       </div>
@@ -77,7 +83,5 @@ const ContactForm = ({ sendContact }) => {
 ContactForm.propTypes = {
   sendContact: PropTypes.func.isRequired,
 };
-
-
 
 export default connect(null, { sendContact })(ContactForm);

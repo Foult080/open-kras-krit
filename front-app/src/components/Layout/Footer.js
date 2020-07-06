@@ -7,7 +7,16 @@ const Footer = () => {
       <div className="text-primary">
         <div className="my-container">
           <div className="">
-            <p>Open-Kras-KRIT &copy; Открытая площадка для студентов ККРИТ</p>
+            <p>
+              Open-Kras-KRIT &copy; Открытая площадка для студентов ККРИТ
+              <i class="icon-small fas fa-globe"></i>
+            </p>
+            <a href="/privacy">
+              <p>
+                Политика конфиденциальности
+                <i className="fas icon-small fa-user-secret"></i>
+              </p>
+            </a>
             <a href="/contact-form">
               <p>
                 Помогите нам стать лучше
