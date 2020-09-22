@@ -17,6 +17,7 @@ app.use('/api/applicant', require('./routes/Applicant/applicant'));
 app.use('/api/contact', require('./routes/contactForm'));
 app.use('/api/profile/', require('./routes/Employers/profiles'));
 app.use('/api/employers/', require('./routes/Employers/employers'));
+app.use('/api/hack/team', require('./routes/Hackaton/team'));
 /*
 
 app.use('/api/events/', require('./routes/events'));
