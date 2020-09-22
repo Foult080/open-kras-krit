@@ -59,7 +59,7 @@ router.get("/", async (req, res) => {
 // @desc last 3 news
 router.get('/last-news', async (req,res) => {
   try {
-      const news = await News.find().sort({ date: 'asc'}).limit(3);
+      const news = await News.find().sort({ date: 'desc'}).limit(3);
       res.send(news);
   } catch (err) {
       console.error(err.message);

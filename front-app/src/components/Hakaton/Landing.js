@@ -82,7 +82,10 @@ const styles = {
     margin: "1rem 2rem 1rem 2rem",
   },
   button: {
-    width: "60%",
+    width: "50%",
+    height: "auto",
+    "font-size": "1.5rem",
+    "margin-bottom": "2rem"
   },
 };
 

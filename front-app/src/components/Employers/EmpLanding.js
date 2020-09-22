@@ -1,28 +1,81 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import emp1 from "../../img/emp1.svg";
+import emp2 from "../../img/emp2.svg";
+import emp3 from "../../img/emp3.svg";
 
-const AppLanding = () => {
+
+const EmpLanding = ({ auth: { isAuth, loading } }) => {
+  console.log(isAuth, loading);
   return (
     <Fragment>
-      <div className="col-md-8 col-lg-12 col-sm-6">
-        <div className="error-template">
-          <h4>Открытая площадка работодателей и студентов</h4>
-          <p className="ex404">Раздел в разработке</p>
-          <Link to="/">
-            <button className="btn btn-primary ex-btn">
-              <i className="fas fa-home"></i> На главную
-            </button>
-          </Link>
-          <Link to="/dashboard">
-            <Button className="btn btn-success">
-              <i className="fas fa-user-circle"></i>Личный кабинет
-            </Button>
-          </Link>
+      <div className="emp1" style={styles.img}>
+        <img className="d-block w-100 img-fluid" src={emp1} alt="firt slide of employers" />
+      </div>
+      <div className="emp2" style={styles.img}>
+        <img className="d-block w-100 img-fluid" src={emp2} alt="second slide of employers" />
+      </div>
+      <div className="emp3" style={styles.img}>
+        <img className="d-block w-100 img-fluid" src={emp3} alt="third slide of employers" />
+      </div>
+
+      <div className="container">
+        <div className="row">
+          <div className="col text-center">
+            {!loading && (
+              <Fragment>
+                {isAuth ? (
+                  <Link to="/dashboard"> 
+                    <Button
+                      variant="outline-success"
+                      size="lg"
+                      style={styles.button}
+                    >
+                      Перейти в личный кабинет
+                    </Button>
+                  </Link>
+                ) : (
+                  <Link to="/register">
+                    <Button
+                      variant="outline-primary"
+                      size="lg"
+                      style={styles.button}
+                    >
+                      Зарегистрироваться
+                    </Button>
+                  </Link>
+                )}
+              </Fragment>
+            )}
+          </div>
         </div>
       </div>
+      <div className="someDiv" />
     </Fragment>
   );
 };
 
-export default AppLanding;
+const styles = {
+  img: {
+    margin: "0rem 2rem 0rem 2rem",
+  },
+  button: {
+    width: "50%",
+    height: "auto",
+    "font-size": "1.5rem",
+    "margin-bottom": "2rem"
+  },
+};
+
+EmpLanding.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(EmpLanding);
