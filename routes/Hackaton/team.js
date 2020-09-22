@@ -84,6 +84,8 @@ router.put(
   }
 );
 
+//@route GET api/hack/team/me
+//@desc Get my team
 router.get("/me", auth, async (req, res) => {
   try {
     let team = await Teams.findOne({ capt: req.user.id });
@@ -91,11 +93,39 @@ router.get("/me", auth, async (req, res) => {
       let team = await Teams.findOne({ team: { _id: req.user.id } });
       if (team) res.json(team);
       else return res.status(400).json({ msg: "Команда отсутсвует" });
-    } 
+    }
     res.json(team);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Ошибка сервера");
+  }
+});
+
+//@route DELETE api/hack/team
+//@desc Delete team
+router.delete("/", auth, async (req, res) => {
+  try {
+    const team = await Teams.findOne({ capt: req.user.id });
+    await team.remove();
+    res.json(null);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Ошибка сервера" });
+  }
+});
+
+//@route DELETE api/hack/team
+//@desc delete teammate
+router.delete("/:id", auth, async (req, res) => {
+  try {
+    let team = await Teams.findOne({ team: { _id: req.params.id } });
+    const index = team.team.map(item => item.id).indexOf(req.params.id);
+    team.team.splice(index, 1);
+    await team.save();
+    res.json(team);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Ошибка сервера" });
   }
 });
 
