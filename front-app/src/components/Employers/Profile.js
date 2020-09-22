@@ -10,8 +10,6 @@ const Profile = ({ match, getUserProfile, profiles: { loading, profile } }) => {
     getUserProfile(match.params.id);
   }, [getUserProfile, match.params.id]);
 
-  console.log(profile);
-
   return loading || profile === null ? (
     <Spinner />
   ) : (
@@ -36,47 +34,54 @@ const Profile = ({ match, getUserProfile, profiles: { loading, profile } }) => {
             <strong>Телефон: </strong>
             {profile.tel}
           </p>
-          {profile.github !== null (
-              <p>
-                <strong>GitHub: </strong>
-                {profile.github}
-              </p>
-            )}
-          <p>
+          {profile.github === null ? (
             <p>
-              <strong>Навыки: </strong>
-              {profile.skills.map((item) => (
-                <span className="tags" key={item}>
-                  {item}
-                </span>
-              ))}
+              <strong>GitHub: </strong>Профиль отсутсвует
             </p>
-            <strong>Специальность: </strong>
-            {profile.spec}
+          ) : (
+            <p>
+              <strong>GitHub: </strong> {profile.github}
+            </p>
+          )}
+          <p>
+            <strong>Навыки: </strong>
+            {profile.skills.map((item) => (
+              <span className="tags" key={item}>
+                {item}
+              </span>
+            ))}
           </p>
+          <strong>Специальность: </strong>
+          {profile.spec}
           <p>
             <strong>Статус: </strong>
             {profile.status}
           </p>
         </form>
-        <h4 className="news-title">Опыт</h4>
-        <hr />
-        <form className="form emp-form">
-          <div className="pr-4 pl-4">
-            {profile.experience.map((item) => (
-              <div className="card mb-2" key={item._id}>
-                <div className="card-body">
-                  <h5>{item.company}</h5>
-                  <p>{item.title}</p>
-                  <p className="text-justify">
-                    <strong>Описание: </strong>
-                    {item.description}
-                  </p>
-                </div>
+        {profile.experience.length === 0 ? (
+          <h4 className="news-title my-4">Опыт работы отсутсвует</h4>
+        ) : (
+          <Fragment>
+            <h4 className="news-title">Опыт</h4>
+            <hr />
+            <form className="form emp-form">
+              <div className="pr-4 pl-4">
+                {profile.experience.map((item) => (
+                  <div className="card mb-2" key={item._id}>
+                    <div className="card-body">
+                      <h5>{item.company}</h5>
+                      <p>{item.title}</p>
+                      <p className="text-justify">
+                        <strong>Описание: </strong>
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </form>
+            </form>
+          </Fragment>
+        )}
 
         <div className="news-buttons">
           <Link to="/dashboard" className="btn btn-primary mr-1">
