@@ -50,7 +50,7 @@ const Landing = ({ getLastNews, news: { posts, loading } }) => {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <div class="embed-responsive embed-responsive-16by9">
+          <div className="embed-responsive embed-responsive-16by9">
             <iframe
               className="embed-responsive-item"
               title="video1"
@@ -98,7 +98,7 @@ const Landing = ({ getLastNews, news: { posts, loading } }) => {
                   работодателей, учавствуй в мастер классах и встречах.
                 </p>
                 <br />
-                <Link to="/employee" className="btn btn-primary">
+                <Link to="/employers" className="btn btn-primary">
                   Подробнее
                 </Link>
               </div>

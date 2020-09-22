@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="">
             <p>
               Open-Kras-KRIT &copy; Открытая площадка для студентов ККРИТ
-              <i class="icon-small fas fa-globe"></i>
+              <i className="icon-small fas fa-globe"></i>
             </p>
             <a href="/privacy">
               <p>
