@@ -1,28 +1,41 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const TeamsSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
+  name: {
+    type: String,
+    required: true,
+  },
+  hackaton: [{
+    hack: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "hack"
     },
-    capt: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+    teamCase: {
+      type: Object
     },
-    team: [{
-        user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'user'
-        },
-        status: {
-            type: String,
-            default: 'teammate'
-        }
-    }],
     link: {
-        type: String
+      type: String
     }
-    
+  }],
+  capt: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+  },
+  team: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user",
+      },
+      status: {
+        type: String,
+        default: "teammate",
+      },
+    },
+  ],
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-
-module.exports = Teams = mongoose.model('teams', TeamsSchema);
+module.exports = Teams = mongoose.model("teams", TeamsSchema);

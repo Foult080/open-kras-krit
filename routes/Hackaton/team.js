@@ -4,6 +4,7 @@ const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
 const Teams = require("../../models/Hackaton/Teams");
 const User = require("../../models/User");
+const Hack = require("../../models/Hackaton/Hack");
 
 //@route POST api/hack
 //@desc create team
@@ -17,9 +18,20 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const teamFields = {};
-    teamFields.name = req.body.name;
-    teamFields.capt = req.user.id;
+    const { name, hack, case_id, link } = req.body;
+    const teamFields = { name, capt: req.user.id, link };
+    const hackaton = {};
+    if (hack && case_id) {
+      obj = await Hack.findById(hack);
+      hackaton.hack = obj;
+      hackaton.teamCase = obj.cases.find((item) => item.id === case_id);
+      teamFields.hackaton = hackaton;
+    }
+    if (link) {
+      teamFields.hackaton.link = link;
+    }
+    console.log(teamFields);
+
     try {
       //check team exists
       let team = await Teams.findOne({
@@ -119,7 +131,7 @@ router.delete("/", auth, async (req, res) => {
 router.delete("/:id", auth, async (req, res) => {
   try {
     let team = await Teams.findOne({ team: { _id: req.params.id } });
-    const index = team.team.map(item => item.id).indexOf(req.params.id);
+    const index = team.team.map((item) => item.id).indexOf(req.params.id);
     team.team.splice(index, 1);
     await team.save();
     res.json(team);
