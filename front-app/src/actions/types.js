@@ -41,3 +41,8 @@ export const GET_EMPLOYER = "GET_EPLOYER";
 export const CLEAR_EMPLOYER = "CLEAR_EMPLOYER";
 export const UPDATE_EMPLOYER = "UPDATE_EMPLOYER";
 export const EMPLOYER_ERROR = "EMPLOYER_ERROR"
+//hackaton
+export const GET_HACKATONS = "GET_HACKATONS";
+export const GET_HACK = "GET_HACK";
+export const CLEAR_HACK = "CLEAR_HACK";
+export const HACK_ERROR = "HACK_ERROR";

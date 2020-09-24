@@ -10,6 +10,8 @@ import FAQ from "./FAQ";
 import ListEmployers from "../Employers/ListEmployers";
 import EmpProfile from "../Employers/EmpProfile";
 import ListStudents from "../Employers/ListStudents";
+import Hack from "../Hakaton/Hack";
+import Admin from "../Hakaton/Admin";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
   return loading && user === null ? (
@@ -29,47 +31,55 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
       <div className="container">
         <h4 className="header-info">Информационные ресурсы:</h4>
         {user && user.role === "admin" ? (
-          <Tabs defaultActiveKey="Applicants" id="uncontrolled-tab-example">
-            <Tab eventKey="Applicants" title="Абитуриенты">
+          <Tabs defaultActiveKey="hack" id="uncontrolled-tab">
+            <Tab eventKey="applicants" title="Абитуриенты">
               <Fragment>
                 <Applicant />
               </Fragment>
             </Tab>
-            <Tab eventKey="News" title="Добавить новость">
+            <Tab eventKey="news" title="Добавить новость">
               <NewsForm />
+            </Tab>
+            <Tab eventKey="hack" title="ККРИТ Хакатоны">
+              <Admin />
             </Tab>
           </Tabs>
         ) :  user && user.role === "student" ? (
-          <Tabs defaultActiveKey="Employers" id="uncontrolled-tab-example">
-            <Tab eventKey="FAQ" title="Часто задаваемые вопросы">
+          <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+            <Tab eventKey="faq" title="Часто задаваемые вопросы">
               <Fragment>
                 <FAQ />
               </Fragment>
             </Tab>
-            <Tab eventKey="Profile" title="Анкета Студента ККРИТ">
+            <Tab eventKey="profile" title="Анкета Студента ККРИТ">
               <Fragment>
                 <UserProfile />
               </Fragment>
             </Tab>
-            <Tab eventKey="Employers" title="Список работодателей">
+            <Tab eventKey="employers" title="Список работодателей">
               <Fragment>
                 <ListEmployers />
               </Fragment>
             </Tab>
+            <Tab eventKey="hack" title="ККРИТ Хакатон">
+              <Fragment>
+                <Hack />
+              </Fragment>
+            </Tab>
           </Tabs>
         ) : (
-          <Tabs defaultActiveKey="Students" id="uncontrolled-tab-example">
-            <Tab eventKey="FAQ" title="Часто задаваемые вопросы">
+          <Tabs defaultActiveKey="students" id="uncontrolled-tab-example">
+            <Tab eventKey="faq" title="Часто задаваемые вопросы">
               <Fragment>
                 <FAQ />
               </Fragment>
             </Tab>
-            <Tab eventKey="Profile" title="Анкета работодателя">
+            <Tab eventKey="profile" title="Анкета работодателя">
               <Fragment>
                 <EmpProfile />
               </Fragment>
             </Tab>
-            <Tab eventKey="Students" title="Профили студентов">
+            <Tab eventKey="students" title="Профили студентов">
               <Fragment>
                 <ListStudents />
               </Fragment>

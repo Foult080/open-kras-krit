@@ -71,15 +71,16 @@ const Landing = ({ getLastNews, news: { posts, loading } }) => {
           <div className="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
             <div className="card cards len-card">
               <h4 className="card-header bg-success text-white">
-                Абитуриент ККРИТ
+                ККРИТ Хакатон
               </h4>
               <div className="card-body">
                 <p className="card-text">
-                  Получить профессию - доступно, легко, интересно. В данном
-                  разделе вы найдете информацию для абитуриентов, полезные
-                  ссылки и тест на профпригодность.
+                  Конкурс профессионального мастерства с возможностью начала
+                  крупного стартапа. Собери свою команду и получи доступ к
+                  кейсовым заданиям. Учавствуй и займи место среди лидеров.
                 </p>
-                <Link to="/applicant" className="btn btn-success">
+                <br />
+                <Link to="/hack" className="btn btn-success">
                   Подробнее
                 </Link>
               </div>
@@ -114,6 +115,7 @@ const Landing = ({ getLastNews, news: { posts, loading } }) => {
                   множество направлений. Выбирай компетенцию, решай задачи,
                   готовься к чемпионату и побеждай вместе с нами.
                 </p>
+                <br />
                 <Link to="/wsr" className="btn btn-dark">
                   Подробнее
                 </Link>

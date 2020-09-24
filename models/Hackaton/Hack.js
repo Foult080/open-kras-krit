@@ -1,23 +1,27 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const HackSchema = new mongoose.Schema({
-    name: {
+  name: {
+    type: String,
+    required: true,
+  },
+  cases: [
+    {
+      name: {
         type: String,
-        required: true
+        required: true,
+      },
+      description: {
+        type: String,
+      },
     },
-    cases: [{
-        name: {
-            type: String,
-            required: true
-        },
-        description: {
-            type: String
-        }
-    }],
-    date: {
-        type: Date,
-        default: Date.now
-    }   
+  ],
+  status: {
+    type: String,
+    default: "ongoing",
+  },
+  date: {
+    type: Date
+  },
 });
 
-
-module.exports = Hack = mongoose.model('hack', HackSchema);
+module.exports = Hack = mongoose.model("hack", HackSchema);

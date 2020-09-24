@@ -7,6 +7,7 @@ import contactForm from "./contactForm";
 import news from "./news";
 import profiles from "./profiles";
 import employers from "./employers";
+import hack from "./hack";
 
 export default combineReducers({
   auth,
@@ -16,5 +17,6 @@ export default combineReducers({
   contactForm,
   news,
   profiles,
-  employers
+  employers,
+  hack,
 });
