@@ -11,7 +11,7 @@ import ListEmployers from "../Employers/ListEmployers";
 import EmpProfile from "../Employers/EmpProfile";
 import ListStudents from "../Employers/ListStudents";
 import Hack from "../Hakaton/Hack";
-import Admin from "../Hakaton/Admin";
+import AdminHacks from "../Hakaton/AdminHacks";
 
 const Dashboard = ({ auth: { isAuth, loading, user } }) => {
   return loading && user === null ? (
@@ -41,7 +41,7 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
               <NewsForm />
             </Tab>
             <Tab eventKey="hack" title="ККРИТ Хакатоны">
-              <Admin />
+              <AdminHacks />
             </Tab>
           </Tabs>
         ) :  user && user.role === "student" ? (

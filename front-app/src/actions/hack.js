@@ -2,7 +2,7 @@ import axios from "axios";
 import { GET_HACKATONS, HACK_ERROR } from "./types";
 //import { setAlert } from "./alert";
 
-export const getHack = () => async (dispatch) => {
+export const getHackatons = () => async (dispatch) => {
   try {
       const res = await axios.get("/api/hack/all");
       dispatch({
