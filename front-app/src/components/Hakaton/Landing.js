@@ -10,7 +10,6 @@ import team from "../../img/Team.svg";
 import prize from "../../img/prize.svg";
 
 const Landing = ({ auth: { isAuth, loading } }) => {
-  console.log(isAuth, loading);
   return (
     <Fragment>
       <Carousel style={styles.carousel}>
@@ -76,13 +75,13 @@ const Landing = ({ auth: { isAuth, loading } }) => {
 
 const styles = {
   carousel: {
-    margin: "0 2rem 0 2rem",
+    margin: "0 4rem 0 4rem",
   },
   img: {
-    margin: "1rem 2rem 1rem 2rem",
+    margin: "1rem 4rem 1rem 4rem",
   },
   button: {
-    width: "50%",
+    width: "auto",
     height: "auto",
     "font-size": "1.5rem",
     "margin-bottom": "2rem"

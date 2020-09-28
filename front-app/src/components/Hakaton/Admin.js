@@ -2,18 +2,18 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../Layout/spinner";
-import { getHack } from "../../actions/hack";
+import { getHackatons } from "../../actions/hack";
 
-const Admin = ({ getHack, hack: { hackatons, loading } }) => {
+const Admin = ({ getHackatons, hack: { hackatons, loading } }) => {
   useEffect(() => {
-    getHack();
-  }, [getHack]);
+    getHackatons();
+  }, [getHackatons]);
   console.log(hackatons);
   return loading || hackatons == null ? (
     <Spinner />
   ) : (
     <Fragment>
-      <div className="container col-lg-12 col-md-8 col-sm-8">
+      <div className="container col-lg-12 col-md-12 col-sm-12">
         <h4 className="news-title">Список хакатонов:</h4>
         <hr />
       </div>
@@ -22,7 +22,7 @@ const Admin = ({ getHack, hack: { hackatons, loading } }) => {
 };
 
 Admin.propTypes = {
-  getHack: PropTypes.func.isRequired,
+  getHackatons: PropTypes.func.isRequired,
   hack: PropTypes.object.isRequired,
 };
 
@@ -30,4 +30,4 @@ const mapStateToProps = (state) => ({
   hack: state.hack,
 });
 
-export default connect(mapStateToProps, { getHack })(Admin);
+export default connect(mapStateToProps, { getHackatons })(Admin);

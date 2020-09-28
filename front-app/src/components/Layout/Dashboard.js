@@ -41,7 +41,10 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
               <NewsForm />
             </Tab>
             <Tab eventKey="hack" title="ККРИТ Хакатоны">
-              <Admin />
+
+            </Tab>
+            <Tab eventKey="hack_stud" title="ККРИТ Хакатоны СТУД">
+              <Hack />
             </Tab>
           </Tabs>
         ) :  user && user.role === "student" ? (

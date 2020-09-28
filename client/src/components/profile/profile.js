@@ -15,8 +15,6 @@ const Profile = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  console.log(user, profile);
-
   return loading && user === null ? (
     <Spinner />
   ) : (

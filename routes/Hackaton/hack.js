@@ -24,56 +24,68 @@ router.post(
       return res.status(401).json({ msg: "Нет доступа" });
     }
     try {
-        //get data from req
-        const { name, cases, status } = req.body;
-        const hack = new Hack({ name });
-        //add cases for hackaton
-        cases.forEach(item => {
-            hack.cases.unshift(item);
-        });
+      //get data from req
+      const { name, cases, status } = req.body;
+      const hack = new Hack({ name });
+      //add cases for hackaton
+      cases.forEach((item) => {
+        hack.cases.unshift(item);
+      });
 
-        //save data
-        await hack.save();
-        //response to client
-        res.json(hack);
+      //save data
+      await hack.save();
+      //response to client
+      res.json(hack);
     } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ msg: "Ошибка сервера"})
+      console.error(err.message);
+      res.status(500).json({ msg: "Ошибка сервера" });
     }
   }
 );
 
-//@route GET api/hack
-//@desc get hackatons
+//@route GET api/hack/all
+//@desc get all hack for admin hackatons
 router.get("/all", auth, async (req, res) => {
-    try {
-        const hacks = await Hack.find();
-        res.send(hacks);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ msg: "Ошибка сервера" })
-    }
-})
+  try {
+    const hacks = await Hack.find();
+    res.send(hacks);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Ошибка сервера" });
+  }
+});
+
+//@route GET hack api/hack
+//@desc get hack for student
+router.get("/", auth, async (req, res) => {
+  try {
+    const hack = await Hack.findOne({ status: "ready" });
+    res.send(hack);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Ошибка сервера" });
+  }
+});
 
 //@route PUT api/hack/:id
 //@desc close hackaton
 router.put("/:id", auth, async (req, res) => {
-    //check role
-    if (req.user.role !== "admin") {
-        return res.status(401).json({ msg: "Нет доступа" });
-      }
-    try {
-        //get hackaton by id
-        let hack = await Hack.findById(req.params.id);
-        //change status
-        hack.status = "close";
-        hack.save();
-        //response to user
-        res.json(hack);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ msg: "Ошибка сервера" });        
-    }
-})
+  //check role
+  if (req.user.role !== "admin") {
+    return res.status(401).json({ msg: "Нет доступа" });
+  }
+  try {
+    //get hackaton by id
+    let hack = await Hack.findById(req.params.id);
+    //change status
+    hack.status = "close";
+    hack.save();
+    //response to user
+    res.json(hack);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Ошибка сервера" });
+  }
+});
 
 module.exports = router;

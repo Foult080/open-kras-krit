@@ -22,15 +22,18 @@ router.post(
     const teamFields = { name, capt: req.user.id, link };
     const hackaton = {};
     if (hack && case_id) {
-      obj = await Hack.findById(hack);
-      hackaton.hack = obj;
-      hackaton.teamCase = obj.cases.find((item) => item.id === case_id);
+      getHack = await Hack.findById(hack);
+      hackaton.hack = {
+        name: getHack.name,
+        status: getHack.status,
+        date: getHack.date
+      };
+      hackaton.teamCase = getHack.cases.find((item) => item.id === case_id);
       teamFields.hackaton = hackaton;
     }
     if (link) {
       teamFields.hackaton.link = link;
     }
-    console.log(teamFields);
 
     try {
       //check team exists
@@ -70,7 +73,7 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
     const { email } = req.body;
-    const user = await User.findOne({ email: email });
+    const user = await User.findOne({ email: email }).select('-password -avatar -role -date');
     if (!user) {
       return res.status(400).json({
         msg: "Пользователь не зарегистрирован",
@@ -84,7 +87,12 @@ router.put(
           .json({ msg: "Пользователь уже зарегистрирован в команде" });
       } else {
         const teams = await Teams.findOne({ capt: req.user.id });
-        teams.team.unshift(user);
+        let newUser = {
+          user: user,
+          name: user.name,
+          email: user.email
+        }
+        teams.team.unshift(newUser);
         await teams.save();
         res.json(teams);
       }
@@ -100,7 +108,7 @@ router.put(
 //@desc Get my team
 router.get("/me", auth, async (req, res) => {
   try {
-    let team = await Teams.findOne({ capt: req.user.id });
+    let team = await Teams.findOne({ capt: req.user.id }).populate("hackaton");
     if (!team) {
       let team = await Teams.findOne({ team: { _id: req.user.id } });
       if (team) res.json(team);
