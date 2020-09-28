@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "./spinner";
 import { Tabs, Tab } from "react-bootstrap";
-import Applicant from "../Applicant/Applicant";
 import NewsForm from "../News/NewsForm";
 import UserProfile from "../Employers/UserProfile";
 import FAQ from "./FAQ";
@@ -32,11 +31,6 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
         <h4 className="header-info">Информационные ресурсы:</h4>
         {user && user.role === "admin" ? (
           <Tabs defaultActiveKey="hack" id="uncontrolled-tab">
-            <Tab eventKey="applicants" title="Абитуриенты">
-              <Fragment>
-                <Applicant />
-              </Fragment>
-            </Tab>
             <Tab eventKey="news" title="Добавить новость">
               <NewsForm />
             </Tab>

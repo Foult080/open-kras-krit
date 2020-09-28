@@ -43,8 +43,8 @@ router.post(
   }
 );
 
-//@route GET api/hack
-//@desc get hackatons
+//@route GET api/hack/all
+//@desc get all hackatons
 router.get("/all", auth, async (req, res) => {
     try {
         const hacks = await Hack.find();
@@ -55,8 +55,21 @@ router.get("/all", auth, async (req, res) => {
     }
 })
 
+//@route GET api/hack
+//@desc get ongoing hack
+router.get("/", auth, async (req, res) => {
+  try {
+    const hack = await Hack.find({ status: "ongoing" });
+    res.send(hack);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Ошибка сервера"})
+  }
+})
+
+
 //@route PUT api/hack/:id
-//@desc close hackaton
+//@desc change status hackaton
 router.put("/:id", auth, async (req, res) => {
     //check role
     if (req.user.role !== "admin") {
@@ -65,8 +78,9 @@ router.put("/:id", auth, async (req, res) => {
     try {
         //get hackaton by id
         let hack = await Hack.findById(req.params.id);
+        const status = req.body;
         //change status
-        hack.status = "close";
+        hack.status = status;
         hack.save();
         //response to user
         res.json(hack);
