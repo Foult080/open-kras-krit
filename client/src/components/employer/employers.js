@@ -10,8 +10,6 @@ const Employers = ({ getEmployers, employers }) => {
     getEmployers();
   }, [getEmployers]);
 
-  console.log(employers);
-
   return employers.loading ? (
     <Spinner />
   ) : (

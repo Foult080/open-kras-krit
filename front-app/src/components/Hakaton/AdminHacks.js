@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../Layout/spinner";
 import { getHackatons } from "../../actions/hack";
-import HackItem from "./HackItem";
 
 const Admin = ({ getHackatons, hack: { hackatons, loading } }) => {
   useEffect(() => {
@@ -14,7 +13,7 @@ const Admin = ({ getHackatons, hack: { hackatons, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className="container col-lg-12 col-md-8 col-sm-8">
+      <div className="container col-lg-12 col-md-12 col-sm-12">
         <h4 className="news-title">Список хакатонов:</h4>
         <hr />
         <div className="hackatons">

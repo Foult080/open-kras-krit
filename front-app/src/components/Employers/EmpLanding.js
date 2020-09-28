@@ -9,7 +9,6 @@ import emp3 from "../../img/emp3.svg";
 
 
 const EmpLanding = ({ auth: { isAuth, loading } }) => {
-  console.log(isAuth, loading);
   return (
     <Fragment>
       <div className="emp1" style={styles.img}>
@@ -60,10 +59,10 @@ const EmpLanding = ({ auth: { isAuth, loading } }) => {
 
 const styles = {
   img: {
-    margin: "0rem 2rem 0rem 2rem",
+    margin: "0rem 4rem 0rem 4rem",
   },
   button: {
-    width: "50%",
+    width: "auto",
     height: "auto",
     "font-size": "1.5rem",
     "margin-bottom": "2rem"

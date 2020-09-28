@@ -6,8 +6,7 @@ const TeamsSchema = new mongoose.Schema({
   },
   hackaton: [{
     hack: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "hack"
+      type: Object
     },
     teamCase: {
       type: Object
@@ -25,6 +24,12 @@ const TeamsSchema = new mongoose.Schema({
       user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
+      },
+      name: {
+        type: String
+      },
+      email: {
+        type: String
       },
       status: {
         type: String,
