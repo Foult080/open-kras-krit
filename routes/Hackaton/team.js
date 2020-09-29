@@ -21,7 +21,7 @@ router.post(
     const { name, hack, case_id, link } = req.body;
     const capt = await User.findById(req.user.id);
     let team = {
-      user: capt,
+      user: capt._id,
       name: capt.name,
       email: capt.email,
       status: "captain",
@@ -75,21 +75,25 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
     const { email } = req.body;
-    const user = await User.findOne({ email: email }).select(
-      "-password -avatar -role -date"
-    );
+    const user = await User.findOne({ email: email});
     if (!user) {
-      return res.status(400).json({
-        msg: "Пользователь не зарегистрирован",
-      });
+      res.status(400).json({msg: "Пользователь не зарегистрирован"});
     }
     try {
-      let team1 = await Teams.findOne({ capt: req.user.id });
-      let team2 = await Teams.find({ team: { _id: "5f73014f305a044630c520a2" } });
-      console.log(user);
-      console.log(team1);
-      console.log(team2);
-      res.json("hello");
+      let team = await Teams.findOne({ team: { $elemMatch: { user: user._id} } });
+      if (team) {
+        res.status(400).json({msg: "Пользователь уже зарегистрирован в команде"});
+      } else {
+        const capt = await Teams.findOne({ capt: req.user.id });
+        let newUser = {
+          user: user._id,
+          name: user.name,
+          email: user.email,
+        };
+        capt.team.unshift(newUser);
+        //await teams.save();
+        res.json(capt);
+      }
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Ошибка сервера");
