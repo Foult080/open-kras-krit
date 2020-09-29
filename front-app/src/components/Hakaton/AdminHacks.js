@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../Layout/spinner";
 import { getHackatons } from "../../actions/hack";
+import HackItem from "./HackItem";
 
 const Admin = ({ getHackatons, hack: { hackatons, loading } }) => {
   useEffect(() => {

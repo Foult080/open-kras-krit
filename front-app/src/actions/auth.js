@@ -8,7 +8,6 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
-  CLEAR_APPLICANT,
   CLEAR_CONTACT,
   CLEAR_PROFILE,
   CLEAR_EMPLOYER
@@ -92,7 +91,6 @@ export const login = ({ email, password }) => async (dispatch) => {
 //logout
 export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT });
-  dispatch({ type: CLEAR_APPLICANT });
   dispatch({ type: CLEAR_CONTACT });
   dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: CLEAR_EMPLOYER });

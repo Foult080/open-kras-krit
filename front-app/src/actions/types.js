@@ -10,15 +10,6 @@ export const AUTH_ERROR = "AUTH_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
-//applicant
-export const GET_APPLICANTS = "GET_APPLICANTS";
-export const APPLICANTS_ERROR = "APPLICANTS_ERROR";
-export const CLEAR_APPLICANT = "CLEAR_APPLICANT"; 
-export const SEND_APPLICANT = "SEND_APPLICANT";
-export const SEND_ERROR = "SEND_ERROR";
-//tests
-export const GET_TEST = "GET_TEST";
-export const TEST_ERR = "TEST_ERR";
 //contact from
 export const GET_CONTACT = "GET_CONTACT";
 export const SEND_CONTACT = "SEND_CONTACT";

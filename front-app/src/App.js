@@ -22,9 +22,6 @@ import Privacy from "./components/Layout/Privacy";
 //auth
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
-//applicants
-import Test from "./components/Applicant/Test"
-import AppLanding from "./components/Applicant/AppLanding";
 //employers
 import EmpLanding from "./components/Employers/EmpLanding";
 import EditProfileForm from "./components/Employers/EditProfileForm";
@@ -83,8 +80,6 @@ const App = () => {
               <PrivateRoute exact path="/employer/edit-profile" component={EditEmpProfile} />
               <PrivateRoute exact path="/employer/add-vacancy" component={AddVacancy} />
               <Route exact path="/wsr" component={WsrLanding} />
-              <Route exact path="/applicant" component={AppLanding} />
-              <Route exact path="/applicant/test" component={Test} /> 
               <Route exact path="/contact-form" component={ContactForm} />
               <Route exact path="/news" component={News} />
               <Route exact path="/news/:id" component={NewsEl} />

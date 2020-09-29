@@ -35,7 +35,7 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
               <NewsForm />
             </Tab>
             <Tab eventKey="hack" title="ККРИТ Хакатоны">
-
+              <AdminHacks />
             </Tab>
             <Tab eventKey="hack_stud" title="ККРИТ Хакатоны СТУД">
               <Hack />
