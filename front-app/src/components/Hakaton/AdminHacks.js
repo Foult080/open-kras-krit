@@ -9,7 +9,7 @@ const Admin = ({ getHackatons, hack: { hackatons, loading } }) => {
   useEffect(() => {
     getHackatons();
   }, [getHackatons]);
-  console.log(hackatons);
+  
   return loading || hackatons == null ? (
     <Spinner />
   ) : (

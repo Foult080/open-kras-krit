@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Moment from "react-moment";
+import "moment/locale/ru";
 
 const showHack = ({ hack: { date, name, cases } }) => {
   return (
@@ -9,7 +10,7 @@ const showHack = ({ hack: { date, name, cases } }) => {
       <div>
         <div className="card news-card">
           <h5 className="card-header">
-            <Moment format="YYYY/MM/DD">{date}</Moment>
+          <Moment locale="ru" format='ll'>{date}</Moment>
           </h5>
           <div className="card-body">
             <h5 className="card-title">{name}</h5>

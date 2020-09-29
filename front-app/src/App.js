@@ -37,6 +37,7 @@ import News from "./components/News/News";
 import NewsEl from "./components/News/NewEl";
 //hack
 import Hack from "./components/Hakaton/Landing";
+import EditTeam from "./components/Hakaton/EditTeam";
 
 
 import PrivateRoute from "./components/privateRoute";
@@ -69,6 +70,7 @@ const App = () => {
               <Route exact path="/register" component={Register} />
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/hack" component={Hack} />
+              <PrivateRoute exact path="/hack/create-team" component={EditTeam} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <Route exact path="/employers" component={EmpLanding} />
               <PrivateRoute exact path="/profile/create-profile" component={EditProfileForm} />
