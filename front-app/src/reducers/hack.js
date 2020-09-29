@@ -5,6 +5,7 @@ import {
   HACK_ERROR,
   UPDATE_TEAM,
   GET_TEAM,
+  DELETE_TEAM,
 } from "../actions/types";
 
 const initialState = {
@@ -32,6 +33,12 @@ export default function (state = initialState, actions) {
       };
     case GET_TEAM:
     case UPDATE_TEAM:
+      return {
+        ...state,
+        team: payload,
+        loading: false,
+      };
+    case DELETE_TEAM:
       return {
         ...state,
         team: payload,

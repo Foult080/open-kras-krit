@@ -11,6 +11,9 @@ const TeamsSchema = new mongoose.Schema({
     teamCase: {
       type: Object,
     },
+    date: {
+      type: Date,
+    },
     link: {
       type: String,
       default: "не прикреплена",

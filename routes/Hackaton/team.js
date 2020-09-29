@@ -30,6 +30,7 @@ router.post(
     const hackaton = {};
     if (hack && case_id) {
       getHack = await Hack.findById(hack);
+      hackaton.date = getHack.date;
       hackaton.name = getHack.name;
       hackaton.teamCase = getHack.cases.find((item) => item.id === case_id);
       teamFields.hackaton = hackaton;
@@ -91,7 +92,7 @@ router.put(
           email: user.email,
         };
         capt.team.unshift(newUser);
-        //await teams.save();
+        await capt.save();
         res.json(capt);
       }
     } catch (err) {
@@ -107,7 +108,7 @@ router.get("/me", auth, async (req, res) => {
   try {
     let team = await Teams.findOne({ capt: req.user.id });
     if (!team) {
-      let team = await Teams.findOne({ team: { _id: req.user.id } });
+      let team = await Teams.findOne({ team: { $elemMatch: { user: req.user.id} } });
       if (team) res.json(team);
       else return res.status(400).json({ msg: "Команда отсутсвует" });
     }
@@ -120,7 +121,7 @@ router.get("/me", auth, async (req, res) => {
 
 //@route DELETE api/hack/team
 //@desc Delete team
-router.delete("/", auth, async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   try {
     const team = await Teams.findOne({ capt: req.user.id });
     await team.remove();
@@ -131,11 +132,11 @@ router.delete("/", auth, async (req, res) => {
   }
 });
 
-//@route DELETE api/hack/team
+//@route DELETE api/hack/team/team-mate/id
 //@desc delete teammate
-router.delete("/:id", auth, async (req, res) => {
+router.delete("/team-mate/:id", auth, async (req, res) => {
   try {
-    let team = await Teams.findOne({ team: { _id: req.params.id } });
+    let team = await Teams.findOne({ capt: req.user.id });
     const index = team.team.map((item) => item.id).indexOf(req.params.id);
     team.team.splice(index, 1);
     await team.save();
@@ -146,25 +147,19 @@ router.delete("/:id", auth, async (req, res) => {
   }
 });
 
+//@route DELETE api/hack/team/del-from-team/id
+//@desc delete me from team
+router.delete("/del-from-team/:id", auth, async (req, res) => {
+  try {
+    let team = await Teams.findOne({ team: { $elemMatch: { user: req.user.id} } });
+    const index = team.team.map((item) => item.id).indexOf(req.user.id);
+    team.team.splice(index, 1);
+    await team.save();
+    res.json(team);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Ошибка сервера" });
+  }
+})
+
 module.exports = router;
-
-/*
-
-
- if (userTeam) {
-        return res
-          .status(400)
-          .json({ msg: "Пользователь уже зарегистрирован в команде" });
-      } else {
-        const teams = await Teams.findOne({ capt: req.user.id });
-        let newUser = {
-          user: user,
-          name: user.name,
-          email: user.email,
-        };
-        teams.team.unshift(newUser);
-        //await teams.save();
-        res.json(teams);
-
-
-*/

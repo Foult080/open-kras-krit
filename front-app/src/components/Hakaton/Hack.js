@@ -16,6 +16,9 @@ const Hack = ({ getHack, hack: { hack, loading } }) => {
   ) : (
     <Fragment>
       <div className="container col-lg-12 col-md-12 col-sm-12">
+        <div className="team">
+          <Team />
+        </div>
         <div className="hack-el">
           {hack === null ? (
             <h4 className="news-title">
@@ -24,9 +27,6 @@ const Hack = ({ getHack, hack: { hack, loading } }) => {
           ) : (
             <ShowHack hack={hack} />
           )}
-        </div>
-        <div className="team">
-            <Team />
         </div>
       </div>
       <div className="someDiv" />

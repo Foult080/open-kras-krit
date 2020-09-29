@@ -39,3 +39,4 @@ export const CLEAR_HACK = "CLEAR_HACK";
 export const HACK_ERROR = "HACK_ERROR";
 export const UPDATE_TEAM = "UPDATE_HACK";
 export const GET_TEAM = "GET_TEAM";
+export const DELETE_TEAM = "DELETE_TEAM";
