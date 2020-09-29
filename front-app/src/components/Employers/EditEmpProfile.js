@@ -71,7 +71,7 @@ const EditEmpProfile = ({
             <small className="form-text">*Название организации</small>
           </div>
 
-          <div className="form-group">
+          <div className="forn-group">
             <input
               type="text"
               className="form-control"
@@ -86,7 +86,7 @@ const EditEmpProfile = ({
             </small>
           </div>
 
-          <div className="form-group">
+          <div className="forn-group">
             <input
               type="email"
               className="form-control"

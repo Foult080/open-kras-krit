@@ -7,6 +7,7 @@ import emp1 from "../../img/emp1.svg";
 import emp2 from "../../img/emp2.svg";
 import emp3 from "../../img/emp3.svg";
 
+
 const EmpLanding = ({ auth: { isAuth, loading } }) => {
   return (
     <Fragment>
@@ -63,8 +64,8 @@ const styles = {
   button: {
     width: "auto",
     height: "auto",
-    fontSize: "1.5rem",
-    marginBottom: "2rem"
+    "font-size": "1.5rem",
+    "margin-bottom": "2rem"
   },
 };
 

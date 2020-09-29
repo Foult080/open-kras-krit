@@ -4,19 +4,17 @@ const TeamsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  hackaton: 
-    {
-      name: {
-        type: String
-      },
-      teamCase: {
-        type: Object,
-      },
-      link: {
-        type: String,
-        default: "не прикреплена"
-      },
+  hackaton: [{
+    hack: {
+      type: Object
     },
+    teamCase: {
+      type: Object
+    },
+    link: {
+      type: String
+    }
+  }],
   capt: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
@@ -28,10 +26,10 @@ const TeamsSchema = new mongoose.Schema({
         ref: "user",
       },
       name: {
-        type: String,
+        type: String
       },
       email: {
-        type: String,
+        type: String
       },
       status: {
         type: String,

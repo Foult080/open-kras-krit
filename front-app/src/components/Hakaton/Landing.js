@@ -83,8 +83,8 @@ const styles = {
   button: {
     width: "auto",
     height: "auto",
-    fontSize: "1.5rem",
-    marginBottom: "2rem"
+    "font-size": "1.5rem",
+    "margin-bottom": "2rem"
   },
 };
 
