@@ -6,9 +6,9 @@ import {
   GET_HACK,
   GET_TEAM,
   UPDATE_TEAM,
-  DELETE_TEAM
+  ERROR_TEAM,
+  CLEAR_TEAM,
 } from "./types";
-//import { setAlert } from "./alert";
 
 export const getHackatons = () => async (dispatch) => {
   try {
@@ -34,7 +34,7 @@ export const getTeam = () => async (dispatch) => {
     });
   } catch (err) {
     dispatch({
-      type: HACK_ERROR,
+      type: ERROR_TEAM,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
@@ -56,6 +56,7 @@ export const getHack = () => async (dispatch) => {
 };
 
 export const addTeamMate = (email) => async (dispatch) => {
+  console.log(email);
   const config = {
     headers: {
       "Content-type": "application/json",
@@ -75,7 +76,7 @@ export const addTeamMate = (email) => async (dispatch) => {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
     dispatch({
-      type: HACK_ERROR,
+      type: ERROR_TEAM,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
@@ -86,8 +87,8 @@ export const deleteTeamMate = (id) => async (dispatch) => {
     const res = await axios.delete(`/api/hack/team/team-mate/${id}`);
     dispatch({
       type: UPDATE_TEAM,
-      payload: res.data
-    })
+      payload: res.data,
+    });
     dispatch(setAlert("Запись удалена", "success"));
   } catch (err) {
     const errors = err.response.data.errors;
@@ -95,7 +96,7 @@ export const deleteTeamMate = (id) => async (dispatch) => {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
     dispatch({
-      type: HACK_ERROR,
+      type: ERROR_TEAM,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
@@ -105,9 +106,9 @@ export const deleteTeam = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(`/api/hack/team/${id}`);
     dispatch({
-      type: DELETE_TEAM,
-      payload: res.data
-    })
+      type: CLEAR_TEAM,
+      payload: res.data,
+    });
     dispatch(setAlert("Запись удалена", "success"));
   } catch (err) {
     const errors = err.response.data.errors;
@@ -115,7 +116,7 @@ export const deleteTeam = (id) => async (dispatch) => {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
     dispatch({
-      type: HACK_ERROR,
+      type: ERROR_TEAM,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
@@ -125,9 +126,9 @@ export const deleteFromTeam = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(`/api/hack/team/del-from-team/${id}`);
     dispatch({
-      type: DELETE_TEAM,
-      payload: res.data
-    })
+      type: CLEAR_TEAM,
+      payload: res.data,
+    });
     dispatch(setAlert("Запись удалена", "success"));
   } catch (err) {
     const errors = err.response.data.errors;
@@ -135,8 +136,8 @@ export const deleteFromTeam = (id) => async (dispatch) => {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
     dispatch({
-      type: HACK_ERROR,
+      type: ERROR_TEAM,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
-}
+};

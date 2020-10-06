@@ -10,7 +10,8 @@ import {
   LOGOUT,
   CLEAR_CONTACT,
   CLEAR_PROFILE,
-  CLEAR_EMPLOYER
+  CLEAR_EMPLOYER,
+  CLEAR_TEAM,
 } from "./types";
 
 import setAuthToken from "../utils/setAuthToken";
@@ -94,4 +95,5 @@ export const logout = () => (dispatch) => {
   dispatch({ type: CLEAR_CONTACT });
   dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: CLEAR_EMPLOYER });
+  dispatch({ type: CLEAR_TEAM });
 };

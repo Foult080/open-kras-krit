@@ -1,14 +1,13 @@
 import {
-  GET_HACK,
-  GET_HACKATONS,
-  CLEAR_HACK,
-  HACK_ERROR,
+  UPDATE_TEAM,
+  GET_TEAM,
+  ERROR_TEAM,
+  CLEAR_TEAM,
 } from "../actions/types";
 
 const initialState = {
-  hackatons: [],
-  hack: null,
-  team: null,
+  myTeam: null,
+  teams: [],
   loading: true,
   error: {},
 };
@@ -16,24 +15,24 @@ const initialState = {
 export default function (state = initialState, actions) {
   const { type, payload } = actions;
   switch (type) {
-    case GET_HACK:
+    case GET_TEAM:
       return {
         ...state,
-        hack: payload,
+        myTeam: payload,
         loading: false,
       };
-    case GET_HACKATONS:
+    case UPDATE_TEAM:
       return {
         ...state,
-        hackatons: payload,
+        myTeam: payload,
         loading: false,
       };
-    case CLEAR_HACK:
+    case CLEAR_TEAM:
       return {
         ...state,
-        hack: null,
+        team: null,
       };
-    case HACK_ERROR:
+    case ERROR_TEAM:
       return {
         ...state,
         error: payload,

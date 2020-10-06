@@ -6,6 +6,7 @@ import news from "./news";
 import profiles from "./profiles";
 import employers from "./employers";
 import hack from "./hack";
+import team from "./team";
 
 export default combineReducers({
   auth,
@@ -15,4 +16,5 @@ export default combineReducers({
   profiles,
   employers,
   hack,
+  team
 });

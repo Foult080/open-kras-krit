@@ -12,291 +12,298 @@ import {
   deleteTeam,
   deleteFromTeam,
 } from "../../actions/hack";
-import { Card, Button, Table, Modal } from "react-bootstrap";
+import { Button, Modal, Card, Table } from "react-bootstrap";
 
 const Team = ({
   getTeam,
   addTeamMate,
   deleteTeamMate,
-  deleteTeam,
   deleteFromTeam,
-  teamObj,
-  hack,
+  deleteTeam,
+  team: { myTeam, loading },
   auth: { user },
 }) => {
-  const initialState = {
-    _id: "",
-    name: "",
-    capt: "",
-    date: null,
-    hackaton: null,
-    team: null,
-  };
-  const [teamData, setTeamData] = useState(initialState);
   useEffect(() => {
-    
-    if (!hack.loading && teamObj) getTeam();setTeamData(teamObj);
-  }, [getTeam, teamObj, hack]);
-  console.log(hack);
-  console.log(teamObj);
-  const { _id, name, capt, date, hackaton, team } = teamData;
+    getTeam();
+  }, [getTeam]);
 
-  const [teamMate, setTeamMate] = useState("");
-  const OnChange = (e) => setTeamMate(e.target.value);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [email, setEmail] = useState("");
 
-  const OnSubmit = (e) => {
-    e.preventDefault();
-    addTeamMate(teamMate);
-    setTeamMate("");
-    setShow(false);
+  const add_teammate = () => {
+    console.log(email);
+    addTeamMate(email);
+    handleClose();
   };
 
-  const delUser = (e) => {
+  const del_teammate = (e) => {
     deleteTeamMate(e.target.value);
   };
 
-  const delTeam = (e) => {
+  const del_team = (e) => {
     deleteTeam(e.target.value);
-    setTeamData(initialState);
   };
 
-  const delFromTeam = (e) => {
+  const leave_team = (e) => {
     deleteFromTeam(e.target.value);
-    setTeamData(initialState);
   };
 
-  return hack.loading && teamObj === null ? (
+  const OnChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  return loading ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <div className="modal-window">
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Добавить участника</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>Введите E-mail участника:</p>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="E-mail участника"
-              name="email"
-              required
-              value={teamMate}
-              onChange={OnChange}
-            />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="danger" onClick={handleClose}>
-              Отмена
-            </Button>
-            <Button type="submit" variant="success" onClick={OnSubmit}>
-              Добавить
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
-
-      <div className="team">
-        {team === null ? (
-          <div>
-            <div className="container profile-user">
-              <h4>У вас пока еще нет команды!</h4>
-              <Link to="/hack/create-team" className="btn btn-danger">
-                Создать команду
-                <i className="far fa-address-card profile-icon"></i>
-              </Link>
-            </div>
+    <div className="content">
+      {myTeam === null ? (
+        <Fragment>
+          <div className="container profile-user">
+            <h4>У вас пока еще нет команды!</h4>
+            <Link to="/hack/create-team" className="btn btn-danger">
+              Создать профиль
+              <i className="far fa-address-card profile-icon"></i>
+            </Link>
           </div>
-        ) : (
-          <div>
-            {capt === user._id ? (
-              <div className="capt-part">
-                <h4 className="news-title">Вы капитан</h4>
-                <hr />
-                <Card className="text-center">
-                  <Card.Header style={styles.title}>
-                    Ваша команда: {name}
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Title>Хакатон</Card.Title>
-                    <hr />
-                    <div className="hackInfo">
-                      {hackaton ? (
-                        <Fragment>
-                          <Card.Text>Наименование: {hackaton.name}</Card.Text>
-                          <Card.Text>
-                            Дата проведения:{" "}
-                            <Moment locale="ru" format="ll"></Moment>
-                          </Card.Text>
-                          <Card.Text>
-                            Название Кейса: {hackaton.teamCase.name}
-                          </Card.Text>
-                          <Card.Text>
-                            Описание задачи: {hackaton.teamCase.description}
-                          </Card.Text>
-                          <Card.Text>
-                            Ссылка для решения кейса: {hackaton.link}
-                          </Card.Text>
-                        </Fragment>
-                      ) : (
-                        <Card.Text>Вы еще не выбрали Кейс в Хакатоне</Card.Text>
-                      )}
-                    </div>
-                    <div className="teamInfo">
-                      <Card.Title className="my-4">
-                        Участники команды:
-                      </Card.Title>
-                      <hr />
-                      <Table striped bordered hover>
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Имя</th>
-                            <th>E-mail</th>
-                            <th>Статус</th>
-                            <th>Действия</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {team.map((el) => (
-                            <tr key={el._id}>
-                              <td>{team.indexOf(el) + 1}</td>
-                              <td>{el.name}</td>
-                              <td>{el.email}</td>
-                              <td>{el.status}</td>
-                              <td>
-                                <Button
-                                  style={styles.button}
-                                  variant="danger"
-                                  value={el._id}
-                                  onClick={delUser}
-                                >
-                                  <i className="fas fa-trash-alt" />
-                                </Button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </Table>
-                      <Button variant="success" onClick={handleShow}>
-                        Добавить Участника
-                        <i className="fas fa-user profile-icon"></i>
-                      </Button>
-                    </div>
-
-                    <div className="text-center mx-auto my-4">
-                      <Button variant="primary">
-                        Редактировать
-                        <i className="far fa-address-card profile-icon"></i>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <div className="team">
+            {myTeam.capt === user._id ? (
+              <Fragment>
+                <div className="modal-window">
+                  <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Добавить участника</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <p>Введите E-mail участника:</p>
+                      <input
+                        type="email"
+                        className="form-control"
+                        placeholder="E-mail участника"
+                        name="email"
+                        required
+                        value={email}
+                        onChange={OnChange}
+                      />
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="danger" onClick={handleClose}>
+                        Отмена
                       </Button>
                       <Button
-                        variant="danger"
-                        className="ml-1"
-                        value={_id}
-                        onClick={delTeam}
+                        type="submit"
+                        variant="success"
+                        onClick={add_teammate}
                       >
-                        Удалить Команду
-                        <i className="fas fa-trash-alt profile-icon"></i>
+                        Добавить
                       </Button>
-                    </div>
-                  </Card.Body>
-                  <Card.Footer className="text-muted">
-                    <p>
-                      Дата создания:{" "}
-                      <Moment locale="ru" format="ll">
-                        {date}
-                      </Moment>
-                    </p>
-                  </Card.Footer>
-                </Card>
-              </div>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
+
+                <div className="capt-part">
+                  <h4 className="news-title">Вы капитан</h4>
+                  <hr />
+                  <Card className="text-center">
+                    <Card.Header style={styles.title}>
+                      Ваша команда: {myTeam.name}
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Title>Хакатон</Card.Title>
+                      <hr />
+                      <div className="hackInfo">
+                        {myTeam.hackaton ? (
+                          <Fragment>
+                            <Card.Text>
+                              Наименование: {myTeam.hackaton.name}
+                            </Card.Text>
+                            <Card.Text>
+                              Дата проведения:{" "}
+                              <Moment locale="ru" format="ll"></Moment>
+                            </Card.Text>
+                            <Card.Text>
+                              Название Кейса: {myTeam.hackaton.teamCase.name}
+                            </Card.Text>
+                            <Card.Text>
+                              Описание задачи:{" "}
+                              {myTeam.hackaton.teamCase.description}
+                            </Card.Text>
+                            <Card.Text>
+                              Ссылка для решения кейса: {myTeam.hackaton.link}
+                            </Card.Text>
+                          </Fragment>
+                        ) : (
+                          <Card.Text>
+                            Вы еще не выбрали Кейс в Хакатоне
+                          </Card.Text>
+                        )}
+                      </div>
+                      <div className="teamInfo">
+                        <Card.Title className="my-4">
+                          Участники команды:
+                        </Card.Title>
+                        <hr />
+                        <Table striped bordered hover>
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Имя</th>
+                              <th>E-mail</th>
+                              <th>Статус</th>
+                              <th>Действия</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {myTeam.team.map((el) => (
+                              <tr key={el._id}>
+                                <td>{myTeam.team.indexOf(el) + 1}</td>
+                                <td>{el.name}</td>
+                                <td>{el.email}</td>
+                                <td>{el.status}</td>
+                                <td>
+                                  <Button
+                                    style={styles.button}
+                                    variant="danger"
+                                    value={el._id}
+                                    onClick={del_teammate}
+                                  >
+                                    <i className="fas fa-trash-alt" />
+                                  </Button>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </Table>
+                        <Button variant="success" onClick={handleShow}>
+                          Добавить Участника
+                          <i className="fas fa-user profile-icon"></i>
+                        </Button>
+                        <div className="text-center mx-auto my-4">
+                          <Link to="/exit-team">
+                            <Button variant="primary">
+                              Редактировать
+                              <i className="far fa-address-card profile-icon"></i>
+                            </Button>
+                          </Link>
+                          <Button
+                            variant="danger"
+                            className="ml-1"
+                            value={myTeam._id}
+                            onClick={del_team}
+                          >
+                            Удалить Команду
+                            <i className="fas fa-trash-alt profile-icon"></i>
+                          </Button>
+                        </div>
+                      </div>
+                    </Card.Body>
+                    <Card.Footer className="text-muted">
+                      <p>
+                        Дата создания:{" "}
+                        <Moment locale="ru" format="ll">
+                          {myTeam.date}
+                        </Moment>
+                      </p>
+                    </Card.Footer>
+                  </Card>
+                </div>
+              </Fragment>
             ) : (
-              <div className="teamMate-part">
-                <h4 className="news-title">Вы участник</h4>
-                <hr />
-                <Card className="text-center">
-                  <Card.Header style={styles.title}>
-                    Ваша команда: {name}
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Title>Хакатон</Card.Title>
-                    <hr />
-                    <div className="hackInfo">
-                      {hackaton ? (
-                        <Fragment>
-                          <Card.Text>Наименование: {hackaton.name}</Card.Text>
-                          <Card.Text>
-                            Название Кейса: {hackaton.teamCase.name}
-                          </Card.Text>
-                          <Card.Text>
-                            Описание задачи: {hackaton.teamCase.description}
-                          </Card.Text>
-                          <Card.Text>
-                            Ссылка для решения кейса: {hackaton.link}
-                          </Card.Text>
-                        </Fragment>
-                      ) : (
-                        <Card.Text>Вы еще не выбрали Кейс в Хакатоне</Card.Text>
-                      )}
-                    </div>
-                    <div className="teamInfo">
-                      <Card.Title className="my-4">
-                        Участники команды:
-                      </Card.Title>
+              <Fragment>
+                <div className="teamMate-part">
+                  <h4 className="news-title">Вы участник</h4>
+                  <hr />
+                  <Card className="text-center">
+                    <Card.Header style={styles.title}>
+                      Ваша команда: {myTeam.name}
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Title>Хакатон</Card.Title>
                       <hr />
-                      <Table striped bordered hover>
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Имя</th>
-                            <th>E-mail</th>
-                            <th>Статус</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {team.map((el) => (
-                            <tr key={el._id}>
-                              <td>{team.indexOf(el) + 1}</td>
-                              <td>{el.name}</td>
-                              <td>{el.email}</td>
-                              <td>{el.status}</td>
+                      <div className="hackInfo">
+                        {myTeam.hackaton ? (
+                          <Fragment>
+                            <Card.Text>
+                              Наименование: {myTeam.hackaton.name}
+                            </Card.Text>
+                            <Card.Text>
+                              Дата проведения:{" "}
+                              <Moment locale="ru" format="ll"></Moment>
+                            </Card.Text>
+                            <Card.Text>
+                              Название Кейса: {myTeam.hackaton.teamCase.name}
+                            </Card.Text>
+                            <Card.Text>
+                              Описание задачи:{" "}
+                              {myTeam.hackaton.teamCase.description}
+                            </Card.Text>
+                            <Card.Text>
+                              Ссылка для решения кейса: {myTeam.hackaton.link}
+                            </Card.Text>
+                          </Fragment>
+                        ) : (
+                          <Card.Text>
+                            Вы еще не выбрали Кейс в Хакатоне
+                          </Card.Text>
+                        )}
+                      </div>
+                      <div className="teamInfo">
+                        <Card.Title className="my-4">
+                          Участники команды:
+                        </Card.Title>
+                        <hr />
+                        <Table striped bordered hover>
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Имя</th>
+                              <th>E-mail</th>
+                              <th>Статус</th>
                             </tr>
-                          ))}
-                        </tbody>
-                      </Table>
-                    </div>
+                          </thead>
+                          <tbody>
+                            {myTeam.team.map((el) => (
+                              <tr key={el._id}>
+                                <td>{myTeam.team.indexOf(el) + 1}</td>
+                                <td>{el.name}</td>
+                                <td>{el.email}</td>
+                                <td>{el.status}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </Table>
 
-                    <div className="text-center mx-auto my-4">
-                      <Button
-                        variant="danger"
-                        className="ml-1"
-                        value={_id}
-                        onClick={delFromTeam}
-                      >
-                        Покинуть команду
-                        <i className="fas fa-trash-alt"></i>
-                      </Button>
-                    </div>
-                  </Card.Body>
-                  <Card.Footer className="text-muted">
-                    <p>
-                      Дата создания:{" "}
-                      <Moment locale="ru" format="ll">
-                        {date}
-                      </Moment>
-                    </p>
-                  </Card.Footer>
-                </Card>
-              </div>
+                        <Button
+                          variant="danger"
+                          className="ml-1"
+                          value={myTeam._id}
+                          onClick={leave_team}
+                        >
+                          Покинуть команду
+                          <i className="fas fa-trash-alt profile-icon"></i>
+                        </Button>
+                      </div>
+                    </Card.Body>
+                    <Card.Footer className="text-muted">
+                      <p>
+                        Дата создания:{" "}
+                        <Moment locale="ru" format="ll">
+                          {myTeam.date}
+                        </Moment>
+                      </p>
+                    </Card.Footer>
+                  </Card>
+                </div>
+              </Fragment>
             )}
           </div>
-        )}
-      </div>
-    </Fragment>
+        </Fragment>
+      )}
+    </div>
   );
 };
 
@@ -315,15 +322,14 @@ Team.propTypes = {
   getTeam: PropTypes.func.isRequired,
   addTeamMate: PropTypes.func.isRequired,
   deleteTeamMate: PropTypes.func.isRequired,
-  deleteTeam: PropTypes.func.isRequired,
   deleteFromTeam: PropTypes.func.isRequired,
-  hack: PropTypes.object.isRequired,
+  deleteTeam: PropTypes.func.isRequired,
+  team: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  hack: state.hack,
-  teamObj: state.hack.team,
+  team: state.team,
   auth: state.auth,
 });
 
@@ -331,6 +337,6 @@ export default connect(mapStateToProps, {
   getTeam,
   addTeamMate,
   deleteTeamMate,
-  deleteTeam,
   deleteFromTeam,
+  deleteTeam,
 })(Team);

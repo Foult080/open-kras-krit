@@ -37,6 +37,9 @@ export const GET_HACKATONS = "GET_HACKATONS";
 export const GET_HACK = "GET_HACK";
 export const CLEAR_HACK = "CLEAR_HACK";
 export const HACK_ERROR = "HACK_ERROR";
+//hack teams
 export const UPDATE_TEAM = "UPDATE_HACK";
 export const GET_TEAM = "GET_TEAM";
-export const DELETE_TEAM = "DELETE_TEAM";
+export const DELETE_TEAM = "DELETE_TEAM"; 
+export const ERROR_TEAM = "ERROR_TEAM";
+export const CLEAR_TEAM = "CLEAR_TEAM"
