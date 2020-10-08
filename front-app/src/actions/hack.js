@@ -56,7 +56,6 @@ export const getHack = () => async (dispatch) => {
 };
 
 export const addTeamMate = (email) => async (dispatch) => {
-  console.log(email);
   const config = {
     headers: {
       "Content-type": "application/json",
@@ -130,6 +129,39 @@ export const deleteFromTeam = (id) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(setAlert("Запись удалена", "success"));
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+    dispatch({
+      type: ERROR_TEAM,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+export const createUpdateTeam = (formData, hack, history, edit = false) => async (
+  dispatch
+) => {
+  const config = {
+    headers: {
+      "Content-type": "application/json",
+    },
+  };
+  try {
+    const body = JSON.stringify(formData);
+    console.log(hack);
+    console.log(body);
+    /*
+    const res = await axios.post("/api/hack/team", body, config);
+    dispatch({
+      type: UPDATE_TEAM,
+      payload: res.data,
+    });
+    dispatch(setAlert(edit ? "Анкета команды обновлена": "Анкета команды создана", "success"));
+    history.push("/dashboard");
+    */
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

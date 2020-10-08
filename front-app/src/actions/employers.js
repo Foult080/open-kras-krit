@@ -76,8 +76,6 @@ export const createUpdateEmp = (formData, history, edit = false) => async (
     },
   };
 
-
-
   try {
     const body = JSON.stringify(formData);
     const res = await axios.post("/api/employers", body, config);
