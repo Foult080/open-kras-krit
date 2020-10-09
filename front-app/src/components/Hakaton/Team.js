@@ -33,7 +33,6 @@ const Team = ({
   const [email, setEmail] = useState("");
 
   const add_teammate = () => {
-    console.log(email);
     addTeamMate(email);
     handleClose();
   };
@@ -63,7 +62,7 @@ const Team = ({
           <div className="container profile-user">
             <h4>У вас пока еще нет команды!</h4>
             <Link to="/hack/create-team" className="btn btn-danger">
-              Создать профиль
+              Заполнить анкету команды
               <i className="far fa-address-card profile-icon"></i>
             </Link>
           </div>
@@ -106,11 +105,9 @@ const Team = ({
                 </div>
 
                 <div className="capt-part">
-                  <h4 className="news-title">Вы капитан</h4>
-                  <hr />
                   <Card className="text-center">
                     <Card.Header style={styles.title}>
-                      Ваша команда: {myTeam.name}
+                      Вы капитан команды: {myTeam.name}
                     </Card.Header>
                     <Card.Body>
                       <Card.Title>Хакатон</Card.Title>
@@ -183,7 +180,7 @@ const Team = ({
                           <i className="fas fa-user profile-icon"></i>
                         </Button>
                         <div className="text-center mx-auto my-4">
-                          <Link to="/exit-team">
+                          <Link to="/hack/edit-team">
                             <Button variant="primary">
                               Редактировать
                               <i className="far fa-address-card profile-icon"></i>
@@ -215,11 +212,9 @@ const Team = ({
             ) : (
               <Fragment>
                 <div className="teamMate-part">
-                  <h4 className="news-title">Вы участник</h4>
-                  <hr />
                   <Card className="text-center">
                     <Card.Header style={styles.title}>
-                      Ваша команда: {myTeam.name}
+                      Вы участник команды: {myTeam.name}
                     </Card.Header>
                     <Card.Body>
                       <Card.Title>Хакатон</Card.Title>

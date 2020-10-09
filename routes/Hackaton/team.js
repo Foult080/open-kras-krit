@@ -44,12 +44,14 @@ router.post(
         capt: req.user.id,
       });
       //if exist update
-      if (team) {
+      if (team) { 
+        teamFields.team = team.team;
         team = await Teams.findOneAndUpdate(
           { capt: req.user.id },
           { $set: teamFields },
           { new: true, upsert: true }
         );
+        
         return res.json(team);
       }
       //create new team
@@ -91,7 +93,7 @@ router.put(
           name: user.name,
           email: user.email,
         };
-        capt.team.unshift(newUser);
+        capt.team.push(newUser);
         await capt.save();
         res.json(capt);
       }

@@ -30,7 +30,7 @@ export default function (state = initialState, actions) {
     case CLEAR_TEAM:
       return {
         ...state,
-        team: null,
+        myTeam: null,
       };
     case ERROR_TEAM:
       return {

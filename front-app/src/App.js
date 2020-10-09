@@ -71,6 +71,7 @@ const App = () => {
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/hack" component={Hack} />
               <PrivateRoute exact path="/hack/create-team" component={EditTeam} />
+              <PrivateRoute exact path="/hack/edit-team" component={EditTeam} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <Route exact path="/employers" component={EmpLanding} />
               <PrivateRoute exact path="/profile/create-profile" component={EditProfileForm} />

@@ -25,8 +25,15 @@ const EditTeam = ({
     if (!hack) getHack();
     if (!myTeam) getTeam();
     if (!loading && myTeam) {
-      setFormData(myTeam);
+      setFormData({
+        hack: hack._id,
+        case_id: myTeam.hackaton.teamCase._id,
+        link: myTeam.hackaton.link,
+        name: myTeam.name,
+      });
     }
+    if (hack && !myTeam)
+      setFormData({ case_id: hack.cases[0]._id, hack: hack._id });
   }, [getTeam, myTeam, loading, getHack, hack]);
 
   const { name, link, case_id } = formData;
@@ -37,11 +44,10 @@ const EditTeam = ({
 
   const OnSubmit = (e) => {
     e.preventDefault();
-    createUpdateTeam(formData, hack, history, myTeam ? true : false);
+    createUpdateTeam(formData, history, myTeam ? true : false);
   };
 
-
-  return loading && hack ? (
+  return loading && hack === null ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -52,7 +58,6 @@ const EditTeam = ({
           <h4 style={styles.title}>Редактировать информацию о команде</h4>
         )}
         <hr />
-        { setFormData({...formData, hack: hack._id})}
         <div className="col-lg-8 col-md-8 col-sm-8 mx-auto ml-auto">
           <p>Заполните поля анкеты для участия в Хакатоне: "{hack.name}"</p>
           <form className="form" onSubmit={OnSubmit}>
@@ -76,7 +81,7 @@ const EditTeam = ({
                 className="form-control"
                 id="exampleFormControlSelect1"
                 name="case_id"
-                defaultValue={{ label: "Выберете задание", key: "001"}}
+                value={case_id}
                 onChange={OnChange}
               >
                 {hack.cases.map((el) => (

@@ -141,7 +141,7 @@ export const deleteFromTeam = (id) => async (dispatch) => {
   }
 };
 
-export const createUpdateTeam = (formData, hack, history, edit = false) => async (
+export const createUpdateTeam = (formData, history, edit = false) => async (
   dispatch
 ) => {
   const config = {
@@ -151,9 +151,6 @@ export const createUpdateTeam = (formData, hack, history, edit = false) => async
   };
   try {
     const body = JSON.stringify(formData);
-    console.log(hack);
-    console.log(body);
-    /*
     const res = await axios.post("/api/hack/team", body, config);
     dispatch({
       type: UPDATE_TEAM,
@@ -161,7 +158,7 @@ export const createUpdateTeam = (formData, hack, history, edit = false) => async
     });
     dispatch(setAlert(edit ? "Анкета команды обновлена": "Анкета команды создана", "success"));
     history.push("/dashboard");
-    */
+
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
