@@ -14,8 +14,8 @@ const Admin = ({ getHackatons, hack: { hackatons, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className="container col-lg-12 col-md-12 col-sm-12">
-        <h4 className="news-title">Список хакатонов:</h4>
+      <div className="container">
+        <h4 className="title">Список хакатонов:</h4>
         <hr />
         <div className="hackatons">
           {hackatons.map((el) => (

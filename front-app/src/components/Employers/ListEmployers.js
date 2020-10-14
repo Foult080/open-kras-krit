@@ -12,35 +12,32 @@ const ListEmployers = ({ getEmployers, employers: { employers, loading } }) => {
 
   return loading || employers === null ? (
     <Spinner />
-  ) : employers.length === 0  ? (
+  ) : employers.length === 0 ? (
     <Fragment>
-      <h4 className="profile-user my-4">Работодателей пока нет</h4>
+      <h2 className="title">Работодателей пока нет</h2>
     </Fragment>
   ) : (
     <Fragment>
       <div className="container">
-        <div className="col-lg-10 col-md-8 col-sm-6 mx-auto ml-auto">
-          <h4 className="profile-user">Список работодателей:</h4>
-          <hr />
-          {employers.map((employer) => (
-            <div className="card mb-2" key={employer._id}>
-              <h5 className="card-header">{employer.name}</h5>
-              <div className="card-body">
-                <h5 className="">
-                  Количество активных вакансий: {employer.vacancy.length}
-                </h5>
-                <p className="card-text text-justify">{employer.description}</p>
-                <Link
-                  className="btn btn-primary"
-                  to={`/employers/${employer._id}`}
-                >
-                  Подробнее
-                </Link>
-              </div>
+        <h2 className="title">Список работодателей:</h2>
+        <hr />
+        {employers.map((employer) => (
+          <div className="card mb-2" key={employer._id}>
+            <h5 className="card-header">{employer.name}</h5>
+            <div className="card-body">
+              <h5 className="">
+                Количество активных вакансий: {employer.vacancy.length}
+              </h5>
+              <p className="card-text text-justify">{employer.description}</p>
+              <Link
+                className="btn btn-primary"
+                to={`/employers/${employer._id}`}
+              >
+                Подробнее
+              </Link>
             </div>
-          ))}
-        </div>
-        <div className="someDiv" />
+          </div>
+        ))}
       </div>
     </Fragment>
   );

@@ -23,9 +23,9 @@ const EmpProfile = ({
     <Spinner />
   ) : employer === null ? (
     <Fragment>
-      <div className="container profile-user">
-        <h4>У вас еще не заполнен профиль!</h4>
-        <Link to="/employer/create-profile" className="btn btn-primary">
+      <div className="container text-center">
+        <h4 className="title">У вас еще не заполнен профиль!</h4>
+        <Link to="/employer/create-profile" className="btn btn-danger btn-lg">
           Создать профиль
           <i className="far fa-address-card profile-icon"></i>
         </Link>
@@ -34,8 +34,8 @@ const EmpProfile = ({
   ) : (
     <Fragment>
       <div className="container">
-        <h4 className="profile-user">Анкета работодателя:</h4>
-        <div className="form-div col-lg-10 col-md-8 col-sm-6 mx-auto ml-auto">
+        <h4 className="title">Анкета работодателя:</h4>
+        <div className="col-lg-10 col-md-8 col-sm-6 mx-auto ml-auto">
           <hr />
           <form className="form">
             <p>
@@ -54,7 +54,7 @@ const EmpProfile = ({
               <strong>Описание: </strong>
               {employer.description}
             </p>
-            <div className="news-buttons">
+            <div className="text-center">
               <Link to="/employer/edit-profile" className="btn btn-primary">
                 Редактировать анкету
                 <i className="far fa-address-card profile-icon"></i>
@@ -63,7 +63,7 @@ const EmpProfile = ({
           </form>
 
           <div>
-            <h4 className="profile-user">Вакансии</h4>
+            <h4 className="title">Вакансии</h4>
             <hr />
             {employer.vacancy.map((item) => (
               <div className="card mb-2" key={item._id}>
@@ -77,7 +77,9 @@ const EmpProfile = ({
                       </span>
                     ))}
                   </p>
-                  <p className="card-text"><strong>Описание: </strong> {item.description}</p>
+                  <p className="card-text">
+                    <strong>Описание: </strong> {item.description}
+                  </p>
                   <button
                     className="btn btn-danger"
                     name={item._id}
@@ -88,15 +90,13 @@ const EmpProfile = ({
                 </div>
               </div>
             ))}
-            <div className="news-buttons mt-2">
+            <div className="text-center mt-2">
               <Link to="/employer/add-vacancy" className="btn btn-success">
-                Добавить вакансию
+                Добавить вакансию{" "}
                 <i className="fas fa-user-ninja profile-icon"></i>
               </Link>
             </div>
           </div>
-
-          <div className="someDiv" />
         </div>
       </div>
     </Fragment>

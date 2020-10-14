@@ -14,13 +14,13 @@ const ListStudents = ({ getProfiles, profiles: { profiles, loading } }) => {
     <Spinner />
   ) : profiles.length === 0 ? (
     <Fragment>
-      <h4 className="profile-user my-4">Студентов пока нет</h4>
+      <h4 className="title my-4">Студентов пока нет</h4>
     </Fragment>
   ) : (
     <Fragment>
       <div className="container">
         <div className="col-lg-10 col-md-8 col-sm-6 mx-auto ml-auto">
-          <h4 className="profile-user">Список профилей студентов:</h4>
+          <h4 className="title">Список профилей студентов:</h4>
           <hr />
           {profiles.map((profile) => (
             <div className="card mb-2" key={profile._id}>
@@ -50,7 +50,6 @@ const ListStudents = ({ getProfiles, profiles: { profiles, loading } }) => {
             </div>
           ))}
         </div>
-        <div className="someDiv" />
       </div>
     </Fragment>
   );

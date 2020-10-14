@@ -5,7 +5,7 @@ import "moment/locale/ru";
 const showHack = ({ hack: { date, name, cases } }) => {
   return (
     <Fragment>
-      <h4 className="news-title">Ближайший хакатон:</h4>
+      <h4 className="title">Ближайший хакатон:</h4>
       <hr />
       <div>
         <div className="card news-card">

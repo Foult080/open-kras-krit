@@ -16,14 +16,14 @@ const Profile = ({ match, getUserProfile, profiles: { loading, profile } }) => {
     <Fragment>
       <div className="header">
         <img
-          className="img-profile rounded-circle "
+          className="img-avatar rounded-circle "
           alt="avatar"
           src={profile.user.avatar}
         />
       </div>
 
       <div className="container col-lg-8 col-md-6 col-sm-6">
-        <h4 className="news-title">Анкета студента: {profile.user.name}</h4>
+        <h4 className="title">Анкета студента: {profile.user.name}</h4>
         <hr />
         <form className="form emp-form">
           <p>
@@ -59,10 +59,10 @@ const Profile = ({ match, getUserProfile, profiles: { loading, profile } }) => {
           </p>
         </form>
         {profile.experience.length === 0 ? (
-          <h4 className="news-title my-4">Опыт работы отсутсвует</h4>
+          <h4 className="title my-4">Опыт работы отсутсвует</h4>
         ) : (
           <Fragment>
-            <h4 className="news-title">Опыт</h4>
+            <h4 className="title">Опыт</h4>
             <hr />
             <form className="form emp-form">
               <div className="pr-4 pl-4">
@@ -83,7 +83,7 @@ const Profile = ({ match, getUserProfile, profiles: { loading, profile } }) => {
           </Fragment>
         )}
 
-        <div className="news-buttons">
+        <div className="text-center">
           <Link to="/dashboard" className="btn btn-primary mr-1">
             Назад к списку студентов
           </Link>

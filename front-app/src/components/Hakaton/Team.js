@@ -35,6 +35,7 @@ const Team = ({
   const add_teammate = () => {
     addTeamMate(email);
     handleClose();
+    setEmail("");
   };
 
   const del_teammate = (e) => {
@@ -56,10 +57,10 @@ const Team = ({
   return loading ? (
     <Spinner />
   ) : (
-    <div className="content">
+    <div className="container">
       {myTeam === null ? (
         <Fragment>
-          <div className="container profile-user">
+          <div className="title">
             <h4>У вас пока еще нет команды!</h4>
             <Link to="/hack/create-team" className="btn btn-danger">
               Заполнить анкету команды
@@ -110,7 +111,7 @@ const Team = ({
                       Вы капитан команды: {myTeam.name}
                     </Card.Header>
                     <Card.Body>
-                      <Card.Title>Хакатон</Card.Title>
+                      <Card.Title>Информация о событии</Card.Title>
                       <hr />
                       <div className="hackInfo">
                         {myTeam.hackaton ? (
@@ -176,13 +177,13 @@ const Team = ({
                           </tbody>
                         </Table>
                         <Button variant="success" onClick={handleShow}>
-                          Добавить Участника
+                          Добавить Участника{" "}
                           <i className="fas fa-user profile-icon"></i>
                         </Button>
                         <div className="text-center mx-auto my-4">
                           <Link to="/hack/edit-team">
                             <Button variant="primary">
-                              Редактировать
+                              Редактировать{" "}
                               <i className="far fa-address-card profile-icon"></i>
                             </Button>
                           </Link>
@@ -192,7 +193,7 @@ const Team = ({
                             value={myTeam._id}
                             onClick={del_team}
                           >
-                            Удалить Команду
+                            Удалить Команду{" "}
                             <i className="fas fa-trash-alt profile-icon"></i>
                           </Button>
                         </div>
@@ -217,7 +218,7 @@ const Team = ({
                       Вы участник команды: {myTeam.name}
                     </Card.Header>
                     <Card.Body>
-                      <Card.Title>Хакатон</Card.Title>
+                      <Card.Title>Информация о событии</Card.Title>
                       <hr />
                       <div className="hackInfo">
                         {myTeam.hackaton ? (
@@ -278,7 +279,7 @@ const Team = ({
                           value={myTeam._id}
                           onClick={leave_team}
                         >
-                          Покинуть команду
+                          Покинуть команду{" "}
                           <i className="fas fa-trash-alt profile-icon"></i>
                         </Button>
                       </div>

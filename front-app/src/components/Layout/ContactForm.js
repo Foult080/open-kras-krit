@@ -27,55 +27,54 @@ const ContactForm = ({ sendContact }) => {
 
   return (
     <Fragment>
-      <div className="container col-lg-4 col-md-4 col-sm-4">
-        <form
-          className="contact-form ml-auto mx-auto"
-          onSubmit={(e) => OnSubmit(e)}
-        >
-          <h1>Форма обратной связи:</h1>
+      <section className="text-center">
+        <div className="container" style={{ marginTop: "10%" }}>
+          <h1 className="title">Форма обратной связи:</h1>
           <hr />
-          <input
-            type="email"
-            id="inputEmail"
-            className="form-control"
-            placeholder="Email адрес"
-            autoFocus
-            required
-            name="email"
-            value={email}
-            onChange={(e) => OnChange(e)}
-          />
-          <input
-            type="text"
-            id="title-from"
-            className="form-control"
-            placeholder="Укажите заголовок"
-            name="title"
-            value={title}
-            onChange={(e) => OnChange(e)}
-          />
-          <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="4"
-            required
-            name="form"
-            placeholder="Укажите суть обращения"
-            value={form}
-            onChange={(e) => OnChange(e)}
-          />
-          <button className="btn btn-primary contact-butt" type="submit">
-            Отправить
-          </button>
-          <div>
-          <small className="my-2 form-text">
-            Нажимая на кнопку вы даёте согласие, на обработку персональных
-            данных и соглашаетесь с <a href="/privacy">политикой конфиденциальности</a>
-          </small>
-          </div>
-        </form>
-        <div className="someDiv" />
-      </div>
+          <form onSubmit={OnSubmit}>
+            <input
+              type="email"
+              id="inputEmail"
+              className="form-control"
+              placeholder="Email адрес"
+              autoFocus
+              required
+              name="email"
+              value={email}
+              onChange={OnChange}
+            />
+            <input
+              type="text"
+              id="title-from"
+              className="form-control my-1"
+              placeholder="Укажите заголовок"
+              name="title"
+              value={title}
+              onChange={OnChange}
+            />
+            <textarea
+              className="form-control my-1"
+              id="exampleFormControlTextarea1"
+              rows="4"
+              required
+              name="form"
+              placeholder="Укажите суть обращения"
+              value={form}
+              onChange={OnChange}
+            />
+            <button className="btn btn-primary" type="submit">
+              Отправить
+            </button>
+            <div>
+              <small className="my-2">
+                Нажимая на кнопку вы даёте согласие, на обработку персональных
+                данных и соглашаетесь с{" "}
+                <a href="/privacy">политикой конфиденциальности</a>
+              </small>
+            </div>
+          </form>
+        </div>
+      </section>
     </Fragment>
   );
 };

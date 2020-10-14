@@ -14,8 +14,11 @@ const Employer = ({ match, getEmployer, employers: { loading, employer } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className="container col-lg-8 col-md-6 col-sm-6">
-        <h4 className="news-title">Анкета работодателя</h4>
+      <div
+        style={{ marginTop: "2rem" }}
+        className="container col-lg-8 col-md-6 col-sm-6"
+      >
+        <h4 className="title">Анкета работодателя</h4>
         <hr />
         <form className="form emp-form">
           <p>
@@ -70,12 +73,11 @@ const Employer = ({ match, getEmployer, employers: { loading, employer } }) => {
           </div>
         )}
 
-        <div className="news-buttons">
+        <div className="text-center">
           <Link to="/dashboard" className="btn btn-primary mr-1">
             Назад к списку работодателей
           </Link>
         </div>
-        <div className="someDiv" />
       </div>
     </Fragment>
   );

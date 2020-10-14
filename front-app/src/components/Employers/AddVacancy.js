@@ -24,8 +24,10 @@ const AddVacancy = ({ addVacancy, history }) => {
 
   return (
     <Fragment>
-      <div className="edit-form col-lg-8 col-md-6 col-sm6 ml-auto mx-auto">
-        <p>Заполните поля вакансии</p>
+      <h4 className="title">Добавить вакансию</h4>
+      <hr />
+      <div className="col-lg-8 col-md-6 col-sm6 ml-auto mx-auto">
+        <p>Заполните поля вакансии:</p>
         <form className="form" onSubmit={onSubmit}>
           <div className="form-group">
             <input
@@ -69,7 +71,7 @@ const AddVacancy = ({ addVacancy, history }) => {
             />
             <small className="form-text">*Укажите описание вакансии</small>
           </div>
-          <div className="news-buttons">
+          <div className="text-center">
             <Link to="/dashboard" className="btn btn-danger mr-1">
               Назад в профиль
             </Link>

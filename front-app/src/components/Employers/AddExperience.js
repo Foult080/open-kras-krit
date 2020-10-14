@@ -24,12 +24,12 @@ const AddExperinece = ({ addExperience, history }) => {
 
   return (
     <Fragment>
-      <div className="container">
-        <h4 className="news-title">Добавить опыт</h4>
+      <div className="container" style={{marginTop: "2rem"}}>
+        <h4 className="title">Добавить опыт</h4>
         <hr />
 
-        <div className="edit-form col-lg-8 col-md-6 col-sm-6 mx-auto ml-auto">
-          <p>Заполните поля анкеты</p>
+        <div className="col-lg-8 col-md-6 col-sm-6 mx-auto ml-auto">
+          <p>Заполните поля анкеты:</p>
           <form className="form" onSubmit={onSubmit}>
             <div className="form-group">
               <input
@@ -76,7 +76,7 @@ const AddExperinece = ({ addExperience, history }) => {
                 *Опишите результат вашего участия.
               </small>
             </div>
-            <div className="news-buttons">
+            <div className="text-center">
               <Link to="/dashboard" className="btn btn-danger mr-1">
                 Назад в профиль
               </Link>

@@ -49,15 +49,15 @@ const EditEmpProfile = ({
     <Fragment>
       <div className="container">
         {employer === null ? (
-          <h4 className="news-title">Заполнить анкету</h4>
+          <h4 className="title">Заполнить анкету</h4>
         ) : (
-          <h4 className="news-title">Редактировать профиль</h4>
+          <h4 className="title">Редактировать профиль</h4>
         )}
       </div>
       <hr />
 
-      <div className="edit-form col-lg-8 col-md-6 col-sm-6 mx-auto ml-auto">
-        <p>Заполните поля анкеты</p>
+      <div className="col-lg-8 col-md-6 col-sm-6 mx-auto ml-auto">
+        <p>Заполните поля анкеты:</p>
         <form className="form" onSubmit={onSubmit}>
           <div className="form-group">
             <input
@@ -114,7 +114,7 @@ const EditEmpProfile = ({
               Расскажите немного о вашей организации
             </small>
           </div>
-          <div className="news-buttons">
+          <div className="text-center">
             <Link to="/dashboard" className="btn btn-danger mr-1">
               Назад в профиль
             </Link>

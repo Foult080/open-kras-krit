@@ -19,7 +19,7 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
     <Fragment>
       <div className="header">
         <img
-          className="img-profile rounded-circle "
+          className="rounded-circle img-avatar"
           alt="avatar"
           src={user && user.avatar}
         />
@@ -27,63 +27,65 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
       </div>
 
       {/* Container with accordion */}
-      <div className="container">
-        <h4 className="header-info">Информационные ресурсы:</h4>
-        {user && user.role === "admin" ? (
-          <Tabs defaultActiveKey="hack" id="uncontrolled-tab">
-            <Tab eventKey="news" title="Добавить новость">
-              <NewsForm />
-            </Tab>
-            <Tab eventKey="hack" title="ККРИТ Хакатоны">
-              <AdminHacks />
-            </Tab>
-            <Tab eventKey="hack_stud" title="ККРИТ Хакатоны СТУД">
-              <Hack />
-            </Tab>
-          </Tabs>
-        ) :  user && user.role === "student" ? (
-          <Tabs defaultActiveKey="faq" id="uncontrolled-tab-example">
-            <Tab eventKey="faq" title="Часто задаваемые вопросы">
-              <Fragment>
-                <FAQ />
-              </Fragment>
-            </Tab>
-            <Tab eventKey="profile" title="Анкета Студента ККРИТ">
-              <Fragment>
-                <UserProfile />
-              </Fragment>
-            </Tab>
-            <Tab eventKey="employers" title="Список работодателей">
-              <Fragment>
-                <ListEmployers />
-              </Fragment>
-            </Tab>
-            <Tab eventKey="hack" title="ККРИТ Хакатон">
-              <Fragment>
+      <section style={{ marginBottom: "2rem" }}>
+        <div className="container">
+          <h4 className="title">Информационные ресурсы:</h4>
+          {user && user.role === "admin" ? (
+            <Tabs defaultActiveKey="hack" id="uncontrolled-tab">
+              <Tab eventKey="news" title="Добавить новость">
+                <NewsForm />
+              </Tab>
+              <Tab eventKey="hack" title="ККРИТ Хакатоны">
+                <AdminHacks />
+              </Tab>
+              <Tab eventKey="hack_stud" title="ККРИТ Хакатоны СТУД">
                 <Hack />
-              </Fragment>
-            </Tab>
-          </Tabs>
-        ) : (
-          <Tabs defaultActiveKey="students" id="uncontrolled-tab-example">
-            <Tab eventKey="faq" title="Часто задаваемые вопросы">
-              <Fragment>
-                <FAQ />
-              </Fragment>
-            </Tab>
-            <Tab eventKey="profile" title="Анкета работодателя">
-              <Fragment>
-                <EmpProfile />
-              </Fragment>
-            </Tab>
-            <Tab eventKey="students" title="Профили студентов">
-              <Fragment>
-                <ListStudents />
-              </Fragment>
-            </Tab>
-          </Tabs>
-        )}
-      </div>
+              </Tab>
+            </Tabs>
+          ) : user && user.role === "student" ? (
+            <Tabs defaultActiveKey="faq" id="uncontrolled-tab-example">
+              <Tab eventKey="faq" title="Часто задаваемые вопросы">
+                <Fragment>
+                  <FAQ />
+                </Fragment>
+              </Tab>
+              <Tab eventKey="profile" title="Анкета Студента ККРИТ">
+                <Fragment>
+                  <UserProfile />
+                </Fragment>
+              </Tab>
+              <Tab eventKey="employers" title="Список работодателей">
+                <Fragment>
+                  <ListEmployers />
+                </Fragment>
+              </Tab>
+              <Tab eventKey="hack" title="ККРИТ Хакатон">
+                <Fragment>
+                  <Hack />
+                </Fragment>
+              </Tab>
+            </Tabs>
+          ) : (
+            <Tabs defaultActiveKey="students" id="uncontrolled-tab-example">
+              <Tab eventKey="faq" title="Часто задаваемые вопросы">
+                <Fragment>
+                  <FAQ />
+                </Fragment>
+              </Tab>
+              <Tab eventKey="profile" title="Анкета работодателя">
+                <Fragment>
+                  <EmpProfile />
+                </Fragment>
+              </Tab>
+              <Tab eventKey="students" title="Профили студентов">
+                <Fragment>
+                  <ListStudents />
+                </Fragment>
+              </Tab>
+            </Tabs>
+          )}
+        </div>
+      </section>
     </Fragment>
   );
 };
@@ -97,30 +99,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Dashboard);
-
-/*
-        <Accordion>
-          <Card>
-            <Card.Header className="dash-header">
-              <Accordion.Toggle
-                as={Button}
-                variant="dark"
-                eventKey="2"
-                className="dash-btn"
-              >
-                <i className="fas fa-globe-americas"></i> ККРИТ WSR
-              </Accordion.Toggle>
-            </Card.Header>
-            <Accordion.Collapse eventKey="2">
-              <Card.Body>Ссылки на ресурс для WSR</Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
-
-
-              <Tab eventKey="WSR" title="ККРИТ WSR">
-        <Fragment>
-          <h1>Hello from WSR</h1>
-        </Fragment>
-      </Tab>
-*/

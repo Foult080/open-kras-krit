@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Privacy = () => {
   return (
     <Fragment>
-      <div className="container col-lg-8 col-md-10 col-sm-10">
-        <h1 className="news-title">
+      <div className="container">
+        <h1 className="title">
           Политика в отношении обработки персональных данных
         </h1>
         <hr />
