@@ -45,10 +45,12 @@ const Landing = ({ getLastNews, news: { posts, loading } }) => {
               </h1>
               <h4>Твой путь к успеху</h4>
               <div class="d-lg-flex">
-                <Link>
+                <Link to="/register">
                   <Button size="lg" variant="outline-success">
                     Зарегистрироваться
                   </Button>
+                </Link>
+                <Link to="/signin">
                   <Button size="lg" className="ml-1" variant="primary">
                     Войти
                   </Button>
@@ -80,7 +82,9 @@ const Landing = ({ getLastNews, news: { posts, loading } }) => {
                     крупного стартапа. Собери свою команду и получи доступ к
                     кейсовым заданиям.
                   </Card.Text>
-                  <Button variant="primary">Подробнее</Button>
+                  <Link to="/hack">
+                    <Button variant="primary">Подробнее</Button>
+                  </Link>
                 </Card.Body>
               </Card>
             </div>
@@ -95,7 +99,9 @@ const Landing = ({ getLastNews, news: { posts, loading } }) => {
                     здесь. Подай резюме, изучай вакансии и требования
                     работодателей, учавствуй в мастер классах и встречах.
                   </Card.Text>
-                  <Button variant="success">Подробнее</Button>
+                  <Link to="/employers">
+                    <Button variant="success">Подробнее</Button>
+                  </Link>
                 </Card.Body>
               </Card>
             </div>

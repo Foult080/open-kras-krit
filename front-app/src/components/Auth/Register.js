@@ -15,10 +15,10 @@ const Register = ({ setAlert, register, isAuth }) => {
 
   const { name, email, password, password2, role } = formData;
 
-  const onChange = (e) =>
+  const OnChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const OnSubmit = (e) => {
     e.preventDefault();
     if (password !== password2) {
       setAlert("Пароли не совпадают", "danger");
@@ -33,70 +33,52 @@ const Register = ({ setAlert, register, isAuth }) => {
 
   return (
     <Fragment>
-      <div className="container col-lg-4 col-md-4 col-sm-4">
-        <div className="auth ml-auto mx-auto">
-          <form className="form-signin" onSubmit={(e) => onSubmit(e)}>
-            <h1 className="h3 mb-3 font-weight-normal">Регистрация</h1>
-            <hr />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Ваше имя"
-              name="name"
-              required
-              value={name}
-              onChange={(e) => onChange(e)}
-            />
+      <Fragment>
+        <div className="text-center" style={{ marginTop: "8%" }}>
+          <h1>Зарегистрироваться</h1>
+          <form style={styles.form} onSubmit={OnSubmit}>
             <input
               type="email"
               id="inputEmail"
               className="form-control"
               placeholder="Email адрес"
               required
+              autoFocus
               name="email"
               value={email}
-              onChange={(e) => onChange(e)}
+              onChange={OnChange}
             />
             <input
               type="password"
               id="inputPassword"
-              className="form-control"
-              placeholder="Укажите пароль"
+              className="form-control my-1"
+              placeholder="Пароль"
               required
-              minLength="8"
               name="password"
               value={password}
-              onChange={(e) => onChange(e)}
+              onChange={OnChange}
             />
             <input
               type="password"
               id="inputPassword2"
-              className="form-control"
+              className="form-control my-1"
               placeholder="Повторите пароль"
               required
               name="password2"
-              minLength="8"
               value={password2}
-              onChange={(e) => onChange(e)}
+              onChange={OnChange}
             />
             <select
-              className="form-control"
+              className="form-control my-1"
               id="exampleFormControlSelect1"
               name="role"
               value={role}
-              onChange={(e) => onChange(e)}
+              onChange={OnChange}
             >
               <option value="student">Студент</option>
               <option value="employer">Работодатель</option>
             </select>
-            <small className="form-text">
-              Этот сайт использует Gravatar для изображений профиля.
-            </small>
-
-            <button
-              className="ml-auto mt-2 btn btn-lg btn-primary"
-              type="submit"
-            >
+            <button className="btn btn-primary btn-block my-2" type="submit">
               Продолжить
             </button>
             <small className="form-text">
@@ -107,12 +89,25 @@ const Register = ({ setAlert, register, isAuth }) => {
             <p className="mb-3 mt-2 text-muted">
               Уже есть аккаунт? <Link to="/signin">Войдите</Link>
             </p>
-            <p className="mb-3 text-muted">&copy; 2020</p>
+            <p className="mt-4 mb-3 text-muted">&copy; Open-Kras-KRIT 2020</p>
           </form>
         </div>
-      </div>
+      </Fragment>
     </Fragment>
   );
+};
+
+const styles = {
+  form: {
+    width: "100%",
+    maxWidth: "330px",
+    position: "relative",
+    boxSizing: "border-box",
+    height: "auto",
+    padding: "10px",
+    fontSize: "16px",
+    margin: "0 auto"
+  },
 };
 
 Register.propTypes = {

@@ -6,18 +6,18 @@ const Footer = () => {
     <footer className="footer mt-auto py-4 bg-light text-white">
       <div style={styles.footer}>
         <p>
-          Open-Kras-KRIT &copy; Открытая площадка для студентов ККРИТ
+          Open-Kras-KRIT &copy; Открытая площадка для студентов ККРИТ{" "}
           <i className="icon-small fas fa-globe"></i>
         </p>
         <Link to="/privacy">
           <p>
-            Политика конфиденциальности
+            Политика конфиденциальности{" "}
             <i className="fas icon-small fa-user-secret"></i>
           </p>
         </Link>
         <Link to="/contact-form">
           <p>
-            Помогите нам стать лучше
+            Помогите нам стать лучше{" "}
             <i className="icon-small fas fa-envelope"></i>
           </p>
         </Link>
@@ -27,7 +27,7 @@ const Footer = () => {
           rel="noopener noreferrer"
         >
           <p>
-            Created by @foult080
+            Created by @foult080 {" "}
             <i className="icon-small fab fa-github-square"></i>
           </p>
         </a>

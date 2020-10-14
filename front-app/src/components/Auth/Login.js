@@ -7,15 +7,15 @@ import { Link, Redirect } from "react-router-dom";
 const Login = ({ login, isAuth }) => {
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const { email, password } = formData;
 
-  const onChange = e => {
+  const OnChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const onSubmit = async e => {
+  const OnSubmit = async (e) => {
     e.preventDefault();
     login({ email, password });
   };
@@ -27,44 +27,38 @@ const Login = ({ login, isAuth }) => {
 
   return (
     <Fragment>
-      <div className="container col-lg-4 col-md-4 col-sm-4">
-        <div className="auth ml-auto mx-auto">
-          <form className="form-signin" onSubmit={e => onSubmit(e)}>
-            <h1 className="h3 mb-3 font-weight-normal">Войти</h1>
-            <input
-              type="email"
-              id="inputEmail"
-              className="form-control"
-              placeholder="Email address"
-              required
-              autoFocus
-              name="email"
-              value={email}
-              onChange={e => onChange(e)}
-            />
-
-            <input
-              type="password"
-              id="inputPassword"
-              className="form-control"
-              placeholder="Password"
-              required
-              name="password"
-              value={password}
-              onChange={e => onChange(e)}
-            />
-            <button
-              className="ml-auto mx-auto ms-auto btn btn-lg btn-primary my-2"
-              type="submit"
-            >
-              Войти
-            </button>
-            <p className="mb-3 text-muted">
-              Нет аккаунта? <Link to="/register">Зарегистрируйтесь</Link>
-            </p>
-            <p className="mb-3 text-muted">&copy; 2020</p>
-          </form>
-        </div>
+      <div className="text-center" style={{marginTop: "10%"}}>
+        <form className="form-signin" onSubmit={OnSubmit}>
+          <h1 className="mb-3">Войти</h1>
+          <input
+            type="email"
+            id="inputEmail"
+            className="form-control"
+            placeholder="Email адрес"
+            required
+            autoFocus
+            name="email"
+            value={email}
+            onChange={OnChange}
+          />
+          <input
+            type="password"
+            id="inputPassword"
+            className="form-control"
+            placeholder="Пароль"
+            required
+            name="password"
+            value={password}
+            onChange={OnChange}
+          />
+          <button className="btn btn-lg btn-primary btn-block" type="submit">
+            Войти
+          </button>
+          <p className="mb-3 text-muted">
+            Нет аккаунта? <Link to="/register">Зарегистрируйтесь</Link>
+          </p>
+          <p className="mt-4 mb-3 text-muted">&copy; Open-Kras-KRIT 2020</p>
+        </form>
       </div>
     </Fragment>
   );
@@ -72,10 +66,10 @@ const Login = ({ login, isAuth }) => {
 
 Login.propTypes = {
   isAuth: PropTypes.bool,
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
 });
 
