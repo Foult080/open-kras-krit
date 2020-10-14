@@ -109,10 +109,11 @@ router.put(
 router.get("/me", auth, async (req, res) => {
   try {
     let team = await Teams.findOne({ capt: req.user.id });
+    res.contentType("application/json");
     if (!team) {
       let team = await Teams.findOne({ team: { $elemMatch: { user: req.user.id} } });
-      if (team) res.json(team);
-      else return res.status(400).json({ msg: "Команда отсутсвует" });
+      if (team)  res.send(team);
+      else return res.status(404).json({ msg: "Команда отсутсвует" });
     }
     res.json(team);
   } catch (err) {

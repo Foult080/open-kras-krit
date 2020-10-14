@@ -9,7 +9,6 @@ import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 
 //import components
-
 //layouts
 import NavBar from "./components/Layout/NavBar";
 import Footer from "./components/Layout/Footer";

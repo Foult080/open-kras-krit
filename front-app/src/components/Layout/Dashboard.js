@@ -30,7 +30,7 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
       <div className="container">
         <h4 className="header-info">Информационные ресурсы:</h4>
         {user && user.role === "admin" ? (
-          <Tabs defaultActiveKey="hack_stud" id="uncontrolled-tab">
+          <Tabs defaultActiveKey="hack" id="uncontrolled-tab">
             <Tab eventKey="news" title="Добавить новость">
               <NewsForm />
             </Tab>
@@ -42,7 +42,7 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
             </Tab>
           </Tabs>
         ) :  user && user.role === "student" ? (
-          <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+          <Tabs defaultActiveKey="faq" id="uncontrolled-tab-example">
             <Tab eventKey="faq" title="Часто задаваемые вопросы">
               <Fragment>
                 <FAQ />

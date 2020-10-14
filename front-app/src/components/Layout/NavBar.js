@@ -3,22 +3,19 @@ import { Navbar, Nav, Button } from "react-bootstrap";
 import { logout } from "../../actions/auth";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import logo from "../../img/logo.png";
+
 
 const NavBar = ({ auth: { isAuth, loading }, logout }) => {
   const authLinks = (
     <Nav className="ml-auto">
-      {/*
-      <Nav.Link className="menu" href="/about">
-        О проекте
-      </Nav.Link>
- */}
-      <Nav.Link href="/contact-form" className="nav-el">
+      <Nav.Link href="/contact-form" className="mr-sm-2">
         Обратная связь
       </Nav.Link>
-      <Button href="/dashboard" className="menu-button" variant="success">
+      <Button href="/dashboard" variant="success" className="mr-sm-2">
         <i className="fas fa-user-circle mr-1"></i>Личный кабинет
       </Button>
-      <Button onClick={logout} variant="danger">
+      <Button onClick={logout} variant="danger" className="mr-sm-2">
         <i className="fas fa-sign-out-alt mr-1" />
         Выйти
       </Button>
@@ -31,10 +28,10 @@ const NavBar = ({ auth: { isAuth, loading }, logout }) => {
         Обратная связь
       </Nav.Link>
       <div>
-        <Button href="/register" className="menu-button" variant="success">
+        <Button href="/register" variant="success" className="mr-sm-2">
           <i className="fas fa-user-circle mr-1"></i>Зарегистрироваться
         </Button>
-        <Button href="/signin" variant="primary">
+        <Button href="/signin" variant="primary" className="mr-sm-2">
           <i className="fas fa-sign-in-alt mr-1"></i> Войти
         </Button>
       </div>
@@ -42,13 +39,25 @@ const NavBar = ({ auth: { isAuth, loading }, logout }) => {
   );
   return (
     <Fragment>
-      <Navbar bg="light" expand="lg" className="Navbar">
-        <Navbar.Brand className="menu" href="/">
-          <i className="icon fas fa-laptop-code" id="icon"></i>
-          ККРИТ
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="light"
+        variant="light"
+        sticky="top"
+      >
+        <Navbar.Brand href="/">
+          <img
+            alt=""
+            src={logo}
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{" "}
+          Открытая площадка ККРИТ
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
           {!loading && <Fragment>{isAuth ? authLinks : guestLinks}</Fragment>}
         </Navbar.Collapse>
       </Navbar>
