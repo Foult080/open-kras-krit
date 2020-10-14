@@ -1,6 +1,6 @@
 {
   "name": "kras-krit",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "This is a open platform for KKRIT.There are many platform united in one big project.",
   "main": "index.js",
   "scripts": {
