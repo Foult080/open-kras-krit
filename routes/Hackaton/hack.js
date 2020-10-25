@@ -25,13 +25,12 @@ router.post(
     }
     try {
       //get data from req
-      const { name, cases, status } = req.body;
+      const { name, cases } = req.body;
       const hack = new Hack({ name });
       //add cases for hackaton
       cases.forEach((item) => {
         hack.cases.unshift(item);
       });
-
       //save data
       await hack.save();
       //response to client
@@ -55,6 +54,7 @@ router.get("/all", auth, async (req, res) => {
   }
 });
 
+/*
 //@route GET hack api/hack
 //@desc get hack for student
 router.get("/", auth, async (req, res) => {
@@ -66,19 +66,19 @@ router.get("/", auth, async (req, res) => {
     res.status(500).json({ msg: "Ошибка сервера" });
   }
 });
+*/
 
 //@route GET api/hack
 //@desc get ongoing hack
 router.get("/", auth, async (req, res) => {
   try {
-    const hack = await Hack.find({ status: "ongoing" });
+    const hack = await Hack.findOne({ status: "ongoing" });
     res.send(hack);
   } catch (err) {
     console.error(err.message);
-    res.status(500).json({ msg: "Ошибка сервера"})
+    res.status(500).json({ msg: "Ошибка сервера" });
   }
-})
-
+});
 
 //@route PUT api/hack/:id
 //@desc change status hackaton

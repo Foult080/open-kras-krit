@@ -25,6 +25,12 @@ export const getHackatons = () => async (dispatch) => {
   }
 };
 
+export const addHackaton = (name, cases) => async (dispatch) => {
+  const body = JSON.stringify({ name: name, cases });
+  console.log(body);
+  dispatch(setAlert("Хакатон добавлен", "success"));
+};
+
 export const getTeam = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/hack/team/me");
@@ -156,9 +162,13 @@ export const createUpdateTeam = (formData, history, edit = false) => async (
       type: UPDATE_TEAM,
       payload: res.data,
     });
-    dispatch(setAlert(edit ? "Анкета команды обновлена": "Анкета команды создана", "success"));
+    dispatch(
+      setAlert(
+        edit ? "Анкета команды обновлена" : "Анкета команды создана",
+        "success"
+      )
+    );
     history.push("/dashboard");
-
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

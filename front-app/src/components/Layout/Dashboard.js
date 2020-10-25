@@ -38,9 +38,6 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
               <Tab eventKey="hack" title="ККРИТ Хакатоны">
                 <AdminHacks />
               </Tab>
-              <Tab eventKey="hack_stud" title="ККРИТ Хакатоны СТУД">
-                <Hack />
-              </Tab>
             </Tabs>
           ) : user && user.role === "student" ? (
             <Tabs defaultActiveKey="faq" id="uncontrolled-tab-example">
