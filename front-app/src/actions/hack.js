@@ -8,6 +8,7 @@ import {
   UPDATE_TEAM,
   ERROR_TEAM,
   CLEAR_TEAM,
+  UPDATE_HACKS,
 } from "./types";
 
 export const getHackatons = () => async (dispatch) => {
@@ -25,10 +26,32 @@ export const getHackatons = () => async (dispatch) => {
   }
 };
 
+//add hack
 export const addHackaton = (name, cases) => async (dispatch) => {
-  const body = JSON.stringify({ name: name, cases });
-  console.log(body);
-  dispatch(setAlert("Хакатон добавлен", "success"));
+  const config = {
+    headers: {
+      "Content-type": "application/json",
+    },
+  };
+  try {
+    const body = JSON.stringify({ name: name, cases });
+    console.log(body);
+    const res = await axios.post("/api/hack", body, config);
+    dispatch({
+      type: UPDATE_HACKS,
+      payload: res.data,
+    });
+    dispatch(setAlert("Хакатон добавлен", "success"));
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+    dispatch({
+      type: ERROR_TEAM,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
 };
 
 export const getTeam = () => async (dispatch) => {

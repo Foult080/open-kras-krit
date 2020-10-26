@@ -20,7 +20,8 @@ const HackSchema = new mongoose.Schema({
     default: "ongoing",
   },
   date: {
-    type: Date
+    type: Date,
+    default: Date.now,
   },
 });
 

@@ -25,7 +25,6 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
         />
         <h3 className="header-text">{user && user.name}</h3>
       </div>
-
       {/* Container with accordion */}
       <section style={{ marginBottom: "2rem" }}>
         <div className="container">

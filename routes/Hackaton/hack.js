@@ -24,17 +24,24 @@ router.post(
       return res.status(401).json({ msg: "Нет доступа" });
     }
     try {
+      //get all records 
+      let haks = await Hack.find().sort({date: -1});
+      console.log(haks);
       //get data from req
       const { name, cases } = req.body;
       const hack = new Hack({ name });
       //add cases for hackaton
+      hack.cases = cases;
+      /*
       cases.forEach((item) => {
         hack.cases.unshift(item);
-      });
+      });*/
       //save data
       await hack.save();
       //response to client
-      res.json(hack);
+      haks.unshift(hack);
+      console.log(haks);
+      res.json(haks);
     } catch (err) {
       console.error(err.message);
       res.status(500).json({ msg: "Ошибка сервера" });
@@ -46,7 +53,7 @@ router.post(
 //@desc get all hack for admin hackatons
 router.get("/all", auth, async (req, res) => {
   try {
-    const hacks = await Hack.find();
+    const hacks = await Hack.find().sort({ date : -1});
     res.send(hacks);
   } catch (err) {
     console.error(err.message);
