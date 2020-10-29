@@ -1,12 +1,14 @@
 import React, { Fragment } from "react";
 import Moment from "react-moment";
+import "moment/locale/ru";
 
 const HackItem = ({ hack: { name, cases, date } }) => {
   return (
     <Fragment>
       <div className="card my-2">
         <h5 className="card-header">
-          {name} - <Moment format="YYYY/MM/DD">{date}</Moment>
+        
+          {name} - <Moment locale="ru" format="ll">{date}</Moment>
         </h5>
         <div className="card-body">
           <h5 className="card-title">Кейсы хакатона:</h5>

@@ -9,8 +9,10 @@ import {
   ERROR_TEAM,
   CLEAR_TEAM,
   UPDATE_HACKS,
+  GET_TEAMS
 } from "./types";
 
+//get all hackatons
 export const getHackatons = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/hack/all");
@@ -54,6 +56,7 @@ export const addHackaton = (name, cases) => async (dispatch) => {
   }
 };
 
+//get my team
 export const getTeam = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/hack/team/me");
@@ -69,6 +72,7 @@ export const getTeam = () => async (dispatch) => {
   }
 };
 
+//get hackaton info
 export const getHack = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/hack/");
@@ -84,6 +88,7 @@ export const getHack = () => async (dispatch) => {
   }
 };
 
+//add teamate for hackaton
 export const addTeamMate = (email) => async (dispatch) => {
   const config = {
     headers: {
@@ -110,6 +115,7 @@ export const addTeamMate = (email) => async (dispatch) => {
   }
 };
 
+//delete teammate 
 export const deleteTeamMate = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(`/api/hack/team/team-mate/${id}`);
@@ -130,6 +136,7 @@ export const deleteTeamMate = (id) => async (dispatch) => {
   }
 };
 
+//delete team
 export const deleteTeam = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(`/api/hack/team/${id}`);
@@ -150,6 +157,7 @@ export const deleteTeam = (id) => async (dispatch) => {
   }
 };
 
+//delete me from team
 export const deleteFromTeam = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(`/api/hack/team/del-from-team/${id}`);
@@ -170,6 +178,7 @@ export const deleteFromTeam = (id) => async (dispatch) => {
   }
 };
 
+//create update team info
 export const createUpdateTeam = (formData, history, edit = false) => async (
   dispatch
 ) => {
@@ -203,3 +212,19 @@ export const createUpdateTeam = (formData, history, edit = false) => async (
     });
   }
 };
+
+//get teams for admin panel
+export const getTeams = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/api/hack/team");
+    dispatch({
+      type: GET_TEAMS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: HACK_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+}

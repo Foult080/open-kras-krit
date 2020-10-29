@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getNewsEl } from "../../actions/news";
 import Spinner from "../Layout/spinner";
 import Moment from "react-moment";
+import "moment/locale/ru";
 import ReactHtmlParser from "react-html-parser";
 import { Link } from "react-router-dom";
 
@@ -19,9 +20,15 @@ const NewsEl = ({ match, getNewsEl, news: { post, loading } }) => {
       <div className="container col-lg-8 col-md-6 col-sm-6">
         <h5 className="news-title">{post.title}</h5>
         <hr />
-        <div className="news-content text-justify">{ReactHtmlParser(post.desc)}</div>
+        <div className="news-content text-justify">
+          {ReactHtmlParser(post.desc)}
+        </div>
         <div className="news-date">
-          <p><Moment format="YYYY/MM/DD">{post.date}</Moment></p>
+          <p>
+            <Moment locale="ru" format="ll">
+              {post.date}
+            </Moment>
+          </p>
         </div>
         <div className="news-buttons">
           <Link to="/" className="btn btn-primary mr-1">

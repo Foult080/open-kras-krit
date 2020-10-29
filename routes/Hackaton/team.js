@@ -44,14 +44,14 @@ router.post(
         capt: req.user.id,
       });
       //if exist update
-      if (team) { 
+      if (team) {
         teamFields.team = team.team;
         team = await Teams.findOneAndUpdate(
           { capt: req.user.id },
           { $set: teamFields },
           { new: true, upsert: true }
         );
-        
+
         return res.json(team);
       }
       //create new team
@@ -78,14 +78,18 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
     const { email } = req.body;
-    const user = await User.findOne({ email: email});
+    const user = await User.findOne({ email: email });
     if (!user) {
-      res.status(400).json({msg: "Пользователь не зарегистрирован"});
+      res.status(400).json({ msg: "Пользователь не зарегистрирован" });
     }
     try {
-      let team = await Teams.findOne({ team: { $elemMatch: { user: user._id} } });
+      let team = await Teams.findOne({
+        team: { $elemMatch: { user: user._id } },
+      });
       if (team) {
-        res.status(400).json({msg: "Пользователь уже зарегистрирован в команде"});
+        res
+          .status(400)
+          .json({ msg: "Пользователь уже зарегистрирован в команде" });
       } else {
         const capt = await Teams.findOne({ capt: req.user.id });
         let newUser = {
@@ -109,13 +113,32 @@ router.put(
 router.get("/me", auth, async (req, res) => {
   try {
     let team = await Teams.findOne({ capt: req.user.id });
-    res.contentType("application/json");
     if (!team) {
-      let team = await Teams.findOne({ team: { $elemMatch: { user: req.user.id} } });
-      if (team)  res.send(team);
+      let team = await Teams.findOne({
+        team: { $elemMatch: { user: req.user.id } },
+      });
+      if (team) res.send(team);
       else return res.status(404).json({ msg: "Команда отсутсвует" });
     }
     res.json(team);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Ошибка сервера");
+  }
+});
+
+//route GET api/hack/team
+//@desc get all teams for admin panel
+router.get("/", auth, async (req, res) => {
+  //check role
+  if (req.user.role !== "admin") {
+    return res.status(401).json({ msg: "Нет доступа" });
+  }
+  try {
+    let teams = await Teams.find()
+      .populate("capt", ["name", "email"])
+      .sort({ date: -1 });
+    res.json(teams);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Ошибка сервера");
@@ -154,7 +177,9 @@ router.delete("/team-mate/:id", auth, async (req, res) => {
 //@desc delete me from team
 router.delete("/del-from-team/:id", auth, async (req, res) => {
   try {
-    let team = await Teams.findOne({ team: { $elemMatch: { user: req.user.id} } });
+    let team = await Teams.findOne({
+      team: { $elemMatch: { user: req.user.id } },
+    });
     const index = team.team.map((item) => item.id).indexOf(req.user.id);
     team.team.splice(index, 1);
     await team.save();
@@ -163,6 +188,6 @@ router.delete("/del-from-team/:id", auth, async (req, res) => {
     console.error(err.message);
     res.status(500).json({ msg: "Ошибка сервера" });
   }
-})
+});
 
 module.exports = router;

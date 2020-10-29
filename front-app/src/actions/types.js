@@ -44,3 +44,4 @@ export const GET_TEAM = "GET_TEAM";
 export const DELETE_TEAM = "DELETE_TEAM";
 export const ERROR_TEAM = "ERROR_TEAM";
 export const CLEAR_TEAM = "CLEAR_TEAM";
+export const GET_TEAMS = "GET_TEAMS";

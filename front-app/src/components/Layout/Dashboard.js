@@ -11,8 +11,9 @@ import EmpProfile from "../Employers/EmpProfile";
 import ListStudents from "../Employers/ListStudents";
 import Hack from "../Hakaton/Hack";
 import AdminHacks from "../Hakaton/AdminHacks";
+import AdminTeams from "../Hakaton/AdminTeams";
 
-const Dashboard = ({ auth: { isAuth, loading, user } }) => {
+const Dashboard = ({ auth: { loading, user } }) => {
   return loading && user === null ? (
     <Spinner className="spinner" />
   ) : (
@@ -36,6 +37,9 @@ const Dashboard = ({ auth: { isAuth, loading, user } }) => {
               </Tab>
               <Tab eventKey="hack" title="ККРИТ Хакатоны">
                 <AdminHacks />
+              </Tab>
+              <Tab eventKey="team" title="Команды Хакатона">
+                <AdminTeams />
               </Tab>
             </Tabs>
           ) : user && user.role === "student" ? (

@@ -3,6 +3,7 @@ import {
   GET_TEAM,
   ERROR_TEAM,
   CLEAR_TEAM,
+  GET_TEAMS
 } from "../actions/types";
 
 const initialState = {
@@ -38,6 +39,12 @@ export default function (state = initialState, actions) {
         error: payload,
         loading: false,
       };
+    case GET_TEAMS:
+      return {
+        ...state,
+        teams: payload,
+        loading: false
+      }
     default:
       return state;
   }
