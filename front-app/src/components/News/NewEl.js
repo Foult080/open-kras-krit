@@ -30,7 +30,7 @@ const NewsEl = ({ match, getNewsEl, news: { post, loading } }) => {
             </Moment>
           </p>
         </div>
-        <div className="news-buttons">
+        <div className="text-center">
           <Link to="/" className="btn btn-primary mr-1">
             К главной странице
           </Link>

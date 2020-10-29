@@ -7,6 +7,7 @@ import { Link, Redirect } from "react-router-dom";
 
 const Register = ({ setAlert, register, isAuth }) => {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
     password2: "",
@@ -38,12 +39,21 @@ const Register = ({ setAlert, register, isAuth }) => {
           <h1>Зарегистрироваться</h1>
           <form style={styles.form} onSubmit={OnSubmit}>
             <input
-              type="email"
-              id="inputEmail"
+              id="inputName"
               className="form-control"
-              placeholder="Email адрес"
+              placeholder="Имя пользователя"
               required
               autoFocus
+              name="name"
+              value={name}
+              onChange={OnChange}
+            />
+            <input
+              type="email"
+              id="inputEmail"
+              className="form-control my-1"
+              placeholder="Email адрес"
+              required
               name="email"
               value={email}
               onChange={OnChange}
@@ -106,7 +116,7 @@ const styles = {
     height: "auto",
     padding: "10px",
     fontSize: "16px",
-    margin: "0 auto"
+    margin: "0 auto",
   },
 };
 
