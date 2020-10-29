@@ -73,6 +73,15 @@ span.tags {
   margin-left: 4px;
 }
 
+.hack-link {
+  background: #007bff;
+  border-radius: 0.25rem;
+  color: #f5f5f5;
+  font-weight: bold;
+  padding: 4px 6px;
+  margin-left: 4px;
+}
+
 .experience {
   border-style: solid;
   background: #6f42c1;

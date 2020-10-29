@@ -63,13 +63,13 @@ const Team = ({
           <div className="title">
             <h4>У вас пока еще нет команды!</h4>
             <Link to="/hack/create-team" className="btn btn-danger">
-              Заполнить анкету команды
-              <i className="far fa-address-card profile-icon"></i>
+              Заполнить анкету команды <i className="far fa-address-card"></i>
             </Link>
           </div>
         </Fragment>
       ) : (
         <Fragment>
+          <h4 className="title">Ваша команда</h4>
           <div className="team">
             {myTeam.capt === user._id ? (
               <Fragment>
@@ -130,9 +130,12 @@ const Team = ({
                               Описание задачи:{" "}
                               {myTeam.hackaton.teamCase.description}
                             </Card.Text>
-                            <Card.Text>
-                              Ссылка для решения кейса: {myTeam.hackaton.link}
-                            </Card.Text>
+                            <p>
+                              Ссылка для решения кейса:{" "}
+                              <span className="hack-link">
+                                {myTeam.hackaton.link}
+                              </span>
+                            </p>
                           </Fragment>
                         ) : (
                           <Card.Text>
@@ -177,14 +180,13 @@ const Team = ({
                           </tbody>
                         </Table>
                         <Button variant="success" onClick={handleShow}>
-                          Добавить Участника{" "}
-                          <i className="fas fa-user profile-icon"></i>
+                          Добавить Участника <i className="fas fa-user"></i>
                         </Button>
                         <div className="text-center mx-auto my-4">
                           <Link to="/hack/edit-team">
                             <Button variant="primary">
                               Редактировать{" "}
-                              <i className="far fa-address-card profile-icon"></i>
+                              <i className="far fa-address-card"></i>
                             </Button>
                           </Link>
                           <Button
@@ -193,8 +195,7 @@ const Team = ({
                             value={myTeam._id}
                             onClick={del_team}
                           >
-                            Удалить Команду{" "}
-                            <i className="fas fa-trash-alt profile-icon"></i>
+                            Удалить Команду <i className="fas fa-trash-alt"></i>
                           </Button>
                         </div>
                       </div>
@@ -279,8 +280,7 @@ const Team = ({
                           value={myTeam._id}
                           onClick={leave_team}
                         >
-                          Покинуть команду{" "}
-                          <i className="fas fa-trash-alt profile-icon"></i>
+                          Покинуть команду <i className="fas fa-trash-alt"></i>
                         </Button>
                       </div>
                     </Card.Body>

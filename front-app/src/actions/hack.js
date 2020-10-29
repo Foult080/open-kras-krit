@@ -37,7 +37,6 @@ export const addHackaton = (name, cases) => async (dispatch) => {
   };
   try {
     const body = JSON.stringify({ name: name, cases });
-    console.log(body);
     const res = await axios.post("/api/hack", body, config);
     dispatch({
       type: UPDATE_HACKS,

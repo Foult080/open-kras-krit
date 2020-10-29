@@ -63,7 +63,6 @@ const FAQ = () => {
               </Card.Body>
             </Accordion.Collapse>
           </Card>
-
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="3">
@@ -80,6 +79,22 @@ const FAQ = () => {
                 <br />
                 Либо вы можете написать в форме обратной связи и вам вышлют
                 материалы на электронную почту.
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+          <Card>
+            <Card.Header>
+              <Accordion.Toggle as={Button} variant="link" eventKey="4">
+                Как добавить участника в команду?
+              </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey="4">
+              <Card.Body className="text-justify">
+                Для того, чтобы добавить участника в команду вам нужно кликнуть
+                по зеленой кнопке в на странице команды. После чего указать
+                email адрес участника.
+                <br /> *ВАЖНО! Участник должен быть зарегистрирован на
+                площадке.*
               </Card.Body>
             </Accordion.Collapse>
           </Card>

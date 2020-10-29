@@ -25,7 +25,7 @@ const UserProfile = ({
   ) : profile === null ? (
     <Fragment>
       <div className="container text-center">
-        <h2 className="title">У вас пока еще нет профиля!</h2>
+        <h4 className="title">У вас пока еще нет профиля!</h4>
         <Link to="/profile/create-profile" className="btn btn-danger btn-lg">
           Создать профиль <i className="far fa-address-card"></i>
         </Link>
@@ -78,7 +78,7 @@ const UserProfile = ({
             <div className="text-center">
               <Link to="/profile/edit-profile" className="btn btn-primary">
                 Редактировать профиль
-                <i className="far fa-address-card profile-icon"></i>
+                <i className="far fa-address-card"></i>
               </Link>
             </div>
 
@@ -106,7 +106,7 @@ const UserProfile = ({
         </div>
         <div className="text-center mt-2">
           <Link to="/profile/add-experience" className="btn btn-success">
-            Добавить Опыт <i className="fas fa-user-ninja profile-icon"></i>
+            Добавить Опыт <i className="fas fa-user-ninja"></i>
           </Link>
         </div>
         <div className="someDiv" />

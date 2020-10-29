@@ -18,6 +18,7 @@ const NewsForm = ({ sendNews }) => {
   const OnSubmit = (e) => {
     e.preventDefault();
     sendNews({ title, desc });
+    setFormData({ title: "", desc: "" });
   };
 
   return (

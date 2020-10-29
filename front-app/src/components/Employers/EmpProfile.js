@@ -27,7 +27,7 @@ const EmpProfile = ({
         <h4 className="title">У вас еще не заполнен профиль!</h4>
         <Link to="/employer/create-profile" className="btn btn-danger btn-lg">
           Создать профиль
-          <i className="far fa-address-card profile-icon"></i>
+          <i className="far fa-address-card"></i>
         </Link>
       </div>
     </Fragment>
@@ -57,7 +57,7 @@ const EmpProfile = ({
             <div className="text-center">
               <Link to="/employer/edit-profile" className="btn btn-primary">
                 Редактировать анкету
-                <i className="far fa-address-card profile-icon"></i>
+                <i className="far fa-address-card"></i>
               </Link>
             </div>
           </form>
@@ -93,7 +93,7 @@ const EmpProfile = ({
             <div className="text-center mt-2">
               <Link to="/employer/add-vacancy" className="btn btn-success">
                 Добавить вакансию{" "}
-                <i className="fas fa-user-ninja profile-icon"></i>
+                <i className="fas fa-user-ninja"></i>
               </Link>
             </div>
           </div>

@@ -26,7 +26,6 @@ router.post(
     try {
       //get all records 
       let haks = await Hack.find().sort({date: -1});
-      console.log(haks);
       //get data from req
       const { name, cases } = req.body;
       const hack = new Hack({ name });
@@ -40,7 +39,6 @@ router.post(
       await hack.save();
       //response to client
       haks.unshift(hack);
-      console.log(haks);
       res.json(haks);
     } catch (err) {
       console.error(err.message);
@@ -80,7 +78,7 @@ router.get("/", auth, async (req, res) => {
 router.get("/", auth, async (req, res) => {
   try {
     const hack = await Hack.findOne({ status: "ongoing" });
-    res.send(hack);
+    res.json(hack);
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ msg: "Ошибка сервера" });

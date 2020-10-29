@@ -6,7 +6,7 @@ import { getHack } from "../../actions/hack";
 import ShowHack from "./ShowHack";
 import Team from "./Team";
 
-const Hack = ({ getHack, hack: { hack, loading } }) => {
+const Hack = ({ getHack, hack: {hack, loading} }) => {
   useEffect(() => {
     getHack();
   }, [getHack]);
@@ -15,7 +15,7 @@ const Hack = ({ getHack, hack: { hack, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className="container col-lg-12 col-md-12 col-sm-12">
+      <div className="container">
         <div className="hack-el">
           {hack === null ? (
             <h4 className="title">
@@ -24,8 +24,6 @@ const Hack = ({ getHack, hack: { hack, loading } }) => {
           ) : (
             <Fragment>
               <ShowHack hack={hack} />
-              <h4 className="title">Ваша команда</h4>
-              <hr />
               <Team />
             </Fragment>
           )}

@@ -44,7 +44,7 @@ const Landing = ({ getLastNews, news: { posts, loading } }) => {
                 Открытая площадка студентов ККРИТ
               </h1>
               <h4>Твой путь к успеху</h4>
-              <div class="d-lg-flex">
+              <div className="d-lg-flex">
                 <Link to="/register">
                   <Button size="lg" variant="outline-success">
                     Зарегистрироваться
@@ -58,11 +58,11 @@ const Landing = ({ getLastNews, news: { posts, loading } }) => {
               </div>
             </div>
             <div
-              class="col-lg-6 order-1 order-lg-2"
+              className="col-lg-6 order-1 order-lg-2"
               data-aos="zoom-in"
               data-aos-delay="200"
             >
-              <img src={Career} class="img-fluid animated" alt=""></img>
+              <img src={Career} className="img-fluid animated" alt=""></img>
             </div>
           </div>
         </div>

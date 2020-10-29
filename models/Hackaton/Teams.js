@@ -16,7 +16,7 @@ const TeamsSchema = new mongoose.Schema({
     },
     link: {
       type: String,
-      default: "не прикреплена",
+      default: "ссылка не прикреплена",
     },
   },
   capt: {

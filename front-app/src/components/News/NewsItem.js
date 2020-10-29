@@ -15,11 +15,9 @@ const NewsItem = ({ post: { _id, title, desc, date } }) => {
       </Card.Header>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
-        <Card.Text>
-          <div className="card-text text-justify">
-            {ReactHtmlParser(desc.slice(0, 200) + "...")}
-          </div>
-        </Card.Text>
+        <div className="card-text text-justify">
+          {ReactHtmlParser(desc.slice(0, 200) + "...")}
+        </div>
         <Link to={`/news/${_id}`}>
           <Button variant="primary">Подбробнее</Button>
         </Link>
